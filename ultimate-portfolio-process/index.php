@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<link rel="icon" type="image/x-icon" href="./images/star.ico">
+	<link rel="stylesheet" type="text/css" href="site-css.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,7 +11,9 @@
 
 	<meta property="og:image" content="./images/jung.png">
 </head>
+
 <body>
 	<h1>ultimate portfolio process homepage</h1>
+	
 </body>
 </html>
