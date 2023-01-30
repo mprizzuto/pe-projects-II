@@ -29,3 +29,15 @@ mast-head {
 .site-logo {
 	max-width: 100px;
 }
+
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+
+main {
+	min-height: 100vh;
+	flex-grow: 1;
+}

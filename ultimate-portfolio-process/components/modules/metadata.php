@@ -1,6 +1,7 @@
 <head>
 	<link rel="icon" type="image/x-icon" href="./images/star.ico">
 	<link rel="stylesheet" type="text/css" href="site-css.css">
+	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
