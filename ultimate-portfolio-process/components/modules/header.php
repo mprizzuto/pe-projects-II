@@ -5,8 +5,9 @@
 
 <body>
 	<header class="global-header">
-		<?php include "nav.php"; ?>
+		<inner-column>
+			<?php include "mast-head.php"; ?>
+		</inner-column>
 	</header>
 
 	<main class="global-main">
-		<h1>ultimate portfolio process homepage</h1>

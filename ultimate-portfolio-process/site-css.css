@@ -1,3 +1,31 @@
 * {
 	color: red;
 }
+
+inner-column {
+	display: block;
+	border: 3px solid red;
+	max-width: 600px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+mast-head {
+	display: block;
+/*	display: flex;*/
+/*	flex-direction: row;*/
+}
+
+.page-list, nav {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+}
+
+.page-list li {
+	margin-left: 20px;
+}
+
+.site-logo {
+	max-width: 100px;
+}

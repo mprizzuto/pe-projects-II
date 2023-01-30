@@ -1,5 +1,9 @@
-<inner-column>
+<!-- <inner-column> -->
+	
+
 	<nav class="global-nav">
+		<?php include "./images/site-logo.php"; ?>
+		
 		<ul class="page-list">
 			<li>
 				<a href="#">home</a>
@@ -15,4 +19,4 @@
 
 		</ul>
 	</nav>
-</inner-column>
+<!-- </inner-column> -->
