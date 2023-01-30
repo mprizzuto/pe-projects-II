@@ -4,7 +4,9 @@
 <?php include "metadata.php"; ?>
 
 <body>
-	<?php include "nav.php"; ?>
+	<header class="global-header">
+		<?php include "nav.php"; ?>
+	</header>
 
 	<main class="global-main">
 		<h1>ultimate portfolio process homepage</h1>

@@ -3,7 +3,7 @@ footer.php
 
 	</main>
 
-	<footer>
+	<footer class="global-footer">
 		<?php include "nav.php"; ?>
 	</footer>
 	
