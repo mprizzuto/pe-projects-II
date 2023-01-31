@@ -1,27 +1,3 @@
-<?php 
-
-	// function generateNavLinks(array $array) {
-	// 	foreach ($array as $linkText => $queryString) {
-	// 		echo <<<HEREDOC
-	// 		it ran
-	// 		<ul class="page-list">
-	// 			<li>
-	// 				<a href="$queryString">$linkText</a>
-	// 			</li>
-
-	// 			<li>
-	// 				<a href="$queryString">$linkText</a>
-	// 			</li>
-
-	// 			<li>
-	// 				<a href="$queryString">$linkText</a>
-	// 			</li>
-	// 		</ul>
-	// 		HEREDOC;
-	// 	}
-	// }
-?>
-
 <?php function generateNavLinks(array $array) { ?>
 	<?= "<ul class='page-list'>" ?>
 
@@ -31,3 +7,17 @@
 	<?php endforeach; ?>
 	<?= "</ul>" ?>
 <?php } ?>
+
+
+<?php 
+	function formatInput(array $arr) {
+		echo "<pre>";
+			var_dump($arr);
+		echo "</pre>";
+	}
+
+	function is_set($var) {
+		return isset($var) ? "true" : "false";  
+		//a human-readable isset(), instead of returning 1 for true/ nothing for false.. ,
+	}
+?>
