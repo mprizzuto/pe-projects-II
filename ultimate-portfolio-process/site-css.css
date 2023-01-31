@@ -41,3 +41,19 @@ main {
 	min-height: 100vh;
 	flex-grow: 1;
 }
+
+
+
+/*graphic diptych*/
+graphic-diptych {
+	display: block;
+}
+
+.diptych-photo {
+	max-width: 500px;
+}
+
+
+
+
+
