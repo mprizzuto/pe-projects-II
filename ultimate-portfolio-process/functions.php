@@ -53,8 +53,6 @@
 		return in_array(getQueryString(), $trustedPages) ? "false" : "true";
 	}
 
-
-
 	function sanitizeString($str) {
 		return preg_replace("/[^a-zA-Z]+/", "", $str);
 	}
