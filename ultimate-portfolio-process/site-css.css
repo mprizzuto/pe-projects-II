@@ -42,11 +42,25 @@ main {
 	flex-grow: 1;
 }
 
+/*setup*/
+picture {
+	display: block;
+}
+
+picture img {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
 
 
 /*graphic diptych*/
 graphic-diptych {
 	display: block;
+	display: grid;
+	gap: 3%;
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .diptych-photo {

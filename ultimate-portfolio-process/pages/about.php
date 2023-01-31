@@ -1,5 +1,4 @@
-<!-- <section> -->
-	<!-- <inner-column> -->
-		<h2>about</h2>
-	<!-- </inner-column> -->
-<!-- </section> -->
+<h2>about</h2>
+
+<?php include "./components/modules/graphic-diptych.php"; ?>
+
