@@ -36,34 +36,44 @@
 	function is404() {
 		$trustedPages = ["home", "about", "contact"];
 		$page = $_GET["page"] ?? null;
-		return in_array($page, $trustedPages) ? "true" : "false";
+		// return in_array($page, $trustedPages) ? "true" : "false";
+		return in_array($page, $trustedPages) ? "false" : "true";
 	}
 
+
+	function sanitizeString($str) {
+		return preg_replace("/[^a-zA-Z]+/", "", $str);
+	}
+
+
 	function generatePage() {
-		if (!getQueryString()) {
-			return false;
-		}
+		// if (!getQueryString()) {
+		// 	// return false;
+		// 	echo "false";
+		// }
 
 		switch (getQueryString()) {
-			case "home":
-				echo "home!";
-				break;
+			// case "home":
+			// 	include "./pages/home.php";
+			// 	break;
 
 			case "about":
-				echo "about!";
+				include "./pages/about.php";
 				break;
 
 			case "contact":
-				echo "contact!";
-				break;		
-
-
-			case is404() === "false":
-				echo "404!!";
+				include "./pages/contact.php";
 				break;
+
+			case is404() === "true":
+				include "./pages/404.php";
+				break;
+
+				// toDO, check for empty string "" for $_GET[page]
 			
 			default:
-				echo "home!";
+				// echo "!home!";
+				include "./pages/home.php";
 				break;
 		}
 	}
