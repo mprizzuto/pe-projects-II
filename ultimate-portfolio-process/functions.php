@@ -25,20 +25,34 @@
 		//a human-readable isset(), instead of returning 1 for true/ nothing for false.. ,
 	}
 
+	// function getPage() {
+	// 	$page = $_GET["page"] ?? null;
+
+	// 	if (is_set($page) === "false") return null; //trying out this syntax just to piss off Derek, haha :)
+
+	// 	return $page;
+	// }
+
 	function getPage() {
-		$page = $_GET["page"] ?? null;
+		if (is_set(getQueryString()) === "false") return null; //trying out this syntax just to piss off Derek, haha :)
 
-		if (is_set($page) === "false") return null; //trying out this syntax just to piss off Derek, haha :)
-
-		return $page;
+		return getQueryString();
 	}
+
+	// function is404() {
+	// 	$trustedPages = ["home", "about", "contact"];
+	// 	$page = $_GET["page"] ?? null;
+	// 	// return in_array($page, $trustedPages) ? "true" : "false";
+	// 	return in_array($page, $trustedPages) ? "false" : "true";
+	// }
 
 	function is404() {
 		$trustedPages = ["home", "about", "contact"];
-		$page = $_GET["page"] ?? null;
+
 		// return in_array($page, $trustedPages) ? "true" : "false";
-		return in_array($page, $trustedPages) ? "false" : "true";
+		return in_array(getQueryString(), $trustedPages) ? "false" : "true";
 	}
+
 
 
 	function sanitizeString($str) {
