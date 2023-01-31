@@ -89,4 +89,10 @@
 				break;
 		}
 	}
+
+
+	function renderSectionClass() {
+		return isset($_GET['page']) ? "-section": "generic-section";
+	}
+
 ?>
