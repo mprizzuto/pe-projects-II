@@ -21,7 +21,7 @@
 	}
 
 	function getApprovedQueryString() {
-		$pages = ["home", "about", "contact"];
+		$pages = ["home", "about", "contact", "404"];
 
 		if ( in_array(getQueryString(), $pages ) ) {
 			return getQueryString();
@@ -45,7 +45,8 @@
 	function getPage() {
 		if (is_set(getQueryString()) === "false") return null; //trying out this syntax just to piss off Derek, haha :)
 
-		return getQueryString();
+		return getApprovedQueryString();
+
 	}
 
 	// function is404() {
@@ -101,7 +102,7 @@
 
 
 	function renderSectionClass() {
-		return isset($_GET['page']) ? "-section": "generic-section";
+		return isset($_GET['page']) ? getApprovedQueryString() . "-section": "home-section";
 	}
 
 	function templateHTML($pageData) {
