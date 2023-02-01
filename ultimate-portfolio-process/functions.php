@@ -20,6 +20,15 @@
 		return $_GET["page"] ?? null;
 	}
 
+	function getApprovedQueryString() {
+		$pages = ["home", "about", "contact"];
+
+		if ( in_array(getQueryString(), $pages ) ) {
+			return getQueryString();
+		}
+		return "generic";
+	}
+
 	function is_set($var) {
 		return isset($var) ? "true" : "false";  
 		//a human-readable isset(), instead of returning 1 for true/ nothing for false.. ,
@@ -95,4 +104,38 @@
 		return isset($_GET['page']) ? "-section": "generic-section";
 	}
 
+	function templateHTML($pageData) {
+	  $output = "";
+	  $page = getQueryString() ?? "home";
+
+	  if (array_key_exists($page, $pageData)) {
+	    $output .= "<h2>$page</h2>";
+	    foreach ($pageData[$page] as $p) {
+	      $output .= "<p>$p</p>";
+	    }
+	  } else {
+	    $output = "Page not found";
+	  }
+	  return $output;
+	}
+
+	function templateImages($imageData) {
+	  $output = "";
+	  $page = $_GET["page"] ?? "home";
+
+	  if (array_key_exists($page, $imageData)) {
+	    foreach ($imageData[$page] as $src => $alt) {
+	      $output .= "<img src='$src' alt='$alt'>";
+	    }
+	  } 
+	   else {
+	    $output .= "<img src='./images/404.jpg'>";
+	  }
+	  return $output;
+	}
+
+
 ?>
+
+
+	
