@@ -135,6 +135,13 @@
 	  return $output;
 	}
 
+	function checkStringLength() {
+		
+	}
+
+
+
+
 
 ?>
 
