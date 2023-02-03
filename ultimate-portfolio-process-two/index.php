@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<header>
-			<h1>ultimate portfolio framework</h1>
+			
 
 			<nav class="site-menu">
 				<ul>
@@ -27,7 +27,10 @@
 			</nav>
 		</header>
 		
-
-		<p>welcome to the ultimate portfolio framework index!</p>
+		<main>
+			<h1>ultimate portfolio framework</h1>
+		
+			<p>welcome to the ultimate portfolio framework index!</p>
+		</main>
 	</body>
 </html>
