@@ -1,3 +1,15 @@
 * {
 	background: wheat;	
 }
+
+.site-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.site-menu a {
+	display: block;
+	padding: 10px;
+}
