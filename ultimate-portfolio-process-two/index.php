@@ -7,6 +7,27 @@
 		<link rel="stylesheet" type="text/css" href="site.css">
 	</head>
 	<body>
-		<h1>index.php</h1>
+		<header>
+			<h1>ultimate portfolio framework</h1>
+
+			<nav>
+				<ul>
+					<li>
+						<a href="home.html">Home</a>
+					</li>
+
+					<li>
+						<a href="about.html">About</a>
+					</li>
+
+					<li>
+						<a href="contact.htm;">Contact</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		
+
+		<p>welcome to the ultimate portfolio framework index!</p>
 	</body>
 </html>
