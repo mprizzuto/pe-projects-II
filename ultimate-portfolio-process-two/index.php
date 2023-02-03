@@ -21,7 +21,7 @@
 					</li>
 
 					<li>
-						<a href="contact.htm;">Contact</a>
+						<a href="contact.html">Contact</a>
 					</li>
 				</ul>
 			</nav>
