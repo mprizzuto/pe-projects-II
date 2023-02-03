@@ -13,3 +13,7 @@
 	display: block;
 	padding: 10px;
 }
+
+.site-logo {
+	max-width: 100px;
+}
