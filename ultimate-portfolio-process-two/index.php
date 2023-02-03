@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<header class="site-header">
-			
+
 			<nav class="site-menu">
 				<ul>
 					<li>
@@ -27,9 +27,11 @@
 		</header>
 		
 		<main class="page-content">
-			<h1>ultimate portfolio framework</h1>
+			<section>
+				<h1>ultimate portfolio framework</h1>
 		
-			<p>welcome to the ultimate portfolio framework index!</p>
+			  <p>welcome to the ultimate portfolio framework index!</p>
+			</section>
 		</main>
 
 		<footer class="site-footer">
