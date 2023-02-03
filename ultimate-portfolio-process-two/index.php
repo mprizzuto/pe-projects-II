@@ -32,5 +32,9 @@
 		
 			<p>welcome to the ultimate portfolio framework index!</p>
 		</main>
+
+		<footer>
+			<h2>footer</h2>
+		</footer>
 	</body>
 </html>
