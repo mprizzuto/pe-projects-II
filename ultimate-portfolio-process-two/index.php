@@ -45,7 +45,7 @@
 			<nav class="site-menu">
 				<ul>
 					<li>
-						<a href="home.html">Home</a>
+						<a href="index.php">Home</a>
 					</li>
 
 					<li>
