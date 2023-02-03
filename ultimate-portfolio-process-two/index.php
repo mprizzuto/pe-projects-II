@@ -7,9 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="site.css">
 	</head>
 	<body>
-		<header>
+		<header class="site-header">
 			
-
 			<nav class="site-menu">
 				<ul>
 					<li>
@@ -27,13 +26,13 @@
 			</nav>
 		</header>
 		
-		<main>
+		<main class="page-content">
 			<h1>ultimate portfolio framework</h1>
 		
 			<p>welcome to the ultimate portfolio framework index!</p>
 		</main>
 
-		<footer>
+		<footer class="site-footer">
 			<h2>footer</h2>
 		</footer>
 	</body>
