@@ -29,11 +29,25 @@ inner-column {
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 700px;
+	border: 2px solid purple;
 }
 
 mast-head {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+}
+
+graphic-diptych {
+	display: block;
+	display: grid;
+/*	grid-template-columns: ;*/
+  gap: 10%; 
+}
+
+graphic-diptych .graphic {
+	background: lightblue;
+	aspect-ratio: 2 / 1;
+
 }
 
