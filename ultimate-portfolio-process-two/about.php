@@ -1,13 +1,9 @@
 <?php include "header.php"; ?>
 
-<header class="page-header">
-  <inner-column>
-  	<h1>about</h1>
-
-
-    <p>welcome to about page</p>
-  </inner-column>
-</header>
+<?php 
+	$heading = "about page title";
+	include "page-header.php"; 
+	?>
 
 <section class="new-news">
 	<inner-column>
