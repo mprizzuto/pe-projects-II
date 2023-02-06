@@ -10,7 +10,7 @@
 	</inner-column>
 </header>
 
-<section class="new-news">
+<section class="our-new-award">
 	<inner-column>
 		<?php include "graphic-diptych.php"; ?>
 	</inner-column>
