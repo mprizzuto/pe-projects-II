@@ -46,12 +46,20 @@ graphic-diptych {
 }
 
 graphic-diptych .graphic {
-	background: lightblue;
+	background: blue;
 	aspect-ratio: 2 / 1;
 }
 
 graphic-diptych .content {
 	padding: 10px;
+}
+
+.other-news {
+	background-color: blue;
+}
+
+.other-news graphic-diptych {
+	background: rebeccapurple;
 }
 
 @media (min-width: 600px) {

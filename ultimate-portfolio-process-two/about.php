@@ -8,13 +8,13 @@ include "page-header.php";
 <section class="new-news">
 	<inner-column>
 		<?php 
-		// $heading = "new news";
+		$heading = "new news";
 		include "graphic-diptych.php"; 
 		?>
 	</inner-column>
 </section>
 
-<section class="new-news">
+<section class="other-news">
 	<inner-column>
 		<?php 
 		$heading = "new news";
