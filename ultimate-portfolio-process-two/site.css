@@ -4,7 +4,17 @@ body {
 	margin: 0;
 }
 
-/*TODO, defione vairable colors on html/root*/
+/*SETTINGS*/
+:root {
+	--foreground-color: rebeccapurple;
+	--background-color: wheat;
+}
+
+/*THEME*/
+body {
+	background: var(--background-color);
+	color: var(--foreground-color);
+}
 
 * {
 	background: wheat;	
