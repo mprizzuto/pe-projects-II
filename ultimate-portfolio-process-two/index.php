@@ -10,6 +10,10 @@
 	</inner-column>
 </header>
 
-<section></section>
+<section class="new-news">
+	<inner-column>
+		<?php include "graphic-diptych.php"; ?>
+	</inner-column>
+</section>
 
 <?php include "footer.php"; ?>
