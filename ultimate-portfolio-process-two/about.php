@@ -17,7 +17,7 @@ include "page-header.php";
 <section class="other-news">
 	<inner-column>
 		<?php 
-		$heading = "new news";
+		$heading = "other news";
 		include "graphic-diptych.php"; 
 		?>
 	</inner-column>
