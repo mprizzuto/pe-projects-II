@@ -1,5 +1,3 @@
-page-header.php
-
 <header class="page-header">
   <inner-column>
   	<h1><?=$pageTitle?></h1>

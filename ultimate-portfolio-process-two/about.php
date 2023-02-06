@@ -1,7 +1,7 @@
 <?php include "header.php"; ?>
 
 <?php 
-	$heading = "about page title";
+	$pageTitle = "about page title";
 	include "page-header.php"; 
 	?>
 
