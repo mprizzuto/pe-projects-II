@@ -58,11 +58,11 @@ graphic-diptych {
 
 graphic-diptych .graphic {
 	background: blue;
-	aspect-ratio: 1 / 1;
+	aspect-ratio: 3 / 2;
 }
 
 graphic-diptych .content {
-	padding: 10px;
+/*	padding: 10px;*/
 }
 
 .other-news {
