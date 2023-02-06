@@ -41,8 +41,8 @@ mast-head {
 graphic-diptych {
 	display: block;
 	display: grid;
-/*	grid-template-columns: ;*/
-  gap: 2%; 
+	border: 2px solid blue;
+ 
 }
 
 graphic-diptych .graphic {
@@ -57,5 +57,6 @@ graphic-diptych .content {
 @media (min-width: 600px) {
 	graphic-diptych {
 		grid-template-columns: repeat(2, 1fr);
+		gap: 2%;
 	}
 }
