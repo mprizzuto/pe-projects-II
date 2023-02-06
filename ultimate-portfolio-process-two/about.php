@@ -12,7 +12,7 @@
 <section class="new-news">
 	<inner-column>
 		<?php 
-		$heading = "our new award";
+		$heading = "new news";
 		include "graphic-diptych.php"; 
 		?>
 	</inner-column>
