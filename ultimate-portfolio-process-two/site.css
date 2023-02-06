@@ -42,7 +42,7 @@ graphic-diptych {
 	display: block;
 	display: grid;
 	border: 2px solid blue;
- 
+ 	padding: 10vh 0;
 }
 
 graphic-diptych .graphic {
