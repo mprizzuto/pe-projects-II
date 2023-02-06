@@ -30,3 +30,8 @@ inner-column {
 	margin-left: auto;
 	max-width: 700px;
 }
+
+mast-head {
+	display: block;
+}
+
