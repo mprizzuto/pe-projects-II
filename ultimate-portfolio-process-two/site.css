@@ -42,7 +42,7 @@ graphic-diptych {
 	display: block;
 	display: grid;
 /*	grid-template-columns: ;*/
-  gap: 10%; 
+  gap: 2%; 
 }
 
 graphic-diptych .graphic {
@@ -54,3 +54,8 @@ graphic-diptych .content {
 	padding: 10px;
 }
 
+@media (min-width: 600px) {
+	graphic-diptych {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
