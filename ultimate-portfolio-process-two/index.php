@@ -2,13 +2,10 @@
 <?php include "header.php"; ?>
 
 
-<header class="page-header">
-	<inner-column>
-		<h1>ultimate portfolio framework</h1>
-
-    <p>welcome to the ultimate portfolio framework index!</p>
-	</inner-column>
-</header>
+<?php 
+$pageTitle = "HOME page title";
+include "page-header.php"; 
+?>
 
 <section class="our-new-award">
 	<inner-column>

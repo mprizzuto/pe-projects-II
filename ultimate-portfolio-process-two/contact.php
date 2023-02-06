@@ -1,9 +1,9 @@
 <?php include "header.php"; ?>
-<header class="page-header">
-	<h2>contact me</h2>
 
-  <p>welcome to the ultimate portfolio framework index!</p>
-</header>
+<?php 
+$pageTitle = "contact page title";
+include "page-header.php"; 
+?>
 
 <section>
 	<h2>other ways to contact me</h2>
