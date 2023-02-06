@@ -48,6 +48,9 @@ graphic-diptych {
 graphic-diptych .graphic {
 	background: lightblue;
 	aspect-ratio: 2 / 1;
+}
 
+graphic-diptych .content {
+	padding: 10px;
 }
 
