@@ -40,6 +40,7 @@ inner-column {
 	margin-left: auto;
 	max-width: 700px;
 	border: 2px solid purple;
+	padding: 10px;
 }
 
 mast-head {
@@ -57,7 +58,7 @@ graphic-diptych {
 
 graphic-diptych .graphic {
 	background: blue;
-	aspect-ratio: 2 / 1;
+	aspect-ratio: 1 / 1;
 }
 
 graphic-diptych .content {
@@ -75,6 +76,6 @@ graphic-diptych .content {
 @media (min-width: 600px) {
 	graphic-diptych {
 		grid-template-columns: repeat(2, 1fr);
-		gap: 2%;
+		gap: 5px;
 	}
 }
