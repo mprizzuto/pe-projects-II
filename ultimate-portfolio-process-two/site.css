@@ -1,3 +1,11 @@
+/*RESET*/
+
+body {
+	margin: 0;
+}
+
+/*TODO, defione vairable colors on html/root*/
+
 * {
 	background: wheat;	
 }
@@ -23,6 +31,8 @@
 	flex-direction: row;
 	align-items: center;*/
 }
+
+/*STRUCTURE*/
 
 inner-column {
 	display: block;
