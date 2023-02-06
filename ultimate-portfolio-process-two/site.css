@@ -19,9 +19,9 @@
 }
 
 .site-header {
-	display: flex;
+	/*display: flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: center;*/
 }
 
 inner-column {
@@ -32,6 +32,8 @@ inner-column {
 }
 
 mast-head {
-	display: block;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
