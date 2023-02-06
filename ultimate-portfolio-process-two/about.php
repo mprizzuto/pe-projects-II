@@ -8,7 +8,7 @@ include "page-header.php";
 <section class="new-news">
 	<inner-column>
 		<?php 
-		$heading = "new news";
+		// $heading = "new news";
 		include "graphic-diptych.php"; 
 		?>
 	</inner-column>
