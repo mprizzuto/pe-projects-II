@@ -11,7 +11,10 @@
 
 <section class="new-news">
 	<inner-column>
-		<?php include "graphic-diptych.php"; ?>
+		<?php 
+		$heading = "our new award";
+		include "graphic-diptych.php"; 
+		?>
 	</inner-column>
 </section>
 
