@@ -5,5 +5,5 @@ $pageTitle = "contact page title";
 include "page-header.php"; 
 ?>
 
-<?php include "generic-text.php"; ?>
+<?php include "templates/modules/generic-text/template.php"; ?>
 <?php include "footer.php"; ?>

@@ -9,7 +9,7 @@ include "page-header.php";
 	<inner-column>
 		<?php 
 		$heading = "new news";
-		include "graphic-diptych.php"; 
+		include "templates/modules/graphic-diptych/template.php";
 		?>
 	</inner-column>
 </section>
@@ -18,7 +18,7 @@ include "page-header.php";
 	<inner-column>
 		<?php 
 		$heading = "other news";
-		include "graphic-diptych.php"; 
+		include "templates/modules/graphic-diptych/template.php";
 		?>
 	</inner-column>
 </section>

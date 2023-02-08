@@ -11,7 +11,7 @@ include "page-header.php";
 	<inner-column>
 		<?php 
 		$heading = "our new award";
-		include "graphic-diptych.php"; 
+		include "templates/modules/graphic-diptych/template.php"; 
 		?>
 	</inner-column>
 </section>

@@ -119,21 +119,7 @@ mast-head {
 	align-items: center;
 }
 
-graphic-diptych {
-	display: block;
-	display: grid;
-	border: 2px solid blue;
- 	padding: 10vh 0;
-}
 
-graphic-diptych .graphic {
-	background: blue;
-	aspect-ratio: 3 / 2;
-}
-
-graphic-diptych .content {
-/*	padding: 10px;*/
-}
 
 /*THEME*/
 body {
