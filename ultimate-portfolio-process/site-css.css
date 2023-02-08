@@ -4,7 +4,7 @@
 
 inner-column {
 	display: block;
-	border: 3px solid red;
+/*	border: 3px solid red;*/
 	max-width: 600px;
 	margin-right: auto;
 	margin-left: auto;
