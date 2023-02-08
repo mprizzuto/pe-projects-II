@@ -40,7 +40,7 @@ body {
 inner-column {
 	display: block;
 /*	border: 3px solid red;*/
-	max-width: 600px;
+	max-width: var(--inner-column);
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -98,14 +98,6 @@ graphic-diptych {
 
 .diptych-photo {
 	max-width: 500px;
-}
-
-
-/*SETTINGS*/
-:root {
-	--foreground-color: rebeccapurple;
-	--background-color: wheat;
-	--inner-column: 800px;
 }
 
 /*STRUCTURE*/
