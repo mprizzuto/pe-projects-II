@@ -2,8 +2,8 @@
 
 <?php 
 $pageTitle = "contact page title";
-include "page-header.php"; 
+include "templates/modules/page-header/template.php"; 
 ?>
 
-<?php include "templates/modules/generic-text/template.php"; ?>
+<?php include "templates/generic-text/template.php"; ?>
 <?php include "footer.php"; ?>

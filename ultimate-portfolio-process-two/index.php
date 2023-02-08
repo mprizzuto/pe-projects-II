@@ -1,10 +1,8 @@
-
 <?php include "header.php"; ?>
-
 
 <?php 
 $pageTitle = "HOME page title";
-include "page-header.php"; 
+include "templates/modules/page-header/template.php"; 
 ?>
 
 <section class="our-new-award">
