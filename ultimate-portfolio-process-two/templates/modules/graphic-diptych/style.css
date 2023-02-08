@@ -1,3 +1,31 @@
+/*graphic diptych*/
+graphic-diptych {
+	display: block;
+	display: grid;
+	gap: 3%;
+	grid-template-columns: repeat(2, 1fr);
+	padding: 20vh 0;
+}
+
+/*.diptych-photo {
+	max-width: 500px;
+}*/
+
+graphic-diptych picture {
+/*	background: lightblue;*/
+}
+
+graphic-diptych picture img {
+/*	min-height: 500px;*/
+}
+
+
+@media (min-width: 600px) {
+	graphic-diptych {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 5px;
+	}
+}
 
 html {
 	--black: #111111;

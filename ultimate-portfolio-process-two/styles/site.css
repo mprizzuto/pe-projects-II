@@ -88,17 +88,8 @@ picture img {
 	width: 100%;
 }
 
-/*graphic diptych*/
-graphic-diptych {
-	display: block;
-	display: grid;
-	gap: 3%;
-	grid-template-columns: repeat(2, 1fr);
-}
 
-.diptych-photo {
-	max-width: 500px;
-}
+
 
 /*STRUCTURE*/
 body {
@@ -158,12 +149,7 @@ body {
 	align-items: center;*/
 }
 
-@media (min-width: 600px) {
-	graphic-diptych {
-		grid-template-columns: repeat(2, 1fr);
-		gap: 5px;
-	}
-}
+
 
 
 

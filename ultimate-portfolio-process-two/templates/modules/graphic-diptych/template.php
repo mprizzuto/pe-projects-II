@@ -3,9 +3,10 @@ $heading ??= "default heading";
 ?>
 
 <graphic-diptych>
-	<div class="graphic">
-		graphic
-	</div>
+
+	<picture>
+		<img src="../../images/landscape.jpg" alt="$todo">
+	</picture>
 
 	<div class="content">
 		<h2><?=$heading?></h2>
