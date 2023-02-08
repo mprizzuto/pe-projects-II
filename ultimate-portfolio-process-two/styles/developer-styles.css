@@ -9,9 +9,10 @@ section:nth-of-type(odd) {
 }
 
 picture img {
-	opacity: 0;
+/*	opacity: 0;*/
 }
 
-picture {
+/*picture {
 	background-color: var(--shadow);
 }
+*/

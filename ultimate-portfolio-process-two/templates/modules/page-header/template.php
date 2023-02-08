@@ -3,6 +3,6 @@
   	<h1><?=$pageTitle?></h1>
 
 
-    <p>welcome to about page</p>
+    <p>welcome to home page</p>
   </inner-column>
 </header>
