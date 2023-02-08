@@ -2,7 +2,8 @@
 
 <?php 
 $pageTitle = "contact page title";
-include "templates/modules/page-header/template.php"; 
+include "templates/modules/graphic-diptych/template.php"; 
+
 ?>
 
 <?php include "templates/generic-text/template.php"; ?>
