@@ -14,4 +14,14 @@ include "templates/modules/page-header/template.php";
 	</inner-column>
 </section>
 
+<section class="latest-projects">
+	<inner-column>
+		<?php 
+		$heading = "our new award";
+		include "templates/modules/project-spotlight/template.php"; 
+		?>
+	</inner-column>
+</section>
+
+
 <?php include "footer.php"; ?>

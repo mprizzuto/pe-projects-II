@@ -1,1 +1,3 @@
-template.php
+<projects-spotlight>
+	test
+</projects-spotlight>
