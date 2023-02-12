@@ -1,6 +1,6 @@
 <header class="page-header">
   <inner-column>
-  	<h1><?=$pageTitle?></h1>
+  	<h1 class="attention-voice"><?=$pageTitle?></h1>
 
 
     <p>welcome to home page</p>

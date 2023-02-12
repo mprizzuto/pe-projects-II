@@ -1,5 +1,25 @@
 <?php 
-$projects = [1,2,3];
+$projects = [
+	[
+		"title" => "project title apple",
+		"teaser" => "example teaser",
+		"linkText" => "visit me",
+		"url" => "#",
+	],
+	[
+		"title" => "project title bananna",
+		"teaser" => "example teaser",
+		"linkText" => "visit me",
+		"url" => "#",
+	],
+	[
+		"title" => "project title carrot",
+		"teaser" => "example teaser",
+		"linkText" => "visit me",
+		"url" => "#",
+	]
+
+];
 
  ?>
 

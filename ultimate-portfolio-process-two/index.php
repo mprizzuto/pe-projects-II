@@ -9,10 +9,12 @@
 	</inner-column>
 </section>
 
+
 <?php 
 $pageTitle = "HOME page title";
 include "templates/modules/page-header/template.php"; 
 ?>
+
 
 <section class="our-new-award">
 	<inner-column>
