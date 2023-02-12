@@ -18,7 +18,7 @@ include "templates/modules/page-header/template.php";
 	<inner-column>
 		<?php 
 		$heading = "our new award";
-		include "templates/modules/project-spotlight/template.php"; 
+		include "templates/modules/projects-spotlight/template.php"; 
 		?>
 	</inner-column>
 </section>
