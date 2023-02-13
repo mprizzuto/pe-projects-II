@@ -5,10 +5,5 @@
 $pageData = pageData();
 ?>
 
-<!-- <header class="site-header">
-	<p><?=queryString();?></p>
-	<?php //include "partials/site-map.php"; ?>
-</header>
- -->
- 
+
 <?php renderPageTemplate(currentPage()); ?> 
