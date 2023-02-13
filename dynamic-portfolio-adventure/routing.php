@@ -29,3 +29,15 @@ function renderPageTemplate() {
 		include "pages/404.php";
 	}
 }
+
+function renderJSON() {
+	$pageData = pageData();
+	foreach ($pageData["sections"] as $section) {
+		foreach($section as $heading => $content) {
+			echo <<<THIS
+				<h2>$heading</h2> 
+				<p>$content</p>
+			THIS;
+		}
+	}
+}
