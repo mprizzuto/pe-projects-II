@@ -4,6 +4,7 @@ index.php
 <?php 
 $page = currentPage();
 $json = file_get_contents("data/pages/$page.json");
+$pageData = json_decode($json, true);
 ?>
 
 
