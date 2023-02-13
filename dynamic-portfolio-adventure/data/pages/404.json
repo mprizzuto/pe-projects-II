@@ -1,1 +1,12 @@
-404.json
+{
+	"id": "404",
+
+	"title": "404",
+	"intro": "This page does not exist",
+
+	"sections": [
+		{
+			"heading": "here are some very lovely things"
+		}
+	]
+}
