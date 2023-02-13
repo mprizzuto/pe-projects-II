@@ -1,4 +1,3 @@
-site-menu.php
 <nav class="site-menu">
 	<li>
 		<a href="?page=home">home</a>

@@ -20,10 +20,9 @@ function pageData() {
 }
 
 function renderPageTemplate() {
-	$filePath = "pages/" . currentPage() . ".php";
+	$filePath = "pages/" . "standard" . ".php";
 	$pageData = pageData();
 	if ( file_get_contents($filePath) ) {
-		echo "!!";
 		include "$filePath";
 	}
 	else {
