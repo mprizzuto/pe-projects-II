@@ -1,0 +1,15 @@
+{
+	"id": "about",
+
+	"title": "about",
+	"intro": "you made it",
+
+	"sections": [
+		{
+			"heading": "my latest work"
+		},
+		{
+			"heading": "things I like"
+		}
+	]
+}

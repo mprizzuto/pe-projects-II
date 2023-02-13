@@ -5,6 +5,7 @@ index.php
 <?php
 $pageData = pageData();
 ?>
+<?php var_dump($pageData)?>
 
 
 
