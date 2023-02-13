@@ -18,14 +18,4 @@ switch (currentPage()) {
 	default:
 		renderJSON();
 }
-
-/*
-foreach ($pageData["sections"] as $section) {
-		foreach($section as $heading => $content) {
-			echo <<<THIS
-				"<h2>$heading</h2>" . "<p>$content</p>";
-			THIS;
-		}
-	}
-*/ 
 ?>
