@@ -3,8 +3,14 @@ index.php
 
 <?php 
 $page = currentPage();
+$json = file_get_contents("data/pages/$page.json");
 ?>
 
-<p><?=queryString();?></p>
+
+
+<header class="site-header">
+	<p><?=queryString();?></p>
+	<?php include "partials/site-map.php"; ?>
+</header>
 
 <?php renderPageTemplate(currentPage()); ?>
