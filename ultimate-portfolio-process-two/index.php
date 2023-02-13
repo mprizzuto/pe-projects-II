@@ -1,13 +1,6 @@
 <?php include "header.php"; ?>
 
-<section class="latest-projects">
-	<inner-column>
-		<?php 
-		$heading = "our new award";
-		include "templates/modules/projects-spotlight/template.php"; 
-		?>
-	</inner-column>
-</section>
+
 
 
 <?php 
@@ -25,7 +18,14 @@ include "templates/modules/page-header/template.php";
 	</inner-column>
 </section>
 
-
+<section class="latest-projects">
+	<inner-column>
+		<?php 
+		$heading = "my latest besties";
+		include "templates/modules/projects-spotlight/template.php"; 
+		?>
+	</inner-column>
+</section>
 
 
 <?php include "footer.php"; ?>

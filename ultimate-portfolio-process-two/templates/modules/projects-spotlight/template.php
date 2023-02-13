@@ -1,4 +1,6 @@
 <?php 
+
+$heading = $heading ?? "my favorite projects";
 $projects = [
 	[
 		"title" => "project title apple",
@@ -24,7 +26,7 @@ $projects = [
  ?>
 
 <projects-spotlight>
-	<h2 class="attention-voice">My latest projects</h2>
+	<h2 class="attention-voice"><?=$heading?></h2>
 
 	<ul class="project-list">
 		<?php foreach($projects as $project) { ?>
