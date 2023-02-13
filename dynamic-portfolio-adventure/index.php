@@ -1,10 +1,9 @@
 index.php
-<?php include "utilities.php"; ?>
+<?php include "partials/site-menu.php"; ?>
+<?php include "functions.php"; ?>
 
-<?php 
-$page = currentPage();
-$json = file_get_contents("data/pages/$page.json");
-$pageData = json_decode($json, true);
+<?php
+$pageData = pageData();
 ?>
 
 
@@ -14,4 +13,4 @@ $pageData = json_decode($json, true);
 	<?php include "partials/site-map.php"; ?>
 </header>
 
-<?php renderPageTemplate(currentPage()); ?>
+<!-- <?php renderPageTemplate(currentPage()); ?> -->

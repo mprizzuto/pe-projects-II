@@ -1,2 +1,5 @@
-list.php
-<h1>list.php</h1>
+<header class="page-header">
+	<h1><?=$pageData["title"]?></h1>
+	<p><?=$pageData["intro"]?></p>
+
+</header>

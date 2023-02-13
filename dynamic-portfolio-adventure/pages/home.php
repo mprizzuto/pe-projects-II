@@ -1,5 +1,5 @@
-<header>
-	<h1><?=$page["title"]?></h1>
-	<p><?=$page["intro"]?></p>
+<header class="page-header">
+	<h1><?=$pageData["title"]?></h1>
+	<p><?=$pageData["intro"]?></p>
 
 </header>
