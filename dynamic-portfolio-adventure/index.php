@@ -5,6 +5,9 @@
 $pageData = pageData();
 ?>
 
+
+<?php renderPageTemplate(currentPage()); ?> 
+
 <?php 
 // if (currentPage() === "about") {
 // 	var_dump( $pageData["sections"]) ;
@@ -27,5 +30,3 @@ switch (currentPage()) {
 		break;
 }
 ?>
-
-<?php renderPageTemplate(currentPage()); ?> 
