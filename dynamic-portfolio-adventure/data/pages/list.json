@@ -6,7 +6,15 @@
 
 	"sections": [
 		{
-			"heading": "grid of thing"
+			"heading": "grid of thing",
+			"items": [
+				{
+					"title": "Thing number 1"
+				},
+				{
+					"title": "Thing number 2"
+				} 
+			]
 		}
 	]
 }
