@@ -1,4 +1,6 @@
-<?php include "partials/site-menu.php"; ?>
+<header class="site-header">
+	<?php include "partials/site-menu.php"; ?>
+</header>
 <?php include "functions.php"; ?>
 
 

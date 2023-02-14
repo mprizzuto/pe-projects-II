@@ -1,4 +1,9 @@
 <?php 
+function formatArray($array) {
+	echo "<pre>";
+	var_dump($array);
+	echo "<pre>";
+}
 function currentPage() {
 	if ( isset($_GET["page"]) ) {
 		return $_GET["page"];
@@ -56,7 +61,7 @@ function renderJSON() {
 				<h2>$heading</h2> 
 				<p>$content</p>
 			THIS;
-			// echo var_dump($content);
+			// formatArray($pageData);
 			}
 
 		}

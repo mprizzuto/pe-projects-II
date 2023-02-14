@@ -1,14 +1,16 @@
 {
 	"id": "about",
 
-	"title": "about",
-	"intro": "you made it",
+	"title": "about me",
+	"intro": "about me! so glad you asked",
 
 	"sections": [
 		{
+			"module": "generic text",
 			"heading": "my favorite things about Web Dev"
 		},
 		{
+			"module": "generic text",
 			"heading": "things I like"
 		}
 	]

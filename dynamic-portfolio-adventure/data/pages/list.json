@@ -4,13 +4,36 @@
 	"intro": "view it!",
 	"sections": [
 		{
+			"module": "things-grid",
 			"heading": "grid of things",
 			"items": [
 				{
-					"title": "Thing number 1"
+					"title": "Thing number 1",
+					"copy": "copy will go here"
 				},
 				{
-					"title": "Thing number 2"
+					"title": "Thing number 2",
+					"copy": "copy will go here"
+				},
+				{
+					"title": "Thing number 3",
+					"copy": "copy will go here"
+				},
+				{
+					"title": "Thing number 4",
+					"copy": "copy will go here"
+				},
+				{
+					"title": "Thing number 5",
+					"copy": "copy will go here"
+				},
+				{
+					"title": "Thing number 6",
+					"copy": "copy will go here"
+				},
+				{
+					"title": "Thing number 7",
+					"copy": "copy will go here"
 				}
 			]
 		}
