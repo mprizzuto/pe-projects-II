@@ -1,19 +1,17 @@
 {
 	"id": "list",
-
 	"title": "some stuff",
 	"intro": "view it!",
-
 	"sections": [
 		{
-			"heading": "grid of thing",
+			"heading": "grid of things",
 			"items": [
 				{
 					"title": "Thing number 1"
 				},
 				{
 					"title": "Thing number 2"
-				} 
+				}
 			]
 		}
 	]
