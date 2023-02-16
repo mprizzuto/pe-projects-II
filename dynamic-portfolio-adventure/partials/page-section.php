@@ -1,4 +1,3 @@
-page-section.php
 <section>
-	<h2><?=$pageData["heading"]?>/h2>
+	<h2><?=$sections["heading"]?></h2>
 </section>

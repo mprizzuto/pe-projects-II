@@ -4,6 +4,7 @@ function formatArray($array) {
 	var_dump($array);
 	echo "<pre>";
 }
+
 function currentPage() {
 	if ( isset($_GET["page"]) ) {
 		return $_GET["page"];
@@ -56,13 +57,17 @@ function renderJSON() {
 					echo "<h2>" . $value['title'] ."</h2>";
 				}
 			}
+			
+
 			else {
 				echo <<<THIS
 				<h2>$heading</h2> 
 				<p>$content</p>
 			THIS;
-			// formatArray($pageData);
 			}
+
+
+			// formatArray($section);
 
 		}
 	}

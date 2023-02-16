@@ -6,18 +6,18 @@
 
 <?php renderPageTemplate(currentPage()); ?> 
 
-<?php 
-switch (currentPage()) {
-	case 'about':
-		renderJSON();
-		break;
+<?php //Template out things Grid
+// switch (currentPage()) {
+// 	case 'about':
+// 		renderJSON();
+// 		break;
 
-	case 'list':
-		// echo "list";
-		renderJSON();
-		break;
+// 	case 'list':
+// 		// echo "list";
+// 		renderJSON();
+// 		break;
 
-	default:
-		renderJSON();
-}
+// 	default:
+// 		renderJSON();
+// }
 ?>
