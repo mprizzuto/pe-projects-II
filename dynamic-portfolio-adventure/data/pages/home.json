@@ -4,11 +4,11 @@
 	"intro": "you made it",
 	"sections": [
 		{
-			"module": "generic text",
+			"module": "generic-text",
 			"heading": "my latest work"
 		},
 		{
-			"module": "generic text",
+			"module": "generic-text",
 			"heading": "things I like"
 		}
 	]
