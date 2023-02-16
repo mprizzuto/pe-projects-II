@@ -2,6 +2,13 @@
 
 <?php 
 foreach ($pageData["sections"] as $sections) {
-	include "partials/page-section.php";
+	if ($sections["module"] == "generic_text") {
+		include "partials/page-section.php";
+	}
+
+	if ($sections["module"] == "things-grid") {
+		include "partials/things-grid.php";
+	}
+
 }
 ?>
