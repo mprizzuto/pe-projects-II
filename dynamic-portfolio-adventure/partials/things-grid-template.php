@@ -1,7 +1,7 @@
-things-grid-template.php
-
 <section>
-<things-grid>
-	<?php include "things-grid.php";?>
-</things-grid>
+	<inner-column>
+		<things-grid>
+			<?php include "things-grid.php";?>
+		</things-grid>
+	</inner-column>
 </section>
