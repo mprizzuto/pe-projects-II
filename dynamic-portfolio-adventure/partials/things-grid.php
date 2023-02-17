@@ -1,5 +1,5 @@
 <?=$sections["heading"]?>
-!!!!
+
 <ul>
 	<?php foreach ($sections["items"] as $item) { ?>
 		<li>
