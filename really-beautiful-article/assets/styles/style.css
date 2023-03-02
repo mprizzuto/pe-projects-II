@@ -163,8 +163,8 @@ a[target="_blank"]::after {
 	font-weight: bolder;
 }
 
-.flour-data dt + dd {
-	margin-top: var(--vertical-height-small);
+.flour-data dd + dt {
+	margin-top: var(--vertical-height-medium);
 }
 
 /*section copy*/
