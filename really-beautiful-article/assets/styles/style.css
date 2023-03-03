@@ -1,5 +1,24 @@
 @import "reset.css";
 
+@font-face {
+  font-family: "Gloock";
+  src: url("../fonts/Gloock/Gloock-Regular.ttf") format("truetype");
+  font-weight: regular;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato/Lato-Regular.ttf") format("truetype");
+  font-weight: regular;
+}
+
+/*@font-face {
+    font-family: 'EntezareZohoor2';
+    src: url('fonts/EntezareZohoor2.eot'), url('fonts/EntezareZohoor2.ttf') format('truetype'), url('fonts/EntezareZohoor2.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
 /*setup*/
 body {
 	background: rgba(250, 240, 230, .5);
@@ -18,6 +37,22 @@ picture img {
 	display: block;
 	height: auto;
 	width: 100%;
+}
+
+/*nav/accessibility*/
+.skip-link {
+	position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link :focus {
+  position: static;
+  width: auto;
+  height: auto;
 }
 
 /*components*/
@@ -42,9 +77,10 @@ footer inner-column {
 /*list styles*/
 ul {
 	list-style: disc;
-/*	list-style-position: inside;*/
+	list-style-position: inside;
 	margin-left: 10px;
 /*	margin-top: var(--vertical-height-medium);*/
+  line-height: 1.5;
 }
 
 h2 + ul, p + ul {
@@ -53,6 +89,8 @@ h2 + ul, p + ul {
 
 ul li ul {
 	list-style: circle;
+	margin-left: 30px;
+	line-height: 1.5;
 }
 
 .reasons-to-bake {
@@ -89,14 +127,16 @@ ul li ul {
 
 /*headings*/
 h1.site-title {
-	font-size: clamp(2em, 4vw, 5em);
-	line-height: 1;
+	font-size: clamp(2em, 2vw, 3em);
+/*	line-height: 1;*/
 	color: maroon;
+	max-width: 20ch;
 }
 
 h1:first-letter, h2:first-letter {
 	text-transform: capitalize;
 }
+
 .article-title {
 	font-size: clamp(2em, 3vw, 5em);
 }
@@ -108,16 +148,30 @@ h1:first-letter, h2:first-letter {
 }
 
 h2 {
-	font-size: clamp(1.5em, 3vw, 5em);
+	font-size: clamp(1.5em, 2.5vw, 5em);
 	line-height: 1;
+	max-width: 30ch;
 }
 
 main h2 + p, h1 + p, 
-footer h2 + p {
-	margin-top: var(--vertical-height-small);
+footer h2 + p, dl + h2 {
+	margin-top: var(--vertical-height-medium);
 }
 
 /*typography*/
+h1, h2, dt {
+	font-family: "Gloock", serif;
+	letter-spacing: 0.03em;
+}
+
+h1, h2 {
+	line-height: 1.3;
+}
+
+:is(p, a, dl, li, blockquote) {
+	font-family: 'Lato', sans-serif;
+}
+
 .break-bread, .home-bakers {
 	display: inline-block;
 }
@@ -133,7 +187,7 @@ li strong {
 .tool-figure .tool-name {
 	display: block;
 /*	margin-top: var(--vertical-height-small);*/
-	font-style: italic;
+/*	font-style: italic;*/
 	font-size: 1.3em;
 }
 
@@ -141,6 +195,7 @@ mark {
 	display: inline-block;
 	background: gold;
 	padding: 2px;
+/*	margin-top: 10px;*/
 }
 
 a[target="_blank"]::after {
@@ -157,6 +212,7 @@ a[target="_blank"]::after {
 
 .flour-data {
 	margin-top: var(--vertical-height-medium);
+	max-width: 50ch;
 }
 
 .flour-data dt {
@@ -164,12 +220,21 @@ a[target="_blank"]::after {
 }
 
 .flour-data dd + dt {
-	margin-top: var(--vertical-height-medium);
+	margin-top: var(--vertical-height-large);
+}
+
+a {
+	display: inline-block;
+	padding: 5px;
+}
+
+.topic-list a:first-letter {
+	text-transform: capitalize;;
 }
 
 /*section copy*/
 p, ul li {
-	max-width: 70ch;
+	max-width: 68ch;
 }
 
 p + p {
@@ -189,9 +254,19 @@ main section {
 	padding: 10px;
 }
 
+.tool-figure figcaption {
+	margin-top: var(--vertical-height-small);
+}
+
 /*media*/
 .bakers-tool {
 	max-width: 300px;
+}
+
+iframe {
+	display: block;
+	width: 100%;
+	margin-top: var(--vertical-height-medium);
 }
 
 
