@@ -3,13 +3,15 @@
 @font-face {
   font-family: "Gloock";
   src: url("../fonts/Gloock/Gloock-Regular.ttf") format("truetype");
-  font-weight: regular;
+  font-weight: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Lato";
   src: url("../fonts/Lato/Lato-Regular.ttf") format("truetype");
-  font-weight: regular;
+  font-weight: normal;
+  font-display: swap;
 }
 
 /*@font-face {
@@ -74,6 +76,9 @@ footer inner-column {
 
 .page-menu {
 	margin-top: var(--vertical-height-large);
+/*	min-height: 150px;*/
+/*	min-width: 150px;*/
+  height: 150px;
 }
 
 /*list styles*/
@@ -91,7 +96,7 @@ h2 + ul, p + ul {
 
 ul li ul {
 	list-style: circle;
-	margin-left: 15px;
+	margin-left: 25px;
 	line-height: 1.5;
 }
 
@@ -103,12 +108,17 @@ ul li ul {
 /*	margin-top: unset;*/
 }
 
+#bakers-math .ingredient-list li + li {
+	margin-top: var(--vertical-height-medium);
+}
+
 .reasons-to-bake .ingredient-list li {
 	font-style: italic;
 }
 
 .site-main {
 /*	margin-top: var(--vertical-height-large);*/
+min-height: 100vh;
 }
 
 .site-header ~ * {
@@ -117,6 +127,7 @@ ul li ul {
 
 .bakers-tool-list {
 	margin-top: var(--vertical-height-large);
+	list-style: none;
 }
 
 .bakers-tool-list li + li {
@@ -255,6 +266,8 @@ main section {
 	margin-top: var(--vertical-height-medium);
 	border-left: 6px solid gold;
 	padding: 10px;
+/*	min-height: 120px;*/
+  height: 120px;
 }
 
 .tool-figure figcaption {
@@ -263,7 +276,13 @@ main section {
 
 /*media*/
 .bakers-tool {
-	max-width: 300px;
+/*	max-width: 300px;*/
+  min-width: 100%;
+/*	min-height: 300px;*/
+}
+
+.bakers-tool img {
+	aspect-ratio: 1 / 1
 }
 
 iframe {

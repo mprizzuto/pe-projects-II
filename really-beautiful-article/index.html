@@ -17,6 +17,8 @@
 		<meta property="og:title" content="Home baking: Everything you need to know">
 
 		<meta property="og:image" content="https://peprojects.dev/alpha-1/mprizzuto/pe-projects-II/really-beautiful-article/assets/images/bread.jpg">
+
+		<!-- <meta http-equiv="Cache-control" content="public"> -->
 	</head>
 	<body>
 		<header class="site-header">
@@ -100,7 +102,6 @@
 									</ul>
 								</li>
 							
-
 							<li><strong>cost effective.</strong> a good loaf of <em>artisan bread</em> can cost <strong>$8+ dollars</strong>. Why not spend that money on a bag of flour and make multiple loaves of bread instead?</li>
 
 							<li><strong>it's therapeutic!</strong> Baking bread at home is good for your mental health. There is nothing like watching the flour absorb the water and mixing all the ingredients together to distract you from your problems.</li>
@@ -120,7 +121,11 @@
 							<li>
 								<figure class="tool-figure">
 									<picture class="bakers-tool">
-										<img src="assets/images/baking-tools/square.jpeg" alt="a set of stainless-steel bowls">
+									  <source media="(max-width: 600px)" srcset="./assets/images/baking-tools/mobile/bowls.webp" />
+
+									  <source media="(min-width: 800px)" srcset="./assets/images/baking-tools/bowls.webp" />
+
+									  <img src="./assets/images/baking-tools/bowls.webp" alt="a set of bowls" />
 									</picture>
 
 									<figcaption>
@@ -134,7 +139,11 @@
 							<li>
 								<figure class="tool-figure">
 									<picture class="bakers-tool">
-										<img src="assets/images/baking-tools/square.jpeg" alt="a kitchen scale">
+									  <source media="(max-width: 600px)" srcset="./assets/images/baking-tools/mobile/scale.webp" />
+
+									  <source media="(min-width: 800px)" srcset="./assets/images/baking-tools/scale.webp" />
+
+									  <img src="./assets/images/baking-tools/scale.webp" alt="a digital kitchen scale" />
 									</picture>
 
 									<figcaption>
@@ -147,8 +156,13 @@
 
 							<li>
 								<figure class="tool-figure">
+
 									<picture class="bakers-tool">
-										<img src="assets/images/baking-tools/square.jpeg" alt="a dough scraper">
+									  <source media="(max-width: 600px)" srcset="./assets/images/baking-tools/mobile/dough-scrapers.webp" />
+
+									  <source media="(min-width: 800px)" srcset="./assets/images/baking-tools/dough-scrapers.webp" />
+
+									  <img src="./assets/images/baking-tools/dough-scrapers.webp" alt="a pair of plastic dough scrapers" />
 									</picture>
 
 									<figcaption>
@@ -280,7 +294,20 @@
 
 								<h2>Choosing flour</h2>
 
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/pkEp26sck58" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<!-- <p>a cool video on choosing flour<a href="https://www.youtube.com/embed/Y8Wp3dafaMQ&autoplay=1" target="_blank">choosing flour</a></p> -->
+
+								<p>a cool video on choosing flour</p>
+
+								<iframe
+								  width="560"
+								  height="315"
+								  src="https://www.youtube.com/embed/Y8Wp3dafaMQ&autoplay=1"
+								  loading="lazy"
+								  srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/pkEp26sck58><img src=./assets/images/types-of-flour.jpeg alt='different flour types'><span>▶</span></a>"
+								  frameborder="0"
+								  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+								  allowfullscreen
+								  title="The Dark Knight Rises: What Went Wrong? – Wisecrack Edition"></iframe>
 
 							</inner-column>
 						</section>
