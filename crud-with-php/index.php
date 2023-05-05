@@ -109,25 +109,24 @@
 		<main>
 			<header>
 				<inner-column>
-					<h2>PHP with crud</h2>
+					<h1>PHP with crud</h1>
 
 					<nav>
 						<a href="?">home</a>
 						<a href="?page=list">list</a>
-						<a href="?page=create">create</a>
 					</nav>
 					
 				</inner-column>
 			</header>
 			<section>
 				<inner-column>
-				<?php 
-					$page = $_GET["page"] ?? null;
+				<?php
 					@require "functions.php";
+					$page = $_GET["page"] ?? null;
+					
 					
 					switch ($page) {
 						case "list":
-						// case "";
 							include "pages/list.php";
 							break;
 
@@ -135,13 +134,25 @@
 							include "./pages/create.php";
 							break;
 
+						case "detail":
+							include "./pages/detail.php";
+							break;
+
+						case "update":
+							include "./pages/update.php";
+							break;
+
+						case "delete":
+							include "./pages/delete.php";
+							break;
+
 						default:
-							include "./pages/home.php";
+							include "./pages/list.php";
 					}
+				?>
 
-					
-									// formatVar($recipeJSON);
-
+				<?php 
+				$detail = $_POST["detail"] ?? null;
 				?>
 
 				</inner-column>
