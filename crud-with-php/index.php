@@ -112,18 +112,27 @@
 					<h1>PHP with crud</h1>
 
 					<nav>
-						<a href="?">home</a>
+						<!-- <a href="?">home</a> -->
 						<a href="?page=list">list</a>
+						<a href="?page=create">create</a>
 					</nav>
 					
 				</inner-column>
 			</header>
 			<section>
 				<inner-column>
+
 				<?php
 					@require "functions.php";
 					$page = $_GET["page"] ?? null;
 					
+					// formatData(filterFormValues());
+					// createRecipe();
+
+
+
+
+					// echo getPage();
 					
 					switch ($page) {
 						case "list":
@@ -151,8 +160,31 @@
 					}
 				?>
 
+
 				<?php 
-				$detail = $_POST["detail"] ?? null;
+
+					if (in_array("submit", $_POST)) {
+						$filename = "recipe-data.json";
+						if (filesize($filename) > 0) {
+					    // read the file contents into an array
+					    $recipeData = file_get_contents($filename);
+					    $recipeArray = json_decode($recipeData, true);
+						} else {
+					    // if the file is empty, initialize the array
+					  	$recipeArray = [];
+						}
+
+						$uniqueId = uniqid();
+
+						$recipeArray[] = [
+					  	$uniqueId => filterFormValues(),
+						];
+						
+						$jsonData = json_encode($recipeArray, JSON_PRETTY_PRINT);
+
+						file_put_contents($filename, $jsonData);
+					}
+
 				?>
 
 				</inner-column>

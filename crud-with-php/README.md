@@ -27,4 +27,7 @@ to create a CRUD app with php. It has a create, list(read), update, delete, and 
 
 - delete
 	- get element by id from the database
-	- match it with the id in $GET arr. on detail page, 
+	- match it with the id in $GET arr.
+	- on detail page, if delete link is clicked. it brings user to delete page with text output "you have deleted $id"
+	- if user uses back button to delete previously deleted item, text output says "you already deleted id"
+		- check database for id. if not found output "you either deleted the item or it doesnt exist"
