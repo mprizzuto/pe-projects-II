@@ -173,6 +173,21 @@ function getUniqId() {
 	return uniqid();
 }
 
+function validateUser() {
+	$userName = "mprizzuto";
+	$password = "catsRule";
+
+	if ($userName !== "mprizzuto" || 
+		$password !== "catsRule"
+	) {
+		return false;
+	}
+	else {
+		return true;
+	}
+
+}
+
 ?>
 
 
