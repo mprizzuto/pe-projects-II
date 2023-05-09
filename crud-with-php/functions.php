@@ -98,42 +98,48 @@ function returnCurrentToDo($id, $data) {
     foreach ($item["id"] as $key => $value) {
       if ($key === $id) {
       	return $value;
-        // return $key;
       }
     }
   }
-  echo "no todo found";
+
   return false;
 }
 
 function updateToDoDb($id) {
-    $data = decodeJSONAsArray();
-    foreach ($data ?? [] as $key => $value) {
-	    foreach ($value as $subKey => $subValue) {
-	      foreach ($subValue as $subSubKey => $subSubValue) {
-	        if ($id === $subSubKey) {
-	            $data[$key][$subKey][$subSubKey] = sanitizeInput($_POST["to-do"] ?? null);
-	        }
-	      }
-	    }
+  $data = decodeJSONAsArray();
+  foreach ($data ?? [] as $key => $value) {
+    foreach ($value as $subKey => $subValue) {
+      foreach ($subValue as $subSubKey => $subSubValue) {
+        if ($id === $subSubKey) {
+            $data[$key][$subKey][$subSubKey] = sanitizeInput($_POST["to-do"] ?? null);
+        }
+      }
     }
-    file_put_contents('todo-database.json', json_encode($data));
-    return $data;
+  }
+  file_put_contents('todo-database.json', json_encode($data));
 }
 
 
 function deleteToDoFromDb($id, $data) {
-	foreach ($data as $item) {
-    foreach ($item["id"] as $key => $value) {
-      if ($key === $id) {
-        unset($key);
+	$data = decodeJSONAsArray();
+  foreach ($data ?? [] as $key => $value) {
+    foreach ($value as $subKey => $subValue) {
+      foreach ($subValue as $subSubKey => $subSubValue) {
+        if ($id === $subSubKey) {
+            // $data[$key][$subKey][$subSubKey] = sanitizeInput($_POST["to-do"] ?? null);
+        	unset($data[$key][$subKey][$subSubKey]);
+        	// return "deleted";
+        }
+        // return $data[$key][$subKey][$subSubKey]?? "deleted key";
+        returnCurrentToDo(getId(), decodeJSONAsArray()) . " removed from database ";
+        break;
       }
     }
   }
-  	return false;
+  file_put_contents('todo-database.json', json_encode($data));
+  return $data;
 }
 
-// formatInput(decodeJSONAsArray());
 
 
 function writeToDoDB() {
@@ -143,17 +149,12 @@ function writeToDoDB() {
 	];
 	$todoJSON = json_encode($todoDBDecoded);
 	file_put_contents("todo-database.json", $todoJSON);
-	// $_POST["to-do"] = "";
 }
 
 
 function templateToDoHTML() {
 	echo "<ul class='id-list'>";
 	foreach (decodeJSONAsArray() ?? [] as $key ) {
-		// echo "<li>" . $value . "</li>";
-		// formatInput($value["id"]);
-		// formatInput(decodeJSONAsArray());
-		// echo "<li>" . $key["id"] . "<a href=?page=detail&id=" . $key["id"] . ">". "detail" . "</a>" . "</li>";
 		foreach ($key as $subKey => $subValue) {
 			foreach ($subValue as $subSubKey => $subSubValue) {
 				 echo "<li>" . "uniqueId:" .  $subSubKey . "</li>" 
@@ -167,8 +168,6 @@ function templateToDoHTML() {
 	}
 	echo "</ul>";
 }
-
-
 
 function getUniqId() {
 	return uniqid();
