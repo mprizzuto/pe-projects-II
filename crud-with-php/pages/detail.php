@@ -1,9 +1,22 @@
+<?php 
+
+?>
+
 <h2>detail page for</h2>
-<!-- <p><?=verifyDatabaseId(getCurrentDatabaseId())?></p> -->
+<?php
+ 
+if ( isLegalId(getId(),decodeJSONAsArray()) ) {
 
-<p><?php echo isIdValid() === "true" ? "id:" . getCurrentDatabaseId() : "invalid id"; ?></p>
+	// echo "<p>" . "id:" . getId() . "</p>";
+	echo "<p>" . "<strong>" .sanitizeInput(returnCurrentToDo(getId(), decodeJSONAsArray())) . "</strong>" . "</p>";
+}
+else {
+	echo "invalid id.";
+}
 
-
-<p><a href="?page=update&id=<?=getCurrentDatabaseId()?>">update</a>   <a href="?page=delete">delete</a></p>
-<!-- <?php formatData(getDatabase())?> -->
-<!-- <?=verifyDatabaseId(getCurrentDatabaseId())?> -->
+?>
+<!-- <?=returnCurrentId(getId(), getToDosArr())?> -->
+<nav>
+	<a href="?page=update&id=<?=returnCurrentId(getId(), getToDosArr())?>">update</a>
+	<a href="?page=delete&id=<?=returnCurrentId(getId(), getToDosArr())?>">delete</a>
+</nav>
