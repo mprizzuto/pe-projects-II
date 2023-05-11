@@ -1,3 +1,5 @@
+<?php require "functions.php";?>
+
 <?php include "components/header.php"; ?>
 
 <?php 
