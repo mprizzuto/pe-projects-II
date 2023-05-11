@@ -20,7 +20,7 @@ function getId() {
 }
 
 function isLegalPage() {
-	$pages = [null, "create", "read", "update", "delete", "detail", ""];
+	$pages = [null, "create", "read", "update", "delete", "detail", "login","logout", ""];
 	return in_array(getPage(), $pages);
 }
 
@@ -45,6 +45,14 @@ function generatePage() {
 		case "detail":
 			include "./pages/detail.php";
 			break;
+
+		case "login":
+			include "./pages/login.php";
+			break;
+
+		case "logout":
+			include "./pages/logout.php";
+			break;	
 		
 		default:
 			include "./pages/read.php";
@@ -174,11 +182,11 @@ function getUniqId() {
 }
 
 function validateUser() {
-	$userName = "mprizzuto";
-	$password = "catsRule";
+	$validUserName = "mprizzuto";
+	$validPassword = "catsRule";
 
-	if ($userName !== "mprizzuto" || 
-		$password !== "catsRule"
+	if (getUserName() !== $validUserName || 
+		getPassWord() !== $validPassword
 	) {
 		return false;
 	}
@@ -186,6 +194,14 @@ function validateUser() {
 		return true;
 	}
 
+}
+
+function getUserName() {
+	return $_POST["user-name"] ?? false;
+}
+
+function getPassWord() {
+	return $_POST["user-password"] ?? false;
 }
 
 ?>

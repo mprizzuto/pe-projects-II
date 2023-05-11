@@ -4,7 +4,7 @@
 // formatInput(returnCurrentToDo(getId(), getId()));
 	$doTodosExist = false;
 
-	foreach (getToDosArr() as $key => $value) {
+	foreach (getToDosArr() ?? [] as $key => $value) {
 		// formatInput($value);
 		foreach ($value as $subKey => $subValue) {
 			// formatInput($subValue);

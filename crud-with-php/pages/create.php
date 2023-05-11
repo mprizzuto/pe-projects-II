@@ -1,12 +1,27 @@
-<h2><mark>create</mark></h2>
-<?php include "components/todo-form.php";?>
-
 <?php
-if (in_array("submit", $_POST)) {
-	writeToDoDB();
+session_start();
+formatInput($_POST);
+formatInput($_SESSION);
+// include "./components/login-form.php";
+if (!isset($_SESSION["logged-in"]) || count($_SESSION) === 0) {
+	include "./components/login-form.php";
 	
-	echo getId();
-
+	if (validateUser()) {
+		echo "logged in!";
+	}
+	else {
+		echo "enter credentials";
+	}
 }
+
+if (validateUser() === true || isset($_SESSION["logged-in"]) ?? null) {
+	$_SESSION["logged-in"] = true;
+	include "./components/todo-form.php";
+	$_SESSION["logged-in"] = true;
+
+	writeToDoDB();
+	echo  "<a href=?page=logout>" . "logout" . "</a>";
+}
+
 
 ?>

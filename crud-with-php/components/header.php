@@ -1,3 +1,15 @@
+<?php
+
+// if ($_GET["page"] === "create") {
+// 	session_start();
+// 	$_SESSION["logged-in"] = false; 
+
+// 	// $_SESSION["user"] = $userId;
+// 	$userName = $_POST["user-name"] ?? null;
+// 	$userPassword = $_POST["user-password"] ?? null;
+// }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,7 +17,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>PHP CRUD</title>
 	</head>
-	<?php require "functions.php";?>
+	
 	<body>
 		<nav class="site-menu">
 			<a href="?page=">list</a>
