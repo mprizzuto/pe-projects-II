@@ -1,7 +1,7 @@
 <?php
 session_start();
-formatInput($_POST);
-formatInput($_SESSION);
+// formatInput($_POST);
+// formatInput($_SESSION);
 // include "./components/login-form.php";
 if (!isset($_SESSION["logged-in"]) || count($_SESSION) === 0) {
 	include "./components/login-form.php";

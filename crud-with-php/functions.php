@@ -204,6 +204,10 @@ function getPassWord() {
 	return $_POST["user-password"] ?? false;
 }
 
+function generateLogoutLink($text) {
+	echo  "click here to <a href=?page=logout>$text</a> <br>";
+}
+
 ?>
 
 
