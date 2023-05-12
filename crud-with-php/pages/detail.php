@@ -2,7 +2,7 @@
 
 ?>
 
-<h2>detail page for</h2>
+<h2>detail page for <?php echo strlen(returnCurrentToDo(getId(), decodeJSONAsArray()) )  === 0 ? "empty to do" : ""?></h2>
 <?php
  
 if ( isLegalId(getId(),decodeJSONAsArray()) ) {
