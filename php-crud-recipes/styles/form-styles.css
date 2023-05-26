@@ -1,0 +1,52 @@
+/* form styles */
+form {
+/*   line-height: 1.5; */
+  margin-top: 20px;
+}
+
+:is(label, input) {
+  display: block;
+}
+
+label +  input, label + select {
+  margin-top: 5px;
+}
+
+
+:is(input + label, select + label, 
+fieldset + fieldset, [class$="results"]) {
+  margin-top: 20px;
+}
+
+label {
+  margin-top: 10px;
+  text-transform: capitalize;
+  font-weight: bolder;
+  letter-spacing: 0.03em;
+}
+
+input {
+  display: block;
+  width: 100%;
+  max-width: 150px;
+  margin-top: 5px;
+}
+
+:is(input, select) {
+  padding: .5em 1em;
+}
+
+input[type="submit"] {
+  margin-top: 20px;
+  max-width: 100px;
+  font-weight: bolder;
+}
+
+input:invalid {
+  border: 5px double maroon;
+}
+
+legend {
+  font-size: clamp(1.8em, 3vw, 4em)
+}
+
