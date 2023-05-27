@@ -129,8 +129,14 @@ function getRecipeDB() {
 	return json_decode($database, true);
 }
 
-function readRecipeDB() {
+function matchIdToRecipe() {
+	foreach ($variable as $key => $value) {
+		// code...
+	}
+}
 
+function getRecipeId() {
+	return $_GET["id"] ?? null;
 }
 
 function recipeJSONAsArray() {
@@ -168,11 +174,59 @@ function getRecipePhotos() {
 }
 
 
-function databaseUploadsCheck() {
+function checkDatabaseForId() {
 	if (getRecipeDB()) {
 		foreach (getRecipeDB() as $recipeKey => $recipeValue) {
-			formatInput($recipeValue);
+			foreach ($recipeValue as $id => $value) {
+				
+				if ($id === getRecipeId()) {
+					foreach ($value as $postKey => $postValue) {
+						// formatInput($postValue["post"]["recipe_name"]);
+						return $postValue["post"]["recipe_name"];
+					}
+				}
+			}
 		}
 	}
-	
+	return false;
+}
+
+function matchIdToRecipeName() {
+	if (getRecipeDB()) {
+		foreach (getRecipeDB() as $recipeKey => $recipeValue) {
+			// formatInput($recipeValue);
+			// loop over database(db), 
+			// if ID in get array matches the db id, return it
+			// formatInput($recipeKey);
+			foreach ($recipeValue as $id => $value) {
+				if ($id === getRecipeId()) {
+					formatInput($id);
+				}
+				
+			}
+		}
+	}
+}
+
+
+function readDatabase() {
+	if (!file_get_contents("./database/recipes/recipe-database.json")) {
+	  echo "no data!";
+	} else {
+	  foreach (getRecipeDB() as $firstKey => $firstValue) {
+	    foreach ($firstValue as $secondKey => $secondValue) { 
+	      echo "<ul>";
+	      foreach ($secondValue as $thirdKey => $thirdValue) {
+	        echo "<li>" . sanitizeInput($thirdValue["post"]["recipe_name"]) . "</li>";
+	        echo "<li>" . $thirdValue["post"]["flour"] . "</li>";
+	        echo "<li>" . $thirdValue["post"]["salt"] . "</li>";
+	        echo "<li>" .  $thirdValue["post"]["water"] . "</li>";
+	        echo "<li>" . $thirdValue["post"]["yeast"] . "</li>";
+	        echo "<li>" . "<a href=?page=detail&id=$secondKey>" . "detail" . "</a>" . "</li>";
+	        echo "<li>" . generateRecipePhoto($thirdValue['imageName']) . "</li>";
+	      }
+	      echo "</ul>";
+	    }
+	  }
+	}
 }

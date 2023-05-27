@@ -1,1 +1,15 @@
 @import "form-styles.css";
+
+li picture {
+	max-width: 500px;
+}
+
+picture {
+	display: block;
+}
+
+picture img {
+	display: block;
+	height: auto;
+	width: 100%;
+}

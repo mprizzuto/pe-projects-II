@@ -26,6 +26,10 @@ switch (getPage()) {
 	case null:
 		include "./pages/read.php";
 		break;
+
+	case "detail":
+		include "./pages/detail.php";
+		break;	
 	
 	default:
 		include "./pages/404.php";
