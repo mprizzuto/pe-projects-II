@@ -2,7 +2,7 @@
 
 <?php 
 if (checkDatabaseForId()) {
-	echo checkDatabaseForId() ?? "invalid id";
+	echo sanitizeInput(checkDatabaseForId());
 }
 if (checkDatabaseForId() === false) {
 	//getRecipeId() === null|| 
@@ -10,3 +10,14 @@ if (checkDatabaseForId() === false) {
 }
 // echo checkDatabaseForId();
 ?>
+
+<nav>
+	<ul class="action-list">
+		<li>
+			<a href="?page=update&id=<?=getRecipeId()?>">update</a>
+		</li>
+		<li>
+			<a href="?page=delete&id=<?=getRecipeId()?>">delete</a>
+		</li>
+	</ul>
+</nav>

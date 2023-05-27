@@ -29,7 +29,16 @@ switch (getPage()) {
 
 	case "detail":
 		include "./pages/detail.php";
-		break;	
+		break;
+
+
+	case "update":
+		include "./pages/update.php";
+		break;
+
+	case "delete":
+		include "./pages/delete.php";
+		break;		
 	
 	default:
 		include "./pages/404.php";

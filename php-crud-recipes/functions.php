@@ -11,7 +11,6 @@ function sanitizeInput($input) {
   return $cleanString;
 }
 
-
 function getPage() {
 	return $_GET["page"] ?? null;
 }
@@ -130,9 +129,8 @@ function getRecipeDB() {
 }
 
 function matchIdToRecipe() {
-	foreach ($variable as $key => $value) {
-		// code...
-	}
+	// foreach ($variable as $key => $value) {
+	// }
 }
 
 function getRecipeId() {
@@ -194,15 +192,12 @@ function checkDatabaseForId() {
 function matchIdToRecipeName() {
 	if (getRecipeDB()) {
 		foreach (getRecipeDB() as $recipeKey => $recipeValue) {
-			// formatInput($recipeValue);
-			// loop over database(db), 
-			// if ID in get array matches the db id, return it
-			// formatInput($recipeKey);
 			foreach ($recipeValue as $id => $value) {
 				if ($id === getRecipeId()) {
-					formatInput($id);
+					foreach ($value as $postKey => $postValue) {
+						return sanitizeInput($postValue["post"]["recipe_name"]);
+					}
 				}
-				
 			}
 		}
 	}
@@ -222,8 +217,8 @@ function readDatabase() {
 	        echo "<li>" . $thirdValue["post"]["salt"] . "</li>";
 	        echo "<li>" .  $thirdValue["post"]["water"] . "</li>";
 	        echo "<li>" . $thirdValue["post"]["yeast"] . "</li>";
-	        echo "<li>" . "<a href=?page=detail&id=$secondKey>" . "detail" . "</a>" . "</li>";
 	        echo "<li>" . generateRecipePhoto($thirdValue['imageName']) . "</li>";
+	        echo "<li>" . "<a href=?page=detail&id=$secondKey>" . "detail" . "</a>" . "</li>";
 	      }
 	      echo "</ul>";
 	    }
