@@ -6,6 +6,8 @@ if (checkDatabaseForId() === false) {
 }
 else {
 	echo "update page for " . "<mark>" . matchIdToRecipeName() . "</mark>";
+	updateDatabase();
+	// formatInput(getRecipeFormData());
 	include "./components/forms/recipe-form.php";
 }
 

@@ -5,10 +5,12 @@
 // echo sanitizeInput(getImageName());
 
 // var_dump( $_FILES);
+// formatInput($_POST);
+// echo isset($_POST);
 ?>
 
 <?php 
-if (in_array($_POST["submit"]?? null, $_POST)) {
+if (in_array($_POST["submit"] ?? null, $_POST)) {
 	uploadImageToDB();
 	addRecipeToDatabase();
 	// echo formatInput(getImageName());

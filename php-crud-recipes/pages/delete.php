@@ -1,1 +1,3 @@
-delete.php
+<?php 
+deleteDatabaseItem();
+?>

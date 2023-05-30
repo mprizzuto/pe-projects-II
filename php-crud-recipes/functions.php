@@ -117,7 +117,7 @@ function addRecipeToDatabase() {
 }
 
 function getRecipesFromDB() {
-	file_get_contents("./database/recipes/recipe-database.json");
+	return file_get_contents("./database/recipes/recipe-database.json");
 }
 
 function getRecipeDB() {
@@ -149,7 +149,6 @@ function sanitizeRecipeDB() {
   }
 }
 
-
 function generateRecipePhoto($image) {
   return <<< PHOTO
   <picture>
@@ -170,7 +169,6 @@ function getRecipePhotos() {
 	}
 	return $recipePhotos;
 }
-
 
 function checkDatabaseForId() {
 	if (getRecipeDB()) {
@@ -208,20 +206,44 @@ function readDatabase() {
 	if (!file_get_contents("./database/recipes/recipe-database.json")) {
 	  echo "no data!";
 	} else {
-	  foreach (getRecipeDB() as $firstKey => $firstValue) {
-	    foreach ($firstValue as $secondKey => $secondValue) { 
-	      echo "<ul>";
-	      foreach ($secondValue as $thirdKey => $thirdValue) {
-	        echo "<li>" . sanitizeInput($thirdValue["post"]["recipe_name"]) . "</li>";
-	        echo "<li>" . $thirdValue["post"]["flour"] . "</li>";
-	        echo "<li>" . $thirdValue["post"]["salt"] . "</li>";
-	        echo "<li>" .  $thirdValue["post"]["water"] . "</li>";
-	        echo "<li>" . $thirdValue["post"]["yeast"] . "</li>";
-	        echo "<li>" . generateRecipePhoto($thirdValue['imageName']) . "</li>";
-	        echo "<li>" . "<a href=?page=detail&id=$secondKey>" . "detail" . "</a>" . "</li>";
-	      }
-	      echo "</ul>";
-	    }
-	  }
+		// if (count($_POST) > 0) {
+			foreach (getRecipeDB() ?? [] as $firstKey => $firstValue) {
+		    foreach ($firstValue as $secondKey => $secondValue) { 
+		      echo "<ul>";
+		      foreach ($secondValue as $thirdKey => $thirdValue) {
+		        echo "<li>" . sanitizeInput($thirdValue["post"]["recipe_name"]) . "</li>";
+		        echo "<li>" . $thirdValue["post"]["flour"] . "</li>";
+		        echo "<li>" . $thirdValue["post"]["salt"] . "</li>";
+		        echo "<li>" .  $thirdValue["post"]["water"] . "</li>";
+		        echo "<li>" . $thirdValue["post"]["yeast"] . "</li>";
+		        echo "<li>" . generateRecipePhoto($thirdValue['imageName']) . "</li>";
+		        echo "<li>" . "<a href=?page=detail&id=$secondKey>" . "detail" . "</a>" . "</li>";
+		      }
+		      echo "</ul>";
+		    }
+	  	}
+		// }
 	}
 }
+
+function updateDatabase() {
+  foreach (getRecipeDB() as $dbKey => $dbValue) {
+  	// formatInput($dbValue);
+  	foreach ($dbValue as $subKey => $subValue) {
+  		
+  		if (getRecipeId() === $subKey) {
+  			formatInput($subKey);
+  			// formatInput(getRecipeDB()[$dbKey]);
+  			// unset(getRecipeDB()[$dbKey]);
+  			// formatInput(getRecipeDB()[$dbKey]);
+  			// formatInput(getRecipeDB()[$dbKey]);
+  			$updatedValue = getRecipeDB()[$dbKey] = getRecipies();
+  			json_encode($updatedValue);
+  			// break;
+  		}
+  	}
+  }
+}
+
+
+
