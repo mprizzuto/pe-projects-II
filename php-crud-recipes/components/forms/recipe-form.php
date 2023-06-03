@@ -49,8 +49,8 @@
 <?php 
 // formatInput($_POST);
 if (count($_POST) > 0) {
-	addRecipeToDatabase();
-	sanitizeRecipeDB();
+	uploadImages();
+	// sanitizeRecipeDB();
 }
 // echo sanitizeRecipeDB();
 
