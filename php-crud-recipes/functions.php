@@ -155,8 +155,6 @@ function matchIdToRecipe() {
 		foreach ($dbValue as $dbSubKey => $dbSubValue) {
 			// formatInput($dbSubValue);
 			if ($dbSubKey === getCurrentRecipeId()) {
-				// formatInput($dbSubValue["recipe_name"]);
-				// echo $dbSubKey;
 				return getIngredient();
 			}
 		}
