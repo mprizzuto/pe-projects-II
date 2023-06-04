@@ -9,7 +9,7 @@
 	<nav>
 	<a href="?page=home">read recipes</a>
 	<a href="?page=create">create recipes</a>
-	<link rel="stylesheet" type="text/css" href="./styles/form-styles.css">
+	<link rel="stylesheet" type="text/css" href="./styles/style.css">
 </nav>
 <?php 
 include "./functions.php";
@@ -24,6 +24,18 @@ switch (getPage()) {
 	case "create":
 		include "./pages/create.php";
 		break;
+
+		case "update":
+			include "./pages/update.php";
+			break;
+
+		case "delete":
+			include "./pages/delete.php";
+			break;
+
+		case "detail":
+			include "./pages/detail.php";
+			break;	
 	
 	default:
 		include "./pages/404.php";

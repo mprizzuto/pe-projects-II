@@ -89,32 +89,22 @@ function getUniqueId() {
 }
 
 function generateRecipeList() {
-	echo "<ul>";
+	// echo  "<ul>" . "<li>";
 	foreach (decodeRecipeDb() as $recipeKey => $recipeValue) {
+		echo "<recipe-card>";
 		foreach ($recipeValue as $recipeSubKey => $recipeSubValue) {
-			
 			foreach ($recipeSubValue as $recipeSubSubKey => $recipeSubSubValue) {
-				// formatInput($recipeSubSubKey);
-				// echo "<li>" . $recipeSubSubKey . " " . $recipeSubSubValue . "</li>";
-				
-				// if (isset($recipeSubSubKey[0])) {
-				// 	continue;
-				// }
-				// formatInput($recipeSubSubKey);
 				if ($recipeSubSubKey === "photo_name") {
 					continue;
 				}
-				echo "<li>" . "<strong>" .$recipeSubSubKey . "</strong>" . ": " . sanitizeInput($recipeSubSubValue) . "<a href=?page=detail&id=>" . "detail" . "</a>" . "<a href=?page=update&id=>" . " update" . "</a>" . "</li>";
-				 	// formatInput($recipeSubSubValue);
-				 	// foreach ($recipeSubSubKey as $tripleSubKey => $tripleSubValue) {
-				 	// 	formatInput($tripleSubKey);
-				 	// }
-				 	// formatInput($recipeSubSubKey);
+
+				// echo "<li>" . "<strong>" .$recipeSubSubKey . "</strong>" . ": " . sanitizeInput($recipeSubSubValue) . " <a href=?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey>" . "detail" . "</a> " . "<a href=?page=update&id=$recipeSubKey>" . " update" . "</a>" . "</li>";
+				echo "<li>" . "<strong>" .$recipeSubSubKey . "</strong>" . ": " . sanitizeInput($recipeSubSubValue) . " <a href=?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey>" . "detail" . "</a> " . "</li>";
 			}
-		
 		}
+		echo "</recipe-card>";
 	}
-	echo "</ul>";
+	// echo "</li>" ." </ul>"; TODO: template list of recipe-cards?
 }
 
 function getRecipeDatabaseIds() {
@@ -123,7 +113,12 @@ function getRecipeDatabaseIds() {
 		loop over database
 		return array of IDs as strings
 	*/ 
-
+	if ( decodeRecipeDb() ) {
+		foreach (decodeRecipeDb() as $dbKey => $dbValue) {
+			formatInput($dbValue);
+		}
+	}
+	return null;
 }
 
 
@@ -136,8 +131,53 @@ function sanitizeInput($input) {
 	$removeHTML = htmlspecialchars($input);
 	$removeSlashes = stripslashes($removeHTML);
 	return $removeSlashes;
+}
+
+function deleteDbItem() {
 
 }
 
+function checkDatabaseForId() {
+
+}
+
+function getCurrentRecipeId() {
+	return $_GET["id"] ?? null;
+}
+
+function getIngredient() {
+	return $_GET["ingredient"] ?? null;
+}
+
+function matchIdToRecipe() {
+	foreach (decodeRecipeDb() as $dbKey => $dbValue) {
+		// formatInput($dbValue);
+		foreach ($dbValue as $dbSubKey => $dbSubValue) {
+			// formatInput($dbSubValue);
+			if ($dbSubKey === getCurrentRecipeId()) {
+				// formatInput($dbSubValue["recipe_name"]);
+				// echo $dbSubKey;
+				return getIngredient();
+			}
+		}
+	}
+
+	// formatInput(decodeRecipeDb()[$dbKey]);
+}
+
+function updateRecipeValue() {
+	/*
+	- click update on details page
+
+	- bring user to page with custom label and input. the input and label attributes are interpolated from the ingredient key in $_GET superglobal
+	- upon page submission get value from the form
+	- loop over database
+	- find key that matches the $_GET superglobal
+	- update the value of the matching key with the newly submitted value from the $_POST superglobal
+	- encode updates array as JSON
+	- put in database
+	- return updated value
+	*/ 
+}
 
 
