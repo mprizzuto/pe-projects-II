@@ -9,6 +9,12 @@ function getPage() {
 	return $_GET["page"] ?? null;
 }
 
+// function sanitizeInput($input) {
+// 	$noHTML = htmlspecialchars($input);
+// 	$noSlashes = stripslashes($noHTML);
+// 	return $noSlashes;
+// }
+
 function uploadImages() {
 	$target_dir = "uploads/";
 	$target_file = $target_dir . basename($_FILES["recipe-photo"]["name"]);
@@ -127,7 +133,7 @@ function getPhotoName() {
 	return $_FILES["recipe-photo"]["name"];
 }
 
-function sanitizeInput($input) {
+function sanitizeInput(mixed $input) {
 	$removeHTML = htmlspecialchars($input);
 	$removeSlashes = stripslashes($removeHTML);
 	return $removeSlashes;
