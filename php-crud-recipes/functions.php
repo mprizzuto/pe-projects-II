@@ -9,6 +9,39 @@ function getPage() {
 	return $_GET["page"] ?? null;
 }
 
+function getCurrentRecipeId() {
+	return $_GET["id"] ?? null;
+}
+
+function getIngredient() {
+	return $_GET["ingredient"] ?? null;
+}
+
+function decodeRecipeDb() {
+	return json_decode(getRecipeDb(), true);
+}
+
+function getRecipes() {
+	unset($_POST["submit"]);
+	return $_POST ?? null;
+}
+
+function getPhotoName() {
+	// $files = $_FILES["recipe-photo"]["name"];
+	return $_FILES["recipe-photo"]["name"];
+}
+
+function getUniqueId() {
+	return uniqid();
+}
+
+function sanitizeInput(mixed $input) {
+	$stripslash = stripslashes($input);
+	$htmlToEntities = htmlspecialchars($stripslash);
+	
+	return $htmlToEntities;
+}
+
 // function sanitizeInput($input) {
 // 	$noHTML = htmlspecialchars($input);
 // 	$noSlashes = stripslashes($noHTML);
@@ -69,15 +102,6 @@ function getRecipeDb() {
 	return file_get_contents("./database/recipes/recipe-database.json");
 }
 
-function decodeRecipeDb() {
-	return json_decode(getRecipeDb(), true);
-}
-
-function getRecipes() {
-	unset($_POST["submit"]);
-	return $_POST ?? null;
-}
-
 function addRecipeToDb() {
   $todoDb = decodeRecipeDb() ?? [];
   $recipe = getRecipes();
@@ -87,11 +111,6 @@ function addRecipeToDb() {
   $todoDbJSON = json_encode($todoDb);
 
   file_put_contents("./database/recipes/recipe-database.json", $todoDbJSON);
-}
-
-
-function getUniqueId() {
-	return uniqid();
 }
 
 function generateRecipeList() {
@@ -106,7 +125,6 @@ function generateRecipeList() {
 				echo "<ul>" . "<li>" . "<strong>" .$recipeSubSubKey . "</strong>" . ": " . sanitizeInput($recipeSubSubValue) . " <a href='?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey'>" . "detail" . "</a> " . "</li>" . "</ul>";
 			}
 			echo "<ul>" ."<li>" ."<picture>" . "<img src=./uploads/$recipeSubSubValue>" . "</picture>" . " <a href='?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey'>" . "detail" . "</a> " . "</li>" . "</ul>";
-			// formatInput($recipeSubSubValue);
 		}
 		echo "</recipe-card>" . "</li>";
 	}
@@ -127,33 +145,12 @@ function getRecipeDatabaseIds() {
 	return null;
 }
 
-
-function getPhotoName() {
-	// $files = $_FILES["recipe-photo"]["name"];
-	return $_FILES["recipe-photo"]["name"];
-}
-
-function sanitizeInput(mixed $input) {
-	$stripslash = stripslashes($input);
-	$htmlToEntities = htmlspecialchars($stripslash);
-	
-	return $htmlToEntities;
-}
-
 function deleteDbItem() {
 
 }
 
 function checkDatabaseForId() {
 
-}
-
-function getCurrentRecipeId() {
-	return $_GET["id"] ?? null;
-}
-
-function getIngredient() {
-	return $_GET["ingredient"] ?? null;
 }
 
 function matchIdToRecipe() {
