@@ -95,22 +95,22 @@ function getUniqueId() {
 }
 
 function generateRecipeList() {
-	// echo  "<ul>" . "<li>";
+	echo  "<ul>";
 	foreach (decodeRecipeDb() as $recipeKey => $recipeValue) {
-		echo "<recipe-card>";
+		echo "<li>" . "<recipe-card>";
 		foreach ($recipeValue as $recipeSubKey => $recipeSubValue) {
 			foreach ($recipeSubValue as $recipeSubSubKey => $recipeSubSubValue) {
 				if ($recipeSubSubKey === "photo_name") {
 					continue;
 				}
-
-				// echo "<li>" . "<strong>" .$recipeSubSubKey . "</strong>" . ": " . sanitizeInput($recipeSubSubValue) . " <a href=?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey>" . "detail" . "</a> " . "<a href=?page=update&id=$recipeSubKey>" . " update" . "</a>" . "</li>";
-				echo "<li>" . "<strong>" .$recipeSubSubKey . "</strong>" . ": " . sanitizeInput($recipeSubSubValue) . " <a href=?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey>" . "detail" . "</a> " . "</li>";
+				echo "<ul>" . "<li>" . "<strong>" .$recipeSubSubKey . "</strong>" . ": " . sanitizeInput($recipeSubSubValue) . " <a href='?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey'>" . "detail" . "</a> " . "</li>" . "</ul>";
 			}
+			echo "<ul>" ."<li>" ."<picture>" . "<img src=./uploads/$recipeSubSubValue>" . "</picture>" . " <a href='?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey'>" . "detail" . "</a> " . "</li>" . "</ul>";
+			// formatInput($recipeSubSubValue);
 		}
-		echo "</recipe-card>";
+		echo "</recipe-card>" . "</li>";
 	}
-	// echo "</li>" ." </ul>"; TODO: template list of recipe-cards?
+	echo "</ul>";
 }
 
 function getRecipeDatabaseIds() {
@@ -134,9 +134,10 @@ function getPhotoName() {
 }
 
 function sanitizeInput(mixed $input) {
-	$removeHTML = htmlspecialchars($input);
-	$removeSlashes = stripslashes($removeHTML);
-	return $removeSlashes;
+	$stripslash = stripslashes($input);
+	$htmlToEntities = htmlspecialchars($stripslash);
+	
+	return $htmlToEntities;
 }
 
 function deleteDbItem() {
@@ -177,11 +178,56 @@ function updateRecipeValue() {
 	- upon page submission get value from the form
 	- loop over database
 	- find key that matches the $_GET superglobal
+	- make sure db id matches $_GET id
 	- update the value of the matching key with the newly submitted value from the $_POST superglobal
 	- encode updates array as JSON
 	- put in database
 	- return updated value
 	*/ 
+	$recipesDb = decodeRecipeDb();
+	foreach ($recipesDb as $dbKey => &$dbValue) {
+		foreach ($dbValue as $dbSubKey => &$dbSubValue) {
+			// formatInput($dbSubKey);
+			// formatInput($dbSubValue[getIngredient()]);
+			// formatInput(getIngredient());
+			if (getCurrentRecipeId() === $dbSubKey) {
+				// echo getCurrentRecipeId();
+				// return $dbSubValue[getIngredient()];
+				// $dbSubValue[getIngredient()] = getRecipes()["recipe_name"] ?? null;
+				switch (getIngredient()) {
+					case "recipe_name":
+						$dbSubValue[getIngredient()] = getRecipes()["recipe_name"] ?? null;
+						break;
+					
+					case "flour":
+						$dbSubValue[getIngredient()] = getRecipes()["flour"] ?? null;
+						break;
+
+					case "salt":
+						$dbSubValue[getIngredient()] = getRecipes()["salt"] ?? null;
+						break;
+
+					case "water":
+						$dbSubValue[getIngredient()] = getRecipes()["water"] ?? null;
+						break;
+
+					case "yeast":
+						$dbSubValue[getIngredient()] = getRecipes()["yeast"] ?? null;
+						break;	
+
+					// default:
+					// 	// code...
+					// 	break;
+				}
+			}
+		}
+	}
+	$dbAsJSON = json_encode($recipesDb);
+	file_put_contents("./database/recipes/recipe-database.json", $dbAsJSON);
+}
+
+function outputUpdatedRecipeValue() {
+	return sanitizeInput($_POST[$_GET["ingredient"]] ?? null);
 }
 
 

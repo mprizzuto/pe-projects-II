@@ -2,7 +2,10 @@
 <?php
 
 if (count($_POST) > 0) {
-	echo sanitizeInput($_POST[$_GET["ingredient"]] ?? null);
+	// echo outputUpdatedRecipeValue();
+	echo updateRecipeValue();
+	// formatInput(getRecipes());
+	// formatInput($_GET);
 }
 else {
 	echo sanitizeInput(matchIdToRecipe());
