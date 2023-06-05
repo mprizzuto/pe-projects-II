@@ -1,8 +1,9 @@
 <?php 
 // @require "./upload.php";
 ?>
-
+<p>photo must be 500 kb or less</p>
 <form method="POST" enctype="multipart/form-data">
+	
 	<label for="recipe-name">recipe name</label>
 	<input type="name" name="recipe name" id="recipe-name" placeholder="recipe name" required>
 

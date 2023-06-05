@@ -1,7 +1,14 @@
 <h2>detail page for</h2>
 
 <?php 
-echo sanitizeInput(matchIdToRecipe());
+
+
+if (getRecipeDatabaseIds()) {
+  echo sanitizeInput(matchIdToRecipe());
+}
+else {
+	echo "invalid id!";
+}
 ?>
 
 <nav>

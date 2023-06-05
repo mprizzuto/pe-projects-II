@@ -19,6 +19,7 @@ else {
 		<input type="text" name="<?=sanitizeInput(matchIdToRecipe())?>" id="<?=sanitizeInput(matchIdToRecipe())?>">
 
 	<?php else: ?>
+		<p>photo must be 500 kb or less</p>
 		<label for="recipe-photo">recipe photo</label>
 		<input type="file" name="recipe-photo" accept="image/*" id="recipe-photo" required>
 	<?php endif; ?>

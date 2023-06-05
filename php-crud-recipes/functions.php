@@ -137,6 +137,7 @@ function generateRecipeList() {
 }
 
 function getRecipeDatabaseIds() {
+	$idArray = [];
 	/* get database
 	if decodeRecipeDb()
 		loop over database
@@ -144,14 +145,38 @@ function getRecipeDatabaseIds() {
 	*/ 
 	if ( decodeRecipeDb() ) {
 		foreach (decodeRecipeDb() as $dbKey => $dbValue) {
-			formatInput($dbValue);
+			// formatInput($dbValue);
+			foreach ($dbValue as $subKey => $subValue) {
+				array_push($idArray, $subKey);
+				// formatInput($idArray);
+			}
 		}
 	}
-	return null;
+	// return null;
+	return in_array(getCurrentRecipeId(), $idArray) ? true : false;
 }
 
-function deleteDbItem() {
 
+
+
+function deleteDbItem() {
+	$recipesDb = decodeRecipeDb();
+	foreach ($recipesDb as $dbKey => $dbValue) {
+		// formatInput($dbValue);
+		foreach ($dbValue as $dbSubKey => $dbSubValue) {
+			// formatInput($dbSubKey);
+			if (getCurrentRecipeId() === $dbSubKey) {
+				// echo  getCurrentRecipeId();
+				// formatInput([$dbSubValue]["recipe_name"]);
+				foreach ($dbSubValue as $dbSubSubKey => $dbSubSubValue) {
+					// formatInput($recipesDb[$dbKey][getCurrentRecipeId()]);
+					unset($recipesDb[$dbKey]);
+				}
+			}
+		}
+	}
+	$recipeJSON = json_encode($recipesDb);
+	file_put_contents("./database/recipes/recipe-database.json", $recipeJSON);
 }
 
 function checkDatabaseForId() {

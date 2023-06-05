@@ -6,7 +6,7 @@
 if (count($_POST) > 0) {
 	addRecipeToDb();
 	// formatInput(getPhotoName());
-	
+	uploadImages();
 	formatInput($_POST);
 }
 ?>
