@@ -170,7 +170,10 @@ function deleteDbItem() {
 				// formatInput([$dbSubValue]["recipe_name"]);
 				foreach ($dbSubValue as $dbSubSubKey => $dbSubSubValue) {
 					// formatInput($recipesDb[$dbKey][getCurrentRecipeId()]);
-					unset($recipesDb[$dbKey]);
+					// echo $recipesDb[$dbKey] . " will be deletedd";
+					// formatInput($recipesDb[$dbKey][getCurrentRecipeId()]["recipe_name"]);
+					// echo "you will delete " . $recipesDb[$dbKey][getCurrentRecipeId()][getIngredient()] ?? null;
+					unset($recipesDb[$dbKey][getCurrentRecipeId()][getIngredient()]);
 				}
 			}
 		}
