@@ -50,7 +50,7 @@ function sanitizeInput(mixed $input) {
 
 function uploadImages() {
 	$target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES["recipe-photo"]["name"]);
+	$target_file = $target_dir . basename($_FILES["recipe-photo"]["name"] ?? null);
 	$uploadOk = 1;
 	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -73,7 +73,7 @@ function uploadImages() {
 	}
 
 	// Check file size
-	if ($_FILES["recipe-photo"]["size"] > 500000) {
+	if ($_FILES["recipe-photo"]["size"] ?? null > 500000) {
 	  echo "Sorry, your file is too large.";
 	  $uploadOk = 0;
 	}
@@ -114,7 +114,11 @@ function addRecipeToDb() {
 }
 
 function generateRecipeList() {
-	echo  "<ul>";
+	if (!decodeRecipeDb()) {
+		echo "empty database, bettr add a recipe";
+	}
+	else {
+		echo  "<ul>";
 	foreach (decodeRecipeDb() as $recipeKey => $recipeValue) {
 		echo "<li>" . "<recipe-card>";
 		foreach ($recipeValue as $recipeSubKey => $recipeSubValue) {
@@ -129,6 +133,7 @@ function generateRecipeList() {
 		echo "</recipe-card>" . "</li>";
 	}
 	echo "</ul>";
+	}
 }
 
 function getRecipeDatabaseIds() {
@@ -184,13 +189,7 @@ function updateRecipeValue() {
 	$recipesDb = decodeRecipeDb();
 	foreach ($recipesDb as $dbKey => &$dbValue) {
 		foreach ($dbValue as $dbSubKey => &$dbSubValue) {
-			// formatInput($dbSubKey);
-			// formatInput($dbSubValue[getIngredient()]);
-			// formatInput(getIngredient());
 			if (getCurrentRecipeId() === $dbSubKey) {
-				// echo getCurrentRecipeId();
-				// return $dbSubValue[getIngredient()];
-				// $dbSubValue[getIngredient()] = getRecipes()["recipe_name"] ?? null;
 				switch (getIngredient()) {
 					case "recipe_name":
 						$dbSubValue[getIngredient()] = getRecipes()["recipe_name"] ?? null;
@@ -210,11 +209,11 @@ function updateRecipeValue() {
 
 					case "yeast":
 						$dbSubValue[getIngredient()] = getRecipes()["yeast"] ?? null;
-						break;	
+						break;
 
-					// default:
-					// 	// code...
-					// 	break;
+					case "photo_name":
+						$dbSubValue[getIngredient()] = getPhotoName() ?? null;
+						break;
 				}
 			}
 		}

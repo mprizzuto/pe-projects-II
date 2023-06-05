@@ -1,7 +1,7 @@
 <h2>detail page for</h2>
 
 <?php 
-echo matchIdToRecipe();
+echo sanitizeInput(matchIdToRecipe());
 ?>
 
 <nav>
