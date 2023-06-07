@@ -138,7 +138,11 @@ function generateRecipeList() {
 
 			}
 
-			echo  "<ul class = " . checkDbEmptyValues() . ">" . "<ul>" ."<li>" ."<picture class=" . deletePhoto() . ">" . "<img src=./uploads/" . $recipeSubValue["photo_name"] . ">" . "</picture>" . " <a href=?page=detail&ingredient=" . $subSubKey . "&id=" . $recipeSubKey . ">" . "detail" . "</a> " . "</li>" . "</ul>";
+			if (isset($recipeSubValue["photo_name"])) {
+				echo  "<ul class = " . checkDbEmptyValues() . ">" . "<ul>" ."<li>" ."<picture class=" . deletePhoto() . ">" . "<img src=./uploads/" . $recipeSubValue["photo_name"] . ">" . "</picture>" . " <a href=?page=detail&ingredient=" . $subSubKey . "&id=" . $recipeSubKey . ">" . "detail" . "</a> " . "</li>" . "</ul>";
+			}
+
+			// echo  "<ul class = " . checkDbEmptyValues() . ">" . "<ul>" ."<li>" ."<picture class=" . deletePhoto() . ">" . "<img src=./uploads/" . $recipeSubValue["photo_name"] . ">" . "</picture>" . " <a href=?page=detail&ingredient=" . $subSubKey . "&id=" . $recipeSubKey . ">" . "detail" . "</a> " . "</li>" . "</ul>";
 			
 		}
 		echo "</recipe-card>" . "</li>";
