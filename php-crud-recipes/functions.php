@@ -191,8 +191,7 @@ function deleteDbItem() {
 						echo getCurrentRecipeId() . "delted";
 					}
 					unset($recipesDb[$dbKey][getCurrentRecipeId()][getIngredient()]);
-					
-					// $isPhotoDeleted = 1;
+					// formatInput($recipesDb[$dbKey][getCurrentRecipeId()][getIngredient()]);
 					
 				}
 
