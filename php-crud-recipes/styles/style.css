@@ -22,3 +22,11 @@ recipe-card {
 recipe-card picture {
 	max-width: 400px;
 }
+
+.hideItem{
+	display: none;
+}
+
+.showItem {
+	display: initial;
+}

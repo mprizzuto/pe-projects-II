@@ -49,53 +49,54 @@ function sanitizeInput(mixed $input) {
 // }
 
 function uploadImages() {
-	$target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES["recipe-photo"]["name"] ?? null);
-	$uploadOk = 1;
-	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["recipe-photo"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-	// Check if image file is a actual image or fake image
-	if (isset($_POST["submit"])) {
-	  $check = getimagesize($_FILES["recipe-photo"]["tmp_name"]);
-	  if ($check !== false) {
-	    // echo "File is an image - " . $check["mime"] . ".";
-	    $uploadOk = 1;
-	  } else {
-	    echo "File is not an image.";
-	    $uploadOk = 0;
-	  }
-	}
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+  $check = getimagesize($_FILES["recipe-photo"]["tmp_name"]);
+  if($check !== false) {
+    echo "File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+  } else {
+    echo "File is not an image.";
+    $uploadOk = 0;
+  }
+}
 
-	// Check if file already exists
-	if (file_exists($target_file)) {
-	  echo "Sorry, file already exists.";
-	  $uploadOk = 0;
-	}
+// Check if file already exists
+if (file_exists($target_file)) {
+  echo "Sorry, file already exists.";
+  $uploadOk = 0;
+}
 
-	// Check file size
-	if ($_FILES["recipe-photo"]["size"] ?? null > 500000) {
-	  echo "Sorry, your file is too large.";
-	  $uploadOk = 0;
-	}
+// Check file size
+if ($_FILES["recipe-photo"]["size"] > 500000) {
+  echo "Sorry, your file is too large.";
+  $uploadOk = 0;
+}
 
-	// Allow certain file formats
-	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-	&& $imageFileType != "gif" ) {
-	  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-	  $uploadOk = 0;
-	}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+  $uploadOk = 0;
+}
 
-	// Check if $uploadOk is set to 0 by an error
-	if ($uploadOk == 0) {
-	  echo "Sorry, your file was not uploaded.";
-	// if everything is ok, try to upload file
-	} else {
-	  if (move_uploaded_file($_FILES["recipe-photo"]["tmp_name"], $target_file)) {
-	    echo "The file ". htmlspecialchars( basename( $_FILES["recipe-photo"]["name"])). " has been uploaded.";
-	  } else {
-	    echo "Sorry, there was an error uploading your file.";
-	  }
-	}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+  echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+  if (move_uploaded_file($_FILES["recipe-photo"]["tmp_name"], $target_file)) {
+    echo "The file ". htmlspecialchars( basename( $_FILES["recipe-photo"]["name"])). " has been uploaded.";
+  } else {
+    echo "Sorry, there was an error uploading your file.";
+  }
+}
+
 }
 
 function getRecipeDb() {
@@ -118,17 +119,27 @@ function generateRecipeList() {
 		echo "empty database, bettr add a recipe";
 	}
 	else {
+		$subSubKey = &$recipeSubSubKey ?? null;
+		$subSubValue = &$recipeSubSubValue ?? null;
 		echo  "<ul>";
 	foreach (decodeRecipeDb() as $recipeKey => $recipeValue) {
 		echo "<li>" . "<recipe-card>";
 		foreach ($recipeValue as $recipeSubKey => $recipeSubValue) {
 			foreach ($recipeSubValue as $recipeSubSubKey => $recipeSubSubValue) {
+// formatInput($subSubKey);
 				if ($recipeSubSubKey === "photo_name") {
 					continue;
 				}
-				echo "<ul>" . "<li>" . "<strong>" .$recipeSubSubKey . "</strong>" . ": " . sanitizeInput($recipeSubSubValue) . " <a href='?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey'>" . "detail" . "</a> " . "</li>" . "</ul>";
+				// formatInput($recipeSubValue["photo_name"]);
+
+				echo "<ul>" . "<li><strong>" . $recipeSubSubKey . "</strong>: " . sanitizeInput($subSubValue) . " <a href=\"?page=detail&ingredient=" . $subSubKey . "&id=" . $recipeSubKey . "\">detail</a></li></ul>";
+
+				// echo "<ul>" ."<li>" ."<picture>" . "<img src=./uploads/" . $recipeSubValue["photo_name"] . ">" . "</picture>" . " <a href='?page=detail&ingredient=" . $subSubKey . "&id=" . $recipeSubKey . "'>" . "detail" . "</a> " . "</ . "</ul>";
+
 			}
-			echo "<ul>" ."<li>" ."<picture>" . "<img src=./uploads/$recipeSubSubValue>" . "</picture>" . " <a href='?page=detail&ingredient=$recipeSubSubKey&id=$recipeSubKey'>" . "detail" . "</a> " . "</li>" . "</ul>";
+
+			echo  "<ul class = " . checkDbEmptyValues() . ">" . "<ul>" ."<li>" ."<picture class=" . deletePhoto() . ">" . "<img src=./uploads/" . $recipeSubValue["photo_name"] . ">" . "</picture>" . " <a href=?page=detail&ingredient=" . $subSubKey . "&id=" . $recipeSubKey . ">" . "detail" . "</a> " . "</li>" . "</ul>";
+			
 		}
 		echo "</recipe-card>" . "</li>";
 	}
@@ -160,26 +171,44 @@ function getRecipeDatabaseIds() {
 
 
 function deleteDbItem() {
+	$isPhotoDeleted = 0;
 	$recipesDb = decodeRecipeDb();
-	foreach ($recipesDb as $dbKey => $dbValue) {
-		// formatInput($dbValue);
-		foreach ($dbValue as $dbSubKey => $dbSubValue) {
-			// formatInput($dbSubKey);
+	foreach ($recipesDb as $dbKey => &$dbValue) {
+		foreach ($dbValue as $dbSubKey => &$dbSubValue) {
 			if (getCurrentRecipeId() === $dbSubKey) {
-				// echo  getCurrentRecipeId();
-				// formatInput([$dbSubValue]["recipe_name"]);
-				foreach ($dbSubValue as $dbSubSubKey => $dbSubSubValue) {
-					// formatInput($recipesDb[$dbKey][getCurrentRecipeId()]);
-					// echo $recipesDb[$dbKey] . " will be deletedd";
-					// formatInput($recipesDb[$dbKey][getCurrentRecipeId()]["recipe_name"]);
-					// echo "you will delete " . $recipesDb[$dbKey][getCurrentRecipeId()][getIngredient()] ?? null;
-					unset($recipesDb[$dbKey][getCurrentRecipeId()][getIngredient()]);
+				foreach ($dbSubValue as $dbSubSubKey => &$dbSubSubValue) {
+					if ( isset($dbSubValue["photo_name"]) ) {
+						unset($recipesDb[$dbKey][getCurrentRecipeId()][getIngredient()]);
+						$isPhotoDeleted = 1;
+					}
+					
+					// formatInput($recipesDb[$dbKey][getCurrentRecipeId()][getIngredient()]);
+					if (!getCurrentRecipeId() === $dbSubKey) {
+						echo getCurrentRecipeId() . "delted";
+					}
+					
+					
+					// $isPhotoDeleted = 1;
+					
 				}
+
 			}
-		}
+			// echo getCurrentRecipeId();
+			// formatInput( $recipesDb[$dbKey][getCurrentRecipeId()]);
+
+		} 
 	}
+
 	$recipeJSON = json_encode($recipesDb);
 	file_put_contents("./database/recipes/recipe-database.json", $recipeJSON);
+}
+
+function deletePhoto() {
+	if (deleteDbItem()) {
+		return "hidePhoto";
+	}
+	// return "showPhoto";
+	return "hidePhoto";
 }
 
 function checkDatabaseForId() {
@@ -253,5 +282,21 @@ function updateRecipeValue() {
 function outputUpdatedRecipeValue() {
 	return sanitizeInput($_POST[$_GET["ingredient"]] ?? null);
 }
+
+function checkDbEmptyValues() {
+	foreach (decodeRecipeDb() as $dbKey => $dbValue) {
+		// formatInput($dbValue);
+		foreach ($dbValue as $dbSubKey => $dbSubValue) {
+			// formatInput($dbSubValue);
+			// if (count($dbSubValue) === 0) {
+			// 	echo "emptyy!!";
+			// 	return "hideItem";
+			// }
+		}
+	}
+	return "";
+}
+
+
 
 
