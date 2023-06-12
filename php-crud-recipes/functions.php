@@ -294,14 +294,10 @@ function checkDbEmptyValues() {
 	foreach ($recipesDb ?? [] as $dbKey => &$dbValue) {
 		// formatInput($dbValue);
 		foreach ($dbValue as $dbSubKey => &$dbSubValue) {
-			// unset($dbValue);
-			// formatInput($dbValue);
 			if ( count($dbValue[$dbSubKey]) === 0) {
-				// echo "empty array!";
-				// $recipesDb = [];
-				// $dbAsJSON = json_encode($updatedDb);
 				file_put_contents("./database/recipes/recipe-database.json", "");
-				break;
+				array_map('unlink', array_filter(
+            (array) array_merge(glob("uploads/*"))));
 			}
 		}
 	}
