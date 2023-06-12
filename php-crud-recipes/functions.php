@@ -34,6 +34,8 @@ function getPhotoName() {
 function getUniqueId() {
 	return uniqid();
 }
+/**/ 
+
 
 function sanitizeInput(mixed $input) {
 	$stripslash = stripslashes($input);
@@ -177,7 +179,7 @@ function getRecipeDatabaseIds() {
 function deleteDbItem() {
 	$isPhotoDeleted = 0;
 	$recipesDb = decodeRecipeDb();
-	foreach ($recipesDb as $dbKey => &$dbValue) {
+	foreach ($recipesDb ?? [] as $dbKey => &$dbValue) {
 		foreach ($dbValue as $dbSubKey => &$dbSubValue) {
 			if (getCurrentRecipeId() === $dbSubKey) {
 				foreach ($dbSubValue as $dbSubSubKey => &$dbSubSubValue) {
@@ -287,18 +289,25 @@ function outputUpdatedRecipeValue() {
 }
 
 function checkDbEmptyValues() {
-	foreach (decodeRecipeDb() as $dbKey => $dbValue) {
+	$updatedDb = "";
+	$recipesDb = decodeRecipeDb();
+	foreach ($recipesDb ?? [] as $dbKey => &$dbValue) {
 		// formatInput($dbValue);
-		foreach ($dbValue as $dbSubKey => $dbSubValue) {
-			// formatInput($dbSubValue);
-			// if (count($dbSubValue) === 0) {
-			// 	echo "emptyy!!";
-			// 	return "hideItem";
-			// }
+		foreach ($dbValue as $dbSubKey => &$dbSubValue) {
+			// unset($dbValue);
+			// formatInput($dbValue);
+			if ( count($dbValue[$dbSubKey]) === 0) {
+				// echo "empty array!";
+				// $recipesDb = [];
+				// $dbAsJSON = json_encode($updatedDb);
+				file_put_contents("./database/recipes/recipe-database.json", "");
+				break;
+			}
 		}
 	}
-	return "";
 }
+
+
 
 
 
