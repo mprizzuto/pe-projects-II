@@ -1,4 +1,4 @@
-<?php require_once "./components/modules/header.php" ;?>
+<?php require_once "./modules/header.php" ;?>
 <main class="site-main">
 	<section class="welcome">
 		<inner-column>
@@ -23,4 +23,4 @@
 	</section>
 </main>
 
-<?php require_once "./components/modules/footer.php" ;?>
+<?php require_once "./modules/footer.php" ;?>

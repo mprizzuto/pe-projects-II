@@ -12,6 +12,7 @@
 				max-width: 800px;
 			}
 		</style>
+		<script async src="./scripts/script.js"></script>
 	</head>
 	<body>
 		<?php require_once "functions.php"; ?>

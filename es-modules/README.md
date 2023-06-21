@@ -55,20 +55,35 @@ Then *calculate* the **tax** using a **tax rate** of 5.5%. *Print* out the line 
 	- to implement the no more than 3 item rule
 		- if array of items/quantities is a length of 3 items. disable the submit button and output a message showing the subtotal, applied tax and total
 
-functions to implement
+variables/functions to implement
+- get the inputs of quantity and price
+	- convert to numbers
+	- require only positive, non-zero values
+
 - function subTotal
-	- returns price * quantity rounded to nearest hundreth
+	- returns price * quantity rounded to nearest hundreth and formatted in $ dollar amount
 
 - assign TAX_RATE to the result of (5.5 / 100)
 
 - function calculateTax
-	- returns subtotal * TAX_RATE rounded to nearest hundreth
+	- returns subtotal * TAX_RATE rounded to nearest hundreth and formatted in $ dollar amount
 
-- function calculate total 
+- function calculateTotal 
 	- returns subTotal + calculateTax
 
 - function generateMessage
-	- returns the string with eh abobe functions itnerpolated	
+	- returns the string from **Tests** with the above functions interpolated in list items
+- function shoppingList gets an array of inputs of quantity and price (separately?) and adds event listeners to them. perhaps it even live updates
+- save shoppingList as key in local storage. 
+- generate items and HTML upon page load from local storage
+- limit numbers for price and quantity to rational numbers, or an arbitrary number (i.e no orders over 1,000,000).
+	- if a user enters an irrational order with too large numbers, check for it and output "order too large, enter a smaller quantity and price"
+	
+<!-- - function calculateSubtotal
+	- for each price * quantity, run subTotal function. 
+		- return subtotal
 
+- function getAppliedTax
+	- multiply calculateTax() * calculateSubtotal() -->
 
 
