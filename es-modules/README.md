@@ -8,8 +8,19 @@ my first time using ES modules to split up my code. I wanted to practice multipl
 ## pseudocode
 
 **Problem statement**
-Create a simple self-checkout system. *Prompt* for the **prices** and **quantities** of three items. *Calculate* the **subtotal** of the items. 
+Create a simple self-checkout system. *Prompt* for the **prices** and **quantities** *three items*. *Calculate* the **subtotal** of the items. 
 Then *calculate* the **tax** using a **tax rate** of 5.5%. *Print* out the line items with the **quantity** and **total**, and then *print* out the **subtotal**, **tax amount**, and **total**.
+
+**Inputs**
+- price
+- quantity
+
+**Constraints**
+- Separate the input, processing, and output. 
+	- get the input
+	- do the math operations and build the string
+	- print out the output
+- convert input to numerical data before doing any calculations
 
 **Tests**
 - Enter the price of item 1: 25
@@ -21,6 +32,43 @@ Then *calculate* the **tax** using a **tax rate** of 5.5%. *Print* out the line 
 - Subtotal: $64.00
 - Tax: $3.52
 - Total: $67.52
+
+**Challenges**
+- only allow numbers as input
+- allow for an indeterminate amount of items to be entered. te total is calculated only when no more items are entered
+
+
+**PSEUDOCODE**
+- create form
+- create labels and inputs 
+	- for price and quantity
+
+- prevent form default behavior
+- with attached event listener on window:
+	- listen for when input type=submit is pressed
+	- get values of form elements
+	- convert to numbers
+	- do calculations
+		- call the various functions
+	- generate message
+
+	- to implement the no more than 3 item rule
+		- if array of items/quantities is a length of 3 items. disable the submit button and output a message showing the subtotal, applied tax and total
+
+functions to implement
+- function subTotal
+	- returns price * quantity rounded to nearest hundreth
+
+- assign TAX_RATE to the result of (5.5 / 100)
+
+- function calculateTax
+	- returns subtotal * TAX_RATE rounded to nearest hundreth
+
+- function calculate total 
+	- returns subTotal + calculateTax
+
+- function generateMessage
+	- returns the string with eh abobe functions itnerpolated	
 
 
 
