@@ -59,6 +59,7 @@ variables/functions to implement
 - get the inputs of quantity and price
 	- convert to numbers
 	- require only positive, non-zero values
+- use a reducer function to multiply price array * quantity array
 
 - function subTotal
 	- returns price * quantity rounded to nearest hundreth and formatted in $ dollar amount
@@ -78,7 +79,7 @@ variables/functions to implement
 - generate items and HTML upon page load from local storage
 - limit numbers for price and quantity to rational numbers, or an arbitrary number (i.e no orders over 1,000,000).
 	- if a user enters an irrational order with too large numbers, check for it and output "order too large, enter a smaller quantity and price"
-	
+
 <!-- - function calculateSubtotal
 	- for each price * quantity, run subTotal function. 
 		- return subtotal
