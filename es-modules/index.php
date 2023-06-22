@@ -10,9 +10,10 @@
 						include "./components/pages/home.php";
 						break;
 
-						case "pseudocode":
-							include "./components/pages/pseudocode.php";
-							break;
+					case "pseudocode":
+						include "./components/pages/pseudocode.php";
+						break;
+						
 					default:
 						include "./components/pages/404.php";
 						break;
