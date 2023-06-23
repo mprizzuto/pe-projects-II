@@ -26,25 +26,11 @@ window.addEventListener("click", (event) => {
 		shoppingCart.addItem({itemPrice,itemQuantity});
 		
 		localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-		// console.log(getLastItem(shoppingCart.priceQuantityArr.itemPrice));
-		console.log("lastItem: ", shoppingCart.priceQuantityArr[shoppingCart.priceQuantityArr.length - 1].itemPrice);
-		// shoppingList.
-		;
 
 		let listItem = `<li>price: ${shoppingCart.priceQuantityArr[shoppingCart.priceQuantityArr.length - 1].itemPrice} quantity: ${shoppingCart.priceQuantityArr[shoppingCart.priceQuantityArr.length - 1].itemQuantity}</li>`;
 			shoppingList.insertAdjacentHTML("beforeEnd", listItem);
 
-		// shoppingCart.priceQuantityArr.forEach(item => {
-		// 	// let listItem = document.createElement("li");
-
-		// 	// listItem.appendChild(listItem);
-
-			
-
-		// 	// console.log(`<li>${item.itemPrice} ${item.itemQuantity}</li>`);
-		// 	// console.log(item);
-		// 	// document
-		// })
+		
 	}
 });
 const TAX_RATE = 5.5 / 100;
@@ -52,5 +38,20 @@ const TAX_RATE = 5.5 / 100;
 function convertToNum(input) {
 	return +input;
 }
+
+function getCartFromLs() {
+	console.log("fuck!", JSON.parse(localStorage.getItem("shoppingCart")))
+	return JSON.parse(localStorage.getItem("shoppingCart"));
+}
+
+window.addEventListener("load", (event) => {
+	
+	getCartFromLs().priceQuantityArr.forEach(item => {
+		console.log(item.itemPrice, item.itemQuantity);
+
+	})
+	// console.log(getCartFromLs().priceQuantityArr);
+
+});
 
 
