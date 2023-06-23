@@ -3,3 +3,5 @@
 <p>enter items and quantity into the shopping cart</p>
 
 <?php require_once "./components/forms/shopping-cart-form.php"; ?>
+
+<ul id="shopping-item-list"></ul>
