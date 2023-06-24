@@ -6,7 +6,7 @@
 			<?php
 				switch (getPage()) {
 					case null:
-						case "":
+						case "home":
 						include "./components/pages/home.php";
 						break;
 
@@ -19,7 +19,7 @@
 						break;
 				}
 				?>
-				<?php formatInput(getPage())?>
+				<!-- <?php formatInput(getPage())?> -->
 		</inner-column>
 	</section>
 </main>

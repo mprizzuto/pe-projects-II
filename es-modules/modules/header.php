@@ -21,7 +21,7 @@
 				<nav class="site-menu">
 					<ul class="page-list">
 						<li>
-							<a href="?page=">home</a>
+							<a href="?page=home">home</a>
 						</li>
 
 						<li>
@@ -29,5 +29,6 @@
 						</li>
 					</ul>
 				</nav>
+
 			</inner-column>
 		</header>
