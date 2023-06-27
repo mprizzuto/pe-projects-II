@@ -5,6 +5,26 @@ function getPricesAndQuantities() {
   this.priceQuantityArr = [];
 }
 
+function getCartFromLs() {
+	return JSON.parse(localStorage.getItem("shoppingCart"));
+}
+
+function calculateSubtotal(price, quantity) {
+	return price * quantity;
+}
+
+function generateMessage(price, quantity) {
+	return `your subtotal is ${USDollar.format(calculateSubtotal(price, quantity))} your tax is ${USDollar.format(calculateTax(price, quantity))} your total is ${USDollar.format(calculateTotal(price, quantity))}`;
+}
+
+function calculateTax(price, quantity) {
+	return calculateSubtotal(price, quantity) * TAX_RATE;
+}
+
+function calculateTotal(price, quantity) {
+	return calculateSubtotal(price, quantity) + calculateTax(price, quantity);
+}
+
 getPricesAndQuantities.prototype.addItem = function(item) {
   this.priceQuantityArr.unshift(item);
 }
@@ -12,8 +32,14 @@ getPricesAndQuantities.prototype.addItem = function(item) {
 let shoppingCart = new getPricesAndQuantities();
 
 let shoppingList = document.querySelector("#shopping-item-list");
-
+// console.log(shoppingList);
+let shoppingListData = document.querySelector(".shopping-list-prices");
 const TAX_RATE = 5.5 / 100;
+
+let USDollar = new Intl.NumberFormat("en-US", {
+	style: "currency",
+	currency: "USD",
+});
 
 window.addEventListener("click", (event) => {
   event.preventDefault();
@@ -26,53 +52,39 @@ window.addEventListener("click", (event) => {
    	// console.log("empty");
    	shoppingCart.addItem([{itemPrice, itemQuantity}]);
    	localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart.priceQuantityArr));
+
    }
    else {
    	// let cartArray = 
-   	let cartLs = JSON.parse(localStorage.getItem("shoppingCart"));
+   	let cartLs = getCartFromLs();
    	// console.log(cartLs);
    	cartLs.unshift([{itemPrice, itemQuantity}]);
    	localStorage.setItem("shoppingCart", JSON.stringify(cartLs));
-
-   	// console.log(shoppingCart.priceQuantityArr)
    }
-   // 
-   shoppingList.insertAdjacentHTML("afterBegin", `<li>price: ${itemPrice} quantity: ${itemQuantity}</li>`)
+   
+   shoppingList?.insertAdjacentHTML("afterBegin", `<li>price: ${itemPrice} quantity: ${itemQuantity}</li>`);
 
-   	// console.log(shoppingCart.priceQuantityArr);
+   let subtotal = getCartFromLs().reduce((accumulator, current) => {
+   	 return accumulator + current.reduce((innerAccumulator, newCurrent) => {
+   		// console.log( accumulator + (calculateSubtotal(newCurrent.itemPrice, newCurrent.itemQuantity)) );
+   		// return innerAccumulator + calculateSubtotal(newCurrent.itemPrice , newCurrent.itemQuantity);
+   			return innerAccumulator + (newCurrent.itemPrice * newCurrent.itemQuantity);
+   	}, 0);
+   }, 0);
+   console.log(subtotal);
+   shoppingListData.textContent =  `your subtotal is ${subtotal}`;
   }
 });
-
-function getCartFromLs() {
-  // console.log(JSON.parse(localStorage.getItem("shoppingCart")));
-  return JSON.parse(localStorage.getItem("shoppingCart"));
-}
 
 window.addEventListener("load", (event) => {
   getCartFromLs().forEach(item => {
     item.forEach(subItem => {
       let listItem = `<li>price: ${subItem.itemPrice} quantity: ${subItem.itemQuantity}</li>`;
-      shoppingList.insertAdjacentHTML("beforeEnd", listItem);
+      shoppingList?.insertAdjacentHTML("beforeEnd", listItem);
     });
   });
 });
 
-function calculateSubtotal(item, quantity) {
-	return item * quantity;
-}
 
-function generateMessage() {
-	return `your subtotal is ${calculateSubtotal()} your tax is ${calculateTax()} your total is ${calculateTotal()}`;
-}
-
-function calculateTax() {
-	return calculateSubtotal() * TAX_RATE;
-}
-
-// getCartFromLs().forEach(item => {
-// 	item.forEach(subItem => {
-// 		console.log(subItem.itemPrices, subItem.itemQuantity);
-// 	})
-// });
 
 
