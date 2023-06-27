@@ -2,9 +2,9 @@
 <h2 class="exercise-title">shopping cart</h2>
 <p>enter items and quantity into the shopping cart</p>
 <?php $dumbGlobalVar = "pissoffffffff"; 
-	
+
 ?>
-<?php echo var_dump($GLOBALS)?>
+
 <?php require_once "./components/forms/shopping-cart-form.php"; ?>
 
 <ul id="shopping-item-list"></ul>

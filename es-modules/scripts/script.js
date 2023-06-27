@@ -1,5 +1,5 @@
 console.clear();
-// localStorage.clear();
+localStorage.clear();
 
 function getPricesAndQuantities() {
   this.priceQuantityArr = [];
@@ -29,11 +29,6 @@ getPricesAndQuantities.prototype.addItem = function(item) {
   this.priceQuantityArr.unshift(item);
 }
 
-let shoppingCart = new getPricesAndQuantities();
-
-let shoppingList = document.querySelector("#shopping-item-list");
-// console.log(shoppingList);
-let shoppingListData = document.querySelector(".shopping-list-prices");
 const TAX_RATE = 5.5 / 100;
 
 let USDollar = new Intl.NumberFormat("en-US", {
@@ -41,38 +36,56 @@ let USDollar = new Intl.NumberFormat("en-US", {
 	currency: "USD",
 });
 
+let shoppingCart = new getPricesAndQuantities();
+
+let shoppingList = document.querySelector("#shopping-item-list");
+
+let shoppingListData = document.querySelector(".shopping-list-prices");
+
+function calculateOrder(itemPrice,itemQuantity) {
+	shoppingList?.insertAdjacentHTML("afterBegin", `<li>price: ${itemPrice} quantity: ${itemQuantity}</li>`);
+
+ // calculateOrder();
+ 	let subtotal = getCartFromLs().reduce((accumulator, current) => {
+ 		return accumulator + current.reduce((innerAccumulator, newCurrent) => {
+ 		// console.log( accumulator + (calculateSubtotal(newCurrent.itemPrice, newCurrent.itemQuantity)) );
+ 		// return innerAccumulator + calculateSubtotal(newCurrent.itemPrice , newCurrent.itemQuantity);
+ 			return innerAccumulator + (newCurrent.itemPrice * newCurrent.itemQuantity);
+ 		}, 0);
+  }, 0);
+   // console.log(subtotal);
+  let total = (TAX_RATE * subtotal) + subtotal;
+  shoppingListData.textContent =  `your subtotal is ${USDollar.format(subtotal)} the tax is ${USDollar.format(TAX_RATE * subtotal)} the total is ${USDollar.format(total)}`;
+}
+
 window.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (event.target.matches("input[type='submit']")) {
    let itemPrice = +document.querySelector("input[id$='price']").value;
    let itemQuantity = +document.querySelector("input[id$='quantity']").value;
+   // console.log(itemPrice)
+   if (itemPrice === 0 || itemQuantity === 0) {
+   	alert("required! Enter a price and quantity");
+   }
 
    if (!localStorage.getItem("shoppingCart")) {
-   	// console.log("empty");
    	shoppingCart.addItem([{itemPrice, itemQuantity}]);
    	localStorage.setItem("shoppingCart", JSON.stringify(shoppingCart.priceQuantityArr));
-
    }
    else {
-   	// let cartArray = 
-   	let cartLs = getCartFromLs();
-   	// console.log(cartLs);
-   	cartLs.unshift([{itemPrice, itemQuantity}]);
-   	localStorage.setItem("shoppingCart", JSON.stringify(cartLs));
+   	if (itemPrice > 0 && itemQuantity > 0) {
+   		console.log(itemPrice, itemQuantity);
+   		let cartLs = getCartFromLs();
+	   	// console.log(cartLs);
+	   	cartLs.unshift([{itemPrice, itemQuantity}]);
+	   	localStorage.setItem("shoppingCart", JSON.stringify(cartLs));
+	   	calculateOrder(itemPrice, itemQuantity);
+   	}
    }
    
-   shoppingList?.insertAdjacentHTML("afterBegin", `<li>price: ${itemPrice} quantity: ${itemQuantity}</li>`);
-
-   let subtotal = getCartFromLs().reduce((accumulator, current) => {
-   	 return accumulator + current.reduce((innerAccumulator, newCurrent) => {
-   		// console.log( accumulator + (calculateSubtotal(newCurrent.itemPrice, newCurrent.itemQuantity)) );
-   		// return innerAccumulator + calculateSubtotal(newCurrent.itemPrice , newCurrent.itemQuantity);
-   			return innerAccumulator + (newCurrent.itemPrice * newCurrent.itemQuantity);
-   	}, 0);
-   }, 0);
-   console.log(subtotal);
-   shoppingListData.textContent =  `your subtotal is ${subtotal}`;
+   document.querySelector("input[id$='price']").value = "";
+	 document.querySelector("input[id$='quantity']").value = "";
   }
 });
 
