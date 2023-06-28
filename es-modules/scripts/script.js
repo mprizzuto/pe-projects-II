@@ -1,5 +1,5 @@
 console.clear();
-localStorage.clear();
+// localStorage.clear();
 
 function getPricesAndQuantities() {
   this.priceQuantityArr = [];
@@ -64,7 +64,7 @@ window.addEventListener("click", (event) => {
   if (event.target.matches("input[type='submit']")) {
    let itemPrice = +document.querySelector("input[id$='price']").value;
    let itemQuantity = +document.querySelector("input[id$='quantity']").value;
-   // console.log(itemPrice)
+
    if (itemPrice === 0 || itemQuantity === 0) {
    	alert("required! Enter a price and quantity");
    }
@@ -75,9 +75,9 @@ window.addEventListener("click", (event) => {
    }
    else {
    	if (itemPrice > 0 && itemQuantity > 0) {
-   		console.log(itemPrice, itemQuantity);
+   		// console.log(itemPrice, itemQuantity);
    		let cartLs = getCartFromLs();
-	   	// console.log(cartLs);
+	   	console.log("else, cartLs", cartLs);
 	   	cartLs.unshift([{itemPrice, itemQuantity}]);
 	   	localStorage.setItem("shoppingCart", JSON.stringify(cartLs));
 	   	calculateOrder(itemPrice, itemQuantity);
@@ -88,9 +88,13 @@ window.addEventListener("click", (event) => {
 	 document.querySelector("input[id$='quantity']").value = "";
   }
 });
-
+// console.log(getCartFromLs());
 window.addEventListener("load", (event) => {
-  getCartFromLs().forEach(item => {
+	// console.log("onLoad, cartLs", getCartFromLs());
+
+	let cartLs = getCartFromLs() ?? null;
+  cartLs.forEach(item => {
+  	console.log(item)
     item.forEach(subItem => {
       let listItem = `<li>price: ${subItem.itemPrice} quantity: ${subItem.itemQuantity}</li>`;
       shoppingList?.insertAdjacentHTML("beforeEnd", listItem);
