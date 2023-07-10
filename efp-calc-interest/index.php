@@ -61,25 +61,61 @@
 			fieldset {
 			  max-width: 50ch;
 			}
+
+			inner-column {
+				display: block;
+				padding: 5px;
+				margin-right: auto;
+				margin-left: auto;
+/*				max-width: 700px;*/
+				max-width: 70ch;
+			}
+
+			h2 + form, h1 + blockquote {
+				margin-top: 10px;
+			}
+
+			blockquote {
+				margin: 0;
+				/* max-width: 70ch;*/
+			}
 		</style>
 	</head>
 	<body>
-		<form method="POST">
-			<fieldset class="investment-info">
-				<label for="principal">principal</label>	
-				<input type="number" name="principal" id="principal" min="1" max="2000000000" step="0.01" required>
+		<header>
+			<inner-column>
+				<h1>Computing Simple Interest</h1>
 
-				<label for="interest-rate">interest-rate</label>	
-				<input type="number" name="interest-rate" id="interest-rate" min="1" max="100" step="0.1" required>
+				<blockquote class="efp-challenge">
+					<p>Create a program that computes simple interest. Prompt for the principal amount, the rate as a percentage, and the time, and display the amount accrued (principal + interest).</p>
+				</blockquote>
+			</inner-column>
+		</header>
 
-				<label for="years">year(s)</label>	
-				<input type="number" name="years" id="years" min="1" max="50" step="0.5" required>
-			</fieldset>
+		<main class="exercise-main">
+			<section>
+				<inner-column>
+					<h2>calculate interest</h2>
 
-			<input type="submit" name="submit">
-		</form>
+					<form method="POST">
+						<fieldset class="investment-info">
+							<label for="principal">principal</label>	
+							<input type="number" name="principal" id="principal" min="1" max="2000000000" step="0.01" required>
 
-		<p id="results"></p>
+							<label for="interest-rate">interest-rate</label>	
+							<input type="number" name="interest-rate" id="interest-rate" min="1" max="100" step="0.1" required>
+
+							<label for="years">year(s)</label>	
+							<input type="number" name="years" id="years" min="1" max="50" step="0.5" required>
+						</fieldset>
+
+						<input type="submit" name="submit">
+					</form>
+
+					<p id="results"></p>
+				</inner-column>
+			</section>
+		</main>
 
 		<script src="./scripts/script.js" type="module">
 
