@@ -67,13 +67,13 @@
 		<form method="POST">
 			<fieldset class="investment-info">
 				<label for="principal">principal</label>	
-				<input type="number" name="principal" id="principal" min="1" step="0.1" required>
+				<input type="number" name="principal" id="principal" min="1" max="2000000000" step="0.01" required>
 
 				<label for="interest-rate">interest-rate</label>	
 				<input type="number" name="interest-rate" id="interest-rate" min="1" max="100" step="0.1" required>
 
 				<label for="years">year(s)</label>	
-				<input type="number" name="years" id="years" min="1" step="0.1" required>
+				<input type="number" name="years" id="years" min="1" max="50" step="0.5" required>
 			</fieldset>
 
 			<input type="submit" name="submit">
@@ -81,7 +81,7 @@
 
 		<p id="results"></p>
 
-		<script src="./scripts/script.js">
+		<script src="./scripts/script.js" type="module">
 
 		</script>
 	</body>
