@@ -32,12 +32,26 @@ function getHours() {
 function templateHours() {
 	$json = getHours();
 	$jsonToArr = json_decode($json, true);
-	
+	echo "<ul class='hours-list'>";
 	foreach ($jsonToArr as $topArr) {
-		
+		echo "<li>" . "<hours-card>";
 		foreach ($topArr as $key => $value) {
-			formatData($key);
+			$title = "<h2> $key </h2>";
+
+			echo $title;
+
+			foreach ($value as $thirdArrKey => $thirdArrValue) {
+				// formatData($thirdArrValue);
+				foreach ($thirdArrValue as $fourthArrKey => $fourthArrValue) {
+					echo "<div>" . 
+					 "<h2>" . $fourthArrKey . "</h2>" . 
+					 "<p>" . $fourthArrValue . "</p>".
+					"</div>";
+				}
+			}
 		}
+		echo "</li>" . "</hours-card>";
 	}
+	echo "</ul>";
 }
 

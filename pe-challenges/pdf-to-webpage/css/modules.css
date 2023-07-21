@@ -6,7 +6,12 @@ pod-roles {
 	display: block;
 }
 
-.pod-roles-list li {
+.pod-roles-list li, 
+h2 + ul, h2 + div {
+	margin-top: var(--heading-spacing);
+}
+
+pod-hours h2 {
 	margin-top: var(--para-spacing);
 }
 
@@ -20,3 +25,24 @@ role-block h2 {
 	font-size: 2em;
 }
 
+hours-card {
+	display: block;
+}
+
+hours-card > h2 {
+	font-size: 1.8em;
+	color: red;
+}
+
+hours-card div h2 {
+	font-size: 1.4em;
+	color: lime;
+}
+
+.hours-list {
+
+}
+
+.hours-list li {
+	
+}
