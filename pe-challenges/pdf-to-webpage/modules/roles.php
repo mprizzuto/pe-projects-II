@@ -1,2 +1,3 @@
 <roles>
+	<?php templateRoles(); ?>
 </roles>

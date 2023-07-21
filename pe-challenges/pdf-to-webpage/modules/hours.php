@@ -1,4 +1,5 @@
 <hours>
+	<!-- <?php templateHours(); ?> -->
 </hours>
 
 				

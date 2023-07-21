@@ -6,16 +6,22 @@ function formatData($input) {
 	echo "</pre>";
 }
 
-function templateRules(array $rules) {
-	$jsonDecoded = jsonToAssArray($rules);
-
-	formatData($rules);
+function templateRoles() {
+	$json = getRoles();
+	$jsonToArr = json_decode($json, true);
+	formatData($jsonToArr);
 }
 
-function templateHours(array $hours) {
-	$jsonDecoded = jsonToAssArray($hours);
+function getRoles() {
+	return file_get_contents("./data/roles.json");
 }
 
-function jsonToAssArray($json) {
-	return json_decode($json, true) ?? [];
+function getHours() {
+	return file_get_contents("./data/hours.json");
+}
+
+function templateHours() {
+	$json = getHours();
+	$jsonToArr = json_decode($json, true);
+	formatData($jsonToArr);
 }
