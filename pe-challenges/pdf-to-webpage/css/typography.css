@@ -1,0 +1,17 @@
+/* typography */
+strong {
+  font-weight: bolder;
+}
+
+em {
+  font-style: italic;
+}
+
+h1 {
+	color: maroon; //for test
+}
+
+h2 + p {
+	margin-top: var(--adjacent-para-spacing);
+	color: red;
+}

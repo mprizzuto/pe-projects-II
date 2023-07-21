@@ -9,5 +9,8 @@
 		<header class="site-header">
 			<inner-column>
 				<?php include "./components/nav.php"; ?>
+
+				<h2>test</h2>
+				<p>para afrter heading</p>
 			</inner-column>
 		</header>
