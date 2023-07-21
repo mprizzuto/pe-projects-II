@@ -8,14 +8,22 @@ em {
 }
 
 h1 {
-	color: maroon; //for test
+	color: maroon;
+}
+
+h1, h1 + p {
+	margin-top: var(--heading-spacing);
 }
 
 h2 + p {
 	margin-top: var(--para-spacing);
-	color: red;
+}
+
+p + p {
+	margin-top: var(--adjacent-para-spacing);
 }
 
 h2[aria-hidden="true"] {
 	display: none;
 }
+

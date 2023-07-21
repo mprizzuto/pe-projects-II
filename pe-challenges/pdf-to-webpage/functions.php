@@ -10,16 +10,13 @@ function templateRoles() {
 	$json = getRoles();
 	$jsonToArr = json_decode($json, true);
 	// formatData($jsonToArr);
-	echo "<ul>";
+	echo "<ul class='pod-roles-list'>";
 	foreach ($jsonToArr as $role => $desc) {
 		foreach ($desc as $roleValue => $descValue) {
 			$heading = "<h2>$roleValue</h2>";
 			$para = "<p>$descValue</p>";
 			echo "<li> <role-block>" . $heading . $para . "</role-block> </li>";
 		}
-		
-
-		
 	}
 	echo "</ul>";
 }
@@ -35,5 +32,12 @@ function getHours() {
 function templateHours() {
 	$json = getHours();
 	$jsonToArr = json_decode($json, true);
-	formatData($jsonToArr);
+	
+	foreach ($jsonToArr as $topArr) {
+		
+		foreach ($topArr as $key => $value) {
+			formatData($key);
+		}
+	}
 }
+

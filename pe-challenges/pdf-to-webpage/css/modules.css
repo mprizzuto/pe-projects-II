@@ -6,9 +6,17 @@ pod-roles {
 	display: block;
 }
 
+.pod-roles-list li {
+	margin-top: var(--para-spacing);
+}
+
 role-block {
 	display: block;
 	background: lightblue;
+	padding: 10px;
 }
 
+role-block h2 {
+	font-size: 2em;
+}
 
