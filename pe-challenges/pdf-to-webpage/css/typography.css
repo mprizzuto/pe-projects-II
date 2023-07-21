@@ -28,3 +28,8 @@ h2[aria-hidden="true"] {
 	display: none;
 }
 
+ol {
+	list-style: decimal;
+	list-style-position: inside;
+}
+

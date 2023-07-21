@@ -11,7 +11,7 @@ function templateRoles() {
 	$jsonToArr = json_decode($json, true);
 	// formatData($jsonToArr);
 	echo "<ul class='pod-roles-list'>";
-	foreach ($jsonToArr as $role => $desc) {
+	foreach ($jsonToArr ?? [] as $role => $desc) {
 		foreach ($desc as $roleValue => $descValue) {
 			$heading = "<h2>$roleValue</h2>";
 			$para = "<p>$descValue</p>";
@@ -29,18 +29,23 @@ function getHours() {
 	return file_get_contents("./data/hours.json");
 }
 
+function getQuestions() {
+	return file_get_contents("./data/questions.json");
+}
+
 function templateHours() {
 	$json = getHours();
 	$jsonToArr = json_decode($json, true);
 	echo "<ul class='hours-list'>";
-	foreach ($jsonToArr as $topArr) {
+
+	foreach ($jsonToArr ?? [] as $topArr) {
 		echo "<li>" . "<hours-card>";
 		foreach ($topArr as $key => $value) {
 			$title = "<h2> $key </h2>";
 
 			echo $title;
 
-			foreach ($value as $thirdArrKey => $thirdArrValue) {
+			foreach ($value ?? [] as $thirdArrKey => $thirdArrValue) {
 				// formatData($thirdArrValue);
 				foreach ($thirdArrValue as $fourthArrKey => $fourthArrValue) {
 					echo "<div>" . 
@@ -54,4 +59,26 @@ function templateHours() {
 	}
 	echo "</ul>";
 }
+
+function templateQuestions() {
+	$json = getQuestions();
+	$jsonToArr = json_decode($json, true);
+	echo "<ol>";
+
+	foreach ($jsonToArr ?? [] as $firstKey => $firstValue) {
+		foreach ($firstValue as $secondKey => $secondValue) {
+			echo "<p>" . ($firstValue["desc"] ?? null) . "</p>";
+			if (gettype($secondValue) !== "string") {
+				foreach ($secondValue as $thirdKey => $thirdValue) {
+					foreach ($thirdValue as $fourthKey => $fourthValue) {
+						echo "<li>" . $fourthValue . "</li>";
+					}
+				}
+			}
+		}
+	}
+
+	echo "</ol>";
+}
+
 
