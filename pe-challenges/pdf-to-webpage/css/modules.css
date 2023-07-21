@@ -51,3 +51,13 @@ hours-card div h2 {
 .hours-list li {
 	
 }
+
+.year-component {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.year-component small {
+	align-self: end;
+}

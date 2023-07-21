@@ -9,7 +9,10 @@
 	<body>
 		<header class="site-header">
 			<inner-column>
-				<?php include "./components/nav.php"; ?>
+				<div class="year-component">
+					<?php include "./components/nav.php"; ?>
+					<?php include "./modules/year.php"; ?>
+				</div>
 
 				<h1>TribePod Agenda</h1>
 
@@ -22,3 +25,5 @@
 				<p>Why? Because the agenda has been designed and tested based on the latest research into human psychology, achievement, and connections. This document lays out exactly how to run a pod meeting.</p>
 			</inner-column>
 		</header>
+
+		

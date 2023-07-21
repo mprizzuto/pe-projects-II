@@ -67,7 +67,7 @@ function templateQuestions() {
 
 	foreach ($jsonToArr ?? [] as $firstKey => $firstValue) {
 		foreach ($firstValue as $secondKey => $secondValue) {
-			echo "<p>" . ($firstValue["desc"] ?? null) . "</p>";
+			echo "<p>" . ($firstValue["desc"] ?? "") . "</p>";
 			if (gettype($secondValue) !== "string") {
 				foreach ($secondValue as $thirdKey => $thirdValue) {
 					foreach ($thirdValue as $fourthKey => $fourthValue) {
