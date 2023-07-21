@@ -1,5 +1,5 @@
-<hours>
+<pod-hours>
 	<!-- <?php templateHours(); ?> -->
-</hours>
+</pod-hours>
 
 				
