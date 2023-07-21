@@ -1,0 +1,42 @@
+[
+	{
+		"08 min": [
+			{
+				"whole tribe gathering":  "The whole Tribe meets together for announcements, house-keeping, a reading of the Tribal Rules, and a quick message from Tribal Leadership."
+			}
+		]
+	},
+
+	{
+		"05 min": [
+			{
+				"Pod breakout and check-in":  "The Tribe breaks into smaller pods. Attendance is taken, roles are defined, wins are announced from each pod member, and the \"Jester\" brings a joke."
+			}
+		]
+	},
+
+	{
+		"01 min match": [
+			{
+				"Intention question": "The whole Tribe meets together for announcements, house-keeping, a reading of the Tribal Rules, and a quick message from Tribal Leadership."
+			}
+		]
+	},
+
+	{
+		"05 min each": [
+			{
+				"hot seat six": "Each pod member has five minutes to answer the Hot Seat Six. Other pod members are not allowed to give advice but are to ask probing questions to help the hot seat participant discover their own solutions."
+			}
+		]
+	},
+
+	{
+		"05 min": [
+			{
+				"wrap up": "Each pod member has five minutes to answer the Hot Seat Six. Other pod members are not allowed to give advice but are to ask probing questions to help the hot seat participant discover their own solutions."
+			}
+		]
+	},
+
+]
