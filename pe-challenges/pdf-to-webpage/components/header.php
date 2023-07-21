@@ -10,11 +10,17 @@
 		<header class="site-header">
 			<inner-column>
 				<div class="year-component">
-					<?php include "./components/nav.php"; ?>
+					<div class="trademark">
+						
+						<?php include "./components/nav.php"; ?>
+						<small>tm</small>
+					</div>
+					
+
 					<?php include "./modules/year.php"; ?>
 				</div>
 
-				<h1>TribePod Agenda</h1>
+				<h1>TribePod <small>tm</small> Agenda</h1>
 
 				<p>A guide to an incredible 60-minute accountability pod call</p>
 
@@ -26,4 +32,3 @@
 			</inner-column>
 		</header>
 
-		

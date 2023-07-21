@@ -52,12 +52,12 @@ hours-card div h2 {
 	
 }
 
-.year-component {
+.year-component, .trademark {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
 
-.year-component small {
+.year-component > small {
 	align-self: end;
 }

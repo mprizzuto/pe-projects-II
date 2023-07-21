@@ -33,3 +33,10 @@ ol {
 	list-style-position: inside;
 }
 
+h1 small {
+	position: relative;
+	bottom: 15px;
+	display: inline-block;
+	vertical-align: super;
+}
+
