@@ -34,3 +34,12 @@ inner-column {
   padding: 5px;
 }
 
+footer inner-column {
+  padding-block: 20vh;
+}
+
+header inner-column {
+  padding-top: 5vh;
+}
+
+

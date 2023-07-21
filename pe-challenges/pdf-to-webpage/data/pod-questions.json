@@ -1,0 +1,29 @@
+[
+	{
+		"desc": "The following six questions are to be answered by each pod member. The 'Hot seat' member has 5 minutes to answer these and any other questions asked by the group. No advice may be given by pod members."
+	},
+	{
+		"questions": [
+			{
+				"one": "Last week, I committed to ____",
+			},
+			{
+				"two": "What are my top 3 goals for this quarter?",
+			},
+			{
+				"three": "What was my score last week?",
+			},
+			{
+				"four": "What habits/actions did I do great with this past week?",
+			},
+			{
+				"five": "What habits/actions did I struggle with this past week?(Pause for pod member questions. Only questions)What am I committing to specifically this week?",
+			},
+			{
+				"six": "What am I committing to specifically this week?"
+			}
+		]
+	}
+
+]
+

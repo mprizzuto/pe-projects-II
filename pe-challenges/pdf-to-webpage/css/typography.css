@@ -8,10 +8,11 @@ em {
 }
 
 h1 {
-	color: maroon;
+	font-size: clamp(2em, 4vw, 5em);
+	margin-top: var(--para-spacing);
 }
 
-h1, h1 + p {
+h1 + p {
 	margin-top: var(--heading-spacing);
 }
 

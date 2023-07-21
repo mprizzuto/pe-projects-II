@@ -50,7 +50,7 @@ function templateHours() {
 				}
 			}
 		}
-		echo "</li>" . "</hours-card>";
+		echo "</hours-card>" . "</li>";
 	}
 	echo "</ul>";
 }

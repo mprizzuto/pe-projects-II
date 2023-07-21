@@ -12,6 +12,7 @@ h2 + ul, h2 + div {
 }
 
 pod-hours h2 {
+	font-size: 1.5em;
 	margin-top: var(--para-spacing);
 }
 
