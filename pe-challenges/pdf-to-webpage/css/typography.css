@@ -12,11 +12,10 @@ h1 {
 }
 
 h2 + p {
-	margin-top: var(--adjacent-para-spacing);
+	margin-top: var(--para-spacing);
 	color: red;
 }
 
-h2[aria-role="hidden"] {
-/*	display: none;*/
-color:red;
+h2[aria-hidden="true"] {
+	display: none;
 }

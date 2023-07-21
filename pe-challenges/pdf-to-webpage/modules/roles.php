@@ -1,3 +1,3 @@
-<roles>
+<pod-roles>
 	<?php templateRoles(); ?>
-</roles>
+</pod-roles>
