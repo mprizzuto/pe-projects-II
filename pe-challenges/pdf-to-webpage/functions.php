@@ -48,7 +48,7 @@ function templateHours() {
 			foreach ($value ?? [] as $thirdArrKey => $thirdArrValue) {
 				// formatData($thirdArrValue);
 				foreach ($thirdArrValue as $fourthArrKey => $fourthArrValue) {
-					echo "<div>" . 
+					echo "<div class='tribe-details'>" . 
 					 "<h2>" . $fourthArrKey . "</h2>" . 
 					 "<p>" . $fourthArrValue . "</p>".
 					"</div>";
@@ -63,11 +63,14 @@ function templateHours() {
 function templateQuestions() {
 	$json = getQuestions();
 	$jsonToArr = json_decode($json, true);
-	echo "<ol>";
-
+	echo "<h2>" . ($jsonToArr['desc'] ?? null . "</h2>");
+	echo "<ol class='question-list'>";
+	// echo "<li>";
 	foreach ($jsonToArr ?? [] as $firstKey => $firstValue) {
+		// echo "<p>" . ($firstValue["desc"] ?? "") . "</p>";
+		
 		foreach ($firstValue as $secondKey => $secondValue) {
-			echo "<p>" . ($firstValue["desc"] ?? "") . "</p>";
+			
 			if (gettype($secondValue) !== "string") {
 				foreach ($secondValue as $thirdKey => $thirdValue) {
 					foreach ($thirdValue as $fourthKey => $fourthValue) {
@@ -75,10 +78,13 @@ function templateQuestions() {
 					}
 				}
 			}
-		}
-	}
 
-	echo "</ol>";
+		}
+		// echo "</li>";
+	}
+	
+echo "</ol>";
+	
 }
 
 

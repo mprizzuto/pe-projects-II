@@ -11,12 +11,10 @@
 			<inner-column>
 				<div class="year-component">
 					<div class="trademark">
-						
 						<?php include "./components/nav.php"; ?>
 						<small>tm</small>
 					</div>
 					
-
 					<?php include "./modules/year.php"; ?>
 				</div>
 

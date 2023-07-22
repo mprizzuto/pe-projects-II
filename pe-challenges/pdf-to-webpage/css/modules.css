@@ -10,6 +10,10 @@ pod-questions {
 	display: block;
 }
 
+.question-list li:first-of-type {
+	margin-top: var(--para-spacing);
+} 
+
 .pod-roles-list li, 
 h2 + ul, h2 + div {
 	margin-top: var(--heading-spacing);
@@ -32,16 +36,20 @@ role-block h2 {
 
 hours-card {
 	display: block;
+	max-width: 50ch;
 }
 
 hours-card > h2 {
 	font-size: 1.8em;
-	color: red;
+	max-width: 4ch;
 }
 
 hours-card div h2 {
 	font-size: 1.4em;
-	color: lime;
+}
+
+hours-card > h2::first-line {
+	font-size: 1.3em;
 }
 
 .hours-list {
@@ -60,4 +68,43 @@ hours-card div h2 {
 
 .year-component > small {
 	align-self: end;
+}
+
+.roles {
+	margin-top: var(--adjacent-para-spacing);
+}
+
+section.hours-roles {
+	margin-top: 30px;
+}
+
+section.hours-roles inner-column > h2 {
+	font-size: 3em;
+}
+
+div.hours {
+/*	padding-top: 5vh;*/
+	padding-bottom: 5vh;
+}
+
+@media (min-width: 600px) {
+	hours-card, div.hours-roles {
+		display: flex;
+		flex-direction: row;
+/*		justify-content: space-between;*/
+	}
+	.hours-roles {
+
+	}
+	.tribe-details {
+		margin-left: 30px;
+		margin-top: 0;
+	}
+	div.hours {
+		flex-basis: 80%;
+	}
+	div.roles {
+		flex-basis: 50%;
+		margin-left: 50px;
+	}
 }

@@ -6,14 +6,16 @@
 		<section class="hours-roles">
 			<inner-column>
 				<h2>hours and roles</h2>
+				<div class="hours-roles">
+					<div class="hours">
+						<?php include "./modules/hours.php"; ?>
+					</div>
 
-				<div>
-					<?php include "./modules/hours.php"; ?>
-				</div>
-
-				<div>
-					<?php include "./modules/roles.php"; ?>
-				</div>
+					<div class="roles">
+						<?php include "./modules/roles.php"; ?>
+					</div>
+				</div>	
+				
 				
 			</inner-column>
 		</section>

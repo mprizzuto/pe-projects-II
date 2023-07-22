@@ -7,17 +7,22 @@ em {
   font-style: italic;
 }
 
-h1 {
-	font-size: clamp(2em, 4vw, 5em);
+.site-header h1 {
+	font-size: clamp(2em, 9vw, 5em);
 	margin-top: var(--para-spacing);
 }
 
-h1 + p {
-	margin-top: var(--heading-spacing);
+.site-header h1 + p {
+ 	text-align: center;
+ 	margin-top: var(--para-spacing);
+}
+
+h2 {
+	font-size: clamp(1.6em, 3vw, 4em);
 }
 
 h2 + p {
-	margin-top: var(--para-spacing);
+	margin-top: var(--heading-spacing);
 }
 
 p + p {
@@ -31,6 +36,12 @@ h2[aria-hidden="true"] {
 ol {
 	list-style: decimal;
 	list-style-position: inside;
+	line-height: 1.5;
+	max-width: 70ch;
+}
+
+ol li + li {
+	margin-top: var(--para-spacing);
 }
 
 h1 small {
@@ -40,3 +51,37 @@ h1 small {
 	vertical-align: super;
 }
 
+.trademark small, h1 small {
+	font-size: .3em;
+}
+
+.hot-seat {
+	background: lightblue;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+}
+
+footer {
+	background: royalblue;
+	padding-top: 5vh;
+}
+
+footer inner-column {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+footer .site-nav {
+	align-self: center;
+}
+
+inner-column p {
+	max-width: 75ch;
+}
+
+:is(h1, h2) {
+	font-family: Helvetica;
+	text-transform: capitalize;
+}

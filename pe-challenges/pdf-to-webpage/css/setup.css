@@ -1,10 +1,10 @@
 /*  Setup */
 :root {
   --main-line-height: 1.1;
-  --main-max-width: 600px;
+  --main-max-width: 900px;
   --heading-spacing: 5px;
   --para-spacing: 15px;
-  --adjacent-para-spacing: 30px;
+  --adjacent-para-spacing: 20px;
 }
 
 *, *:before, *:after {
@@ -35,7 +35,7 @@ inner-column {
 }
 
 footer inner-column {
-  padding-block: 20vh;
+  padding-bottom: 20vh;
 }
 
 header inner-column {
