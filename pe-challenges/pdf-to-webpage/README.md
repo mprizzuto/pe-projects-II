@@ -9,4 +9,4 @@ The PE students were given a PDF and told to mock it up using [`HTML`]. the tech
 - [`PHP`]
 - [`CSS`]
 
-See it live [here](https://peprojects.dev/alpha-1/mprizzuto/pe-projects-II/pe-challenges/pdf-to-website)
+See it live [here](https://peprojects.dev/alpha-1/mprizzuto/pe-projects-II/pe-challenges/pdf-to-webpage)
