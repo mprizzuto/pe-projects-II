@@ -1,11 +1,11 @@
 [
 	{
-		"villain": "The villain is responsible for keeping the meeting moving according to the agenda. This includes keeping time, keeping people on-track and off-tangent, enforcing the 'no advice' rule, and ending on time."
+		"web sheriff": "The Web Sheriff has industry experience in relevant technologies the team uses. He offers guidance in the form of mentorship and project direction."
 	},
 	{
-		"scribe": "The Scribe is responsible for taking notes throughout the meeting. This includes documenting pod members' attendance, weekly score, commitments, and assigning roles for the following week."
+		"Computer scientist": "The Computer scientist has computer science experience (degree or self-taught). He is able to offer recommendations about which technology to use, and has high and low level programming knowledge"
 	},
 	{
-		"Jester": "The Jester brings favorite joke to share while also maintaining general positivity throughout the meeting."
+		"UX guru": "The UX guru has visual design experience. They are profecient with working with different media formats. They have empathy for their users and are good at researching industry trends"
 	}
 ]

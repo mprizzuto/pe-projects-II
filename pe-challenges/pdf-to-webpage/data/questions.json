@@ -1,26 +1,26 @@
 [
 	{
-		"desc": "The following six questions are to be answered by each pod member. The 'Hot seat' member has 5 minutes to answer these and any other questions asked by the group. No advice may be given by pod members."
+		"desc": "Some questions team members should ask themselves at the end of every day"
 	},
 	{
 		"questions": [
 			{
-				"one": "Last week, I committed to ____"
+				"one": "did I use my time effeciently?"
 			},
 			{
-				"two": "What are my top 3 goals for this quarter?"
+				"two": "did I ask for help?"
 			},
 			{
-				"three": "What was my score last week?"
+				"three": "did I leverage all the resources available to me?"
 			},
 			{
-				"four": "What habits/actions did I do great with this past week?"
+				"four": "What can I do differently today than yesterday?"
 			},
 			{
-				"five": "What habits/actions did I struggle with this past week?(Pause for pod member questions. Only questions)What am I committing to specifically this week?"
+				"five": "Do I feel like my role has an impact on the project?"
 			},
 			{
-				"six": "What am I committing to specifically this week?"
+				"six": "Am I good at giving/receiving feedback and colloborating with my team respectfully?"
 			}
 		]
 	}

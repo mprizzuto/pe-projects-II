@@ -22,7 +22,7 @@
 
 		<section class="hot-seat">
 			<inner-column>
-				<h2>The Hot Seat Six</h2>
+				<h2>Standup questions</h2>
 				<?php include "./modules/questions.php"; ?>
 			</inner-column>
 		</section>

@@ -1,36 +1,36 @@
 [
 	{
-		"08 min": [
+		"Mon": [
 			{
-				"whole tribe gathering": "The whole Tribe meets together for announcements, house-keeping, a reading of the Tribal Rules, and a quick message from Tribal Leadership."
+				"planning": "hopefully you planned your week out on sunday, but monday morning is fine too. Think about the goals for the week, reflect on what you did last week and what you want to accomplish this week."
 			}
 		]
 	},
 	{
-		"05 min": [
+		"Tues": [
 			{
-				"Pod breakout and check-in": "The Tribe breaks into smaller pods. Attendance is taken, roles are defined, wins are announced from each pod member, and the \"Jester\" brings a joke."
+				"check-in": "Don't forget to check in with your teammates to see how they are doing! This is a good time to check that your actions are aligning with your roles, and pivot if necessary"
 			}
 		]
 	},
 	{
-		"01 min match": [
+		"wed": [
 			{
-				"Intention question": "The whole Tribe meets together for announcements, house-keeping, a reading of the Tribal Rules, and a quick message from Tribal Leadership."
+				"Question everything": "When we question things, it leads to discovery and colloboration. Stand-up facilitates colloboration and builds relationbships with your teammates. It also shows your teammates your strengths and weaknesses, and gives opportunities to offer/ask for help."
 			}
 		]
 	},
 	{
-		"05 min each": [
+		"thur": [
 			{
-				"hot seat six": "Each pod member has five minutes to answer the Hot Seat Six. Other pod members are not allowed to give advice but are to ask probing questions to help the hot seat participant discover their own solutions."
+				"progress check-in": "Hopefully by thursday you have gained momentum and are completing goals. While every standup is a chance to ask for help and project clarification, thursdays are especially important. You want to end the week strong and with feelings of success!"
 			}
 		]
 	},
 	{
-		"05 min": [
+		"Fri": [
 			{
-				"wrap up": "Each pod member has five minutes to answer the Hot Seat Six. Other pod members are not allowed to give advice but are to ask probing questions to help the hot seat participant discover their own solutions."
+				"reflections": "reflect on how the week went? did you do your daily stand-up? Did you ask and answer questions/concerns from your teammates? How can you have a more productive week? or if you had a productive week, how can you have better work/life balance"
 			}
 		]
 	}
