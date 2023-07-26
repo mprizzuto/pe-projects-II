@@ -11,3 +11,6 @@ use JavaScript to create a layout conditionally based on the amount of events yo
 - [`HTML`]
 - [`JavaScript`]
 - [`PHP`] *coming soon*
+
+## see it live
+[conditional layout](https://peprojects.dev/alpha-1/mprizzuto/pe-projects-II/pe-challenges/conditional-layout)
