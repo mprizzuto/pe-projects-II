@@ -18,9 +18,7 @@
 
 	<section>
 		<inner-column>
-			<header class="section-header">
-				<h1>welcome</h1>
-			</header>
+			<h1>Heading level 1</h1>
 
 		</inner-column>
 	</section>
