@@ -63,7 +63,7 @@ let eventsGenerator = {
       });
       return eventCard;
     }
-    setTimeout(this.generateEventCard(), 5000);
+    setTimeout(this.generateEventCard(), 3000);
   },
   getNumberOfEvents: function() {
     return eventList.childElementCount;
@@ -72,8 +72,8 @@ let eventsGenerator = {
     let numOfEvents = this.getNumberOfEvents();
     if (numOfEvents === 2) {
       this.getEventList().style.display = "flex";
-      this.getEventList().style.gridGap = "10px";
       this.getEventList().style.alignItems = "center";
+      this.getEventList().style.gridGap = "10px";
     }
     if (numOfEvents >= 3) {
        this.getEventList().style.display = "grid";
@@ -81,9 +81,10 @@ let eventsGenerator = {
         this.getEventList().style.gridTemplateColumns = "repeat(auto-fit, 186px)";
         // console.log("3 or more events", this.getNumberOfEvents());
     }
-    requestAnimationFrame(() => {
+    setTimeout(() => {
       this.applyLayout();
-    });
+    
+    }, 3000);
   }
 };
 
@@ -115,6 +116,16 @@ eventsGenerator.addEvent({
   time: "10",
   image: "https://peprojects.dev/images/square.jpg",
   alt: "alt text 2"
+});
+
+eventsGenerator.addEvent({
+  name: " another news news nes",
+  desc: "cats catcs cats",
+  hosts: "larry potter",
+  date: "8/2/23",
+  time: "10",
+  image: "https://peprojects.dev/images/square.jpg",
+  alt: "alt text 6"
 });
 
 eventsGenerator.addEvent({

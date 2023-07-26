@@ -61,7 +61,4 @@ li {
     display: flex; /* should this be done in JS ? */
     gap: 3%;
   }
-  li + li {
-    margin-top 0;
-  }
 }
