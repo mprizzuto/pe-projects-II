@@ -1,0 +1,41 @@
+/*  Setup */
+:root {
+  --main-line-height: 1.1;
+  --main-max-width: 600px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+picture {
+  display: block;
+}
+
+picture img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+inner-column {
+  display: block;
+  max-width: var(--main-max-width);
+  margin-right: auto;
+  margin-left: auto;
+  line-height: var(--main-line-height);
+  padding: 5px;
+}
+
+/* typography */
+strong {
+  font-weight: bolder;
+}
+
+em {
+  font-style: italic;
+}

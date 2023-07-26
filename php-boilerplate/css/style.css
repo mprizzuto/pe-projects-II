@@ -1,0 +1,6 @@
+@import "reset.css";
+@import "setup.css";
+
+h1 {
+	font-size: clamp(2em, 4vw, 5em);
+}
