@@ -1,0 +1,67 @@
+@import "reset.css";
+@import "setup.css";
+
+/* typography */
+h1 {
+  font-size: clamp(2.5em, 4vw, 5em);
+}
+
+:is(h1) {
+  line-height: 1;
+  text-transform-upper-case;
+}
+
+#event-list {
+}
+
+/* layouts */
+.diptych-view {
+  
+}
+
+.grid-view {
+  
+}
+
+/* components */
+event-card {
+  display: block;
+}
+
+event-details {
+  display: block;
+}
+
+details {
+  display: block;
+}
+
+:is(details) {
+  margin-top: 10px;
+}
+
+picture {
+  width: 90%;
+  max-width: 350px;
+}
+
+li + li {
+  margin-top: 30px;
+/*   flex-grow: 2; */
+}
+
+li {
+/*   flex-shrink: 1; */
+  flex-grow: 1;
+  flex-basis: 500px;
+}
+
+@media (min-width: 600px) {
+  event-card {
+    display: flex; /* should this be done in JS ? */
+    gap: 3%;
+  }
+  li + li {
+    margin-top 0;
+  }
+}
