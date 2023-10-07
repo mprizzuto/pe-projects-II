@@ -1,7 +1,7 @@
 function chessBoard(width, height) {
   let chessBoard = "\n";
-  for (let i = 0; i < height; i++) {
-    if (i % 2 === 0 ) {
+  for ( let i = 0; i < height; i++ ) {
+    if ( i % 2 === 0 ) {
       chessBoard += " #".repeat(width) + "\n";
     }
     else {
