@@ -3,6 +3,6 @@
 		"home": "/",
 		"goals": "?page=goals",
 		"guestbook": "?page=guestbook",
-		"contact": "?page=about"
+		"contact": "?page=contact"
 	}
 ]

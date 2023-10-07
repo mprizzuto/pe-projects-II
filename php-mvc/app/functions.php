@@ -26,5 +26,8 @@ function generateLinks( $linksArr ) {
       HEREDOC;
     }
   }
-  
+}
+
+function getCurrentPage() {
+  return $_GET["page"] ?? null;
 }
