@@ -6,12 +6,25 @@ function formatInput($input) {
 }
 
 
-function generateLinks() {
+function navLinksArray() {
   $pathToLinks = "../app/models/nav-links.json";
   
   $fileJSON = file_get_contents($pathToLinks);
 
   $linksAsArray = json_decode($fileJSON, true);
   
-  return formatInput($linksAsArray);
+  return $linksAsArray;
+}
+
+
+function generateLinks( $linksArr ) {
+  foreach ($linksArr as $key) {
+    foreach ($key as $subKey => $subValue) {
+      echo " ";
+      echo <<< HEREDOC
+      <a href="$subValue">$subKey</a>
+      HEREDOC;
+    }
+  }
+  
 }

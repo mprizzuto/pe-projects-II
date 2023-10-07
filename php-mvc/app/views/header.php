@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>PHP MVC</title>
+		<title>PHP MVC guerstbook</title>
 	</head>
 	<body>
 
@@ -13,9 +13,8 @@
 
 		include "../app/functions.php";
 		// formatInput($_POST);
-		
-		
-		echo generateLinks();
+
+	 generateLinks(	navLinksArray());
 		?>
 		
 		<header>
