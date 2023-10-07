@@ -8,18 +8,22 @@
 	<body>
 
 
-		<?php 
-		ini_set('display_errors', 1);
-
-		include "../app/functions.php";
-		// formatInput($_POST);
-
-	 generateLinks(	navLinksArray());
-		?>
+		
 		
 		<header>
 			<inner-column>
 				<h1>header</h1>
+
+				<nav>
+					<?php 
+					ini_set('display_errors', 1);
+
+					include "../app/functions.php";
+					// formatInput($_POST);
+
+				  generateLinks(	navLinksArray() );
+					?>
+				</nav>
 			</inner-column>
 		</header>
 		
