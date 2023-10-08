@@ -1,8 +1,16 @@
 [
 	{
 		"id": "",
-		"userName": "",
-		"time": "",
-		"message": ""
+		"session_id": "",
+		"userName": "userName1",
+		"time_stamp": "",
+		"comment": "comment 1"
+	},
+	{
+		"id": "",
+		"session_id": "",
+		"userName": "userName2",
+		"time_stamp": "",
+		"comment": "comment 2"
 	}
 ]

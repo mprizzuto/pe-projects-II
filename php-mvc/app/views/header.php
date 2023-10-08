@@ -4,11 +4,31 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>PHP MVC guerstbook</title>
+		<!-- <link rel="stylesheet" type="text/css" href="../app/styles/style.css"> -->
+		<style type="text/css">
+			* {
+/*				color: red;*/
+			}
+
+			form * {
+				margin-top: 20px;
+			}
+
+			inner-column {
+				display: block;
+				padding: 5px;
+				margin-right: auto;
+				margin-left: auto;
+				line-height: 1.5;
+			}
+
+      fieldset {
+/*        border: none;*/
+      }
+
+		</style>
 	</head>
 	<body>
-
-
-		
 		
 		<header>
 			<inner-column>

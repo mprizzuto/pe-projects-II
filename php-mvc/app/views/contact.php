@@ -1,1 +1,1 @@
-contact.php
+<h2>contact</h2>
