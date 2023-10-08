@@ -38,11 +38,11 @@ function getGuestbookData() {
   return json_decode($guestBook, true);
 }
 
-function writeToGuestBook(array $userData) {
+function writeToGuestBook($userName, $userComment, ) {
   $guestBook = file_get_contents("../app/models/guestbook.json"); // should this be its own function?
 
   $guestBookArray = json_decode($guestBook, true);
-  $guestBookArray[] = ["id" => generateGuestId(), $userData];
+  $guestBookArray[] = ["id" => generateGuestId(), "user_name" => $userName, "user_comment" => $userComment];
   $dataStr = json_encode($guestBookArray);
   
   file_put_contents("../app/models/guestbook.json", $dataStr);

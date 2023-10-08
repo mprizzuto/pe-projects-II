@@ -25,7 +25,6 @@
 if ( count(getGuestbookData() ?? [] ) > 0 ) {
   // formatInput( getGuestbookData() );
   templateGuestBookData();
-  writeToGuestBook(["name", "comment"]);
 }
 else {
   echo "no entries added";
@@ -40,6 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if ( strlen(trim($name)) === 0 || 
     strlen(trim($comment) === 0 ) ) {
     echo "empty valuues";
+  }
+  if ( strlen($name) > 0 && strlen($comment) > 0 ) {
+    writeToGuestBook($name, $comment);
   }
 }
 ?>
