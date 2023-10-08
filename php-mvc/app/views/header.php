@@ -26,6 +26,10 @@
       /*        border: none;*/
       }
 
+      .user-name {
+        font-weight: bolder;
+      }
+
 		</style>
 	</head>
 	<body>		

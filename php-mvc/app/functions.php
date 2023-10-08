@@ -46,7 +46,7 @@ function writeToGuestBook($userName, $userComment, ) {
   $dataStr = json_encode($guestBookArray);
   
   file_put_contents("../app/models/guestbook.json", $dataStr);
-
+  
   // formatInput($guestBookArray);
 }
 
@@ -54,15 +54,17 @@ function templateGuestBookData() {
   echo "<ul>";
   foreach (getGuestbookData() as $key => $value) {
      // formatInput($value["userName"]);
-     $userName= $value["userName"] ?? null;
-     $userComment= $value["comment"] ?? null;
+     $userName= $value["user_name"] ?? null;
+     $userComment= $value["user_comment"] ?? null;
      $dateMDY = getDateMDY();
 
      echo <<< GUESTCARD
      <li>
       <guest-card> 
           <span class="user-info">
-               <span>{$dateMDY}</span>
+               <div>
+               <span class='user-name'>{$userName}</span> {$dateMDY}
+               </div>
           
                <span id="client-time"> am/pm</span>
           </span>

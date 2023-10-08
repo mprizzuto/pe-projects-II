@@ -35,12 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   ["guest-name" => $name, "guest-comment" => $comment] = $_POST;
 
-  // echo $comment;
-  if ( strlen(trim($name)) === 0 || 
-    strlen(trim($comment) === 0 ) ) {
+  $nameSpacesOnly = strlen( trim($name) ) === 0;
+  $commentSpacesOnly = strlen( trim($comment) ) === 0;
+
+  if ( $nameSpacesOnly || $commentSpacesOnly) {
     echo "empty valuues";
   }
-  if ( strlen($name) > 0 && strlen($comment) > 0 ) {
+  if ( strlen(trim($name) > 0 && strlen(trim($comment) > 0 ) ) ) {
+    // TODO:  ONLY WRITE TO GUESTBOOK ONCE. PREVENT WRITING TO GUEST BOOK WHEN PAGE IS RELOADED
     writeToGuestBook($name, $comment);
   }
 }
