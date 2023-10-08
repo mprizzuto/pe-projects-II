@@ -26,7 +26,7 @@ function generateLinks($linksArr) {
       HEREDOC;
     }
   }
-}
+} 
 
 function getCurrentPage() {
   return $_GET["page"] ?? null;
@@ -36,17 +36,28 @@ function getGuestbookData() {
   $guestBook = file_get_contents("../app/models/guestbook.json");
 
   return json_decode($guestBook, true);
+}
 
+function writeToGuestBook(array $userData) {
+  $guestBook = file_get_contents("../app/models/guestbook.json"); // should this be its own function?
+
+  $guestBookArray = json_decode($guestBook, true);
+  $guestBookArray[] = ["id" => generateGuestId(), $userData];
+  $dataStr = json_encode($guestBookArray);
   
+  file_put_contents("../app/models/guestbook.json", $dataStr);
+
+  // formatInput($guestBookArray);
 }
 
 function templateGuestBookData() {
   echo "<ul>";
   foreach (getGuestbookData() as $key => $value) {
      // formatInput($value["userName"]);
-     $userName= $value["userName"];
-     $userComment= $value["comment"];
+     $userName= $value["userName"] ?? null;
+     $userComment= $value["comment"] ?? null;
      $dateMDY = getDateMDY();
+
      echo <<< GUESTCARD
      <li>
       <guest-card> 
@@ -58,22 +69,24 @@ function templateGuestBookData() {
 
           <p>$userComment</p>
 
-          <!-- TODO: only show delete edit links if post is <30 minutes old -->
+          <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match? -->
 
       </guest-card>
     </li>
   GUESTCARD;
-     
-    // foreach ($value as $subKey => $subValue) {
-
-    // }
- }
-echo "</ul>"; 
+  }
+  echo "</ul>"; 
 }
 
 function getDateMDY() {
-   return date("F j, Y");
- }
+  date_default_timezone_set("US/Eastern");
+
+  return date("F j, Y g:i A");
+}
+
+function generateGuestId() {
+  return uniqid();
+}
 
 
 

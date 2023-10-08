@@ -25,6 +25,7 @@
 if ( count(getGuestbookData() ?? [] ) > 0 ) {
   // formatInput( getGuestbookData() );
   templateGuestBookData();
+  writeToGuestBook(["name", "comment"]);
 }
 else {
   echo "no entries added";

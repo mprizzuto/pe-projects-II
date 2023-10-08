@@ -13,3 +13,4 @@ function getClientTime() {
   return `${hours}:${minutes} ${amOrPm}`;
 
 }
+console.log("SCRIPTS.js");

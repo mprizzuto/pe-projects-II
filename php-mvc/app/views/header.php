@@ -7,7 +7,7 @@
 		<!-- <link rel="stylesheet" type="text/css" href="../app/styles/style.css"> -->
 		<style type="text/css">
 			* {
-/*				color: red;*/
+    /*				color: red;*/
 			}
 
 			form * {
@@ -23,13 +23,12 @@
 			}
 
       fieldset {
-/*        border: none;*/
+      /*        border: none;*/
       }
 
 		</style>
 	</head>
-	<body>
-		
+	<body>		
 		<header>
 			<inner-column>
 				<h1>header</h1>
@@ -42,6 +41,7 @@
 					// formatInput($_POST);
 
 				  generateLinks(	navLinksArray() );
+
 					?>
 				</nav>
 			</inner-column>
