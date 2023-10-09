@@ -35,14 +35,16 @@ function getCurrentPage() {
 function getGuestbookData() {
   $guestBook = file_get_contents("../app/models/guestbook.json");
 
-  return json_decode($guestBook, true);
+  return json_decode($guestBook, true) ?? [];
 }
 
 function writeToGuestBook($userName, $userComment, ) {
   $guestBook = file_get_contents("../app/models/guestbook.json"); // should this be its own function?
 
-  $guestBookArray = json_decode($guestBook, true);
-  $guestBookArray[] = ["id" => generateGuestId(), "user_name" => $userName, "user_comment" => $userComment];
+  $guestBookArray = json_decode($guestBook, true) ?? [];
+  // $guestBookArray[] = ["id" => generateGuestId(), "user_name" => $userName, "user_comment" => $userComment];
+
+  array_unshift($guestBookArray, ["id" => generateGuestId(), "user_name" => $userName, "user_comment" => $userComment]);
   $dataStr = json_encode($guestBookArray);
   
   file_put_contents("../app/models/guestbook.json", $dataStr);
@@ -52,26 +54,26 @@ function writeToGuestBook($userName, $userComment, ) {
 
 function templateGuestBookData() {
   echo "<ul>";
-  foreach (getGuestbookData() as $key => $value) {
+  foreach (getGuestbookData() ?? [] as $key => $value) {
      // formatInput($value["userName"]);
      $userName= $value["user_name"] ?? null;
      $userComment= $value["user_comment"] ?? null;
      $dateMDY = getDateMDY();
-
+     //TODO: SANITIZE data below
      echo <<< GUESTCARD
      <li>
       <guest-card> 
-          <span class="user-info">
-               <div>
-               <span class='user-name'>{$userName}</span> {$dateMDY}
-               </div>
-          
-               <span id="client-time"> am/pm</span>
-          </span>
+        <ul class="user-info">
+          <li>
+            <span class='user-name'>{$userName}</span> {$dateMDY}
+          </li>
+        
+          <li class="client-time"> am/pm</li>
+        </ul>
 
-          <p>$userComment</p>
+        <p>$userComment</p>
 
-          <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match? -->
+        <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
 
       </guest-card>
     </li>
@@ -90,6 +92,13 @@ function generateGuestId() {
   return uniqid();
 }
 
-
+function validUserName($str) {
+  if ( preg_match("/[^a-zA-Z_0-9.]/", $str) ) {
+     return false;
+  }
+  else {
+    return true;
+  }
+}
 
 
