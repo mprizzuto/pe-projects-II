@@ -14,37 +14,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PHP MVC guerstbook</title>
-	<!-- <link rel="stylesheet" type="text/css" href="../app/styles/style.css"> -->
+	<link rel="stylesheet" type="text/css" href="./styles/style.css">
 
 	<style>
-		* {
-  /*				color: red;*/
-		}
-
-		form * {
-			margin-top: 20px;
-		}
-
-		inner-column {
-			display: block;
-			padding: 5px;
-			margin-right: auto;
-			margin-left: auto;
-      max-width: 700px;
-			line-height: 1.5;
-		}
-
-    fieldset {
-    /*        border: none;*/
-    }
-
-    .user-name {
-      font-weight: bolder;
-    }
-
-    ul li {
-    	overflow: scroll;
-    }
+		
 	</style>
 </head>
 <body>		

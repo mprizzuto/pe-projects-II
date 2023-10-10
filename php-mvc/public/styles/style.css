@@ -1,0 +1,32 @@
+* {
+/*				color: red;*/
+}
+
+form * {
+	margin-top: 20px;
+}
+
+inner-column {
+	display: block;
+	padding: 5px;
+	margin-right: auto;
+	margin-left: auto;
+max-width: 700px;
+	line-height: 1.5;
+}
+
+fieldset {
+/*        border: none;*/
+}
+
+.user-name {
+font-weight: bolder;
+}
+
+ul li {
+	overflow: scroll;
+}
+
+textarea {
+  resize: none;
+}
