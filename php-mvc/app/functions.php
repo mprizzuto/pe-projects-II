@@ -42,13 +42,13 @@ function writeToGuestBook($userName, $userComment, ) {
   $guestBook = file_get_contents("../app/models/guestbook.json"); // should this be its own function?
 
   $guestBookArray = json_decode($guestBook, true) ?? [];
+  // TODO: truncate comment or userName + append "..."   if it is over X amount
+  array_unshift( $guestBookArray, ["id" => generateGuestId(), "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ) ] );
 
-  array_unshift( $guestBookArray, ["id" => generateGuestId(), "user_name" => sanitizeUserNameAndComment($userName), "user_comment" => sanitizeUserNameAndComment($userComment)] );
   $dataStr = json_encode($guestBookArray);
   
   file_put_contents("../app/models/guestbook.json", $dataStr);
   
-  // formatInput($guestBookArray);
 }
 
 function templateGuestBookData() {
@@ -103,5 +103,11 @@ function validUserName($str) {
 function sanitizeUserNameAndComment($userName) {
   return preg_replace("/[^a-zA-Z_0-9.]\s?/", "", $userName);
 }
+
+// replace specific form field names with more generic "string" ?
+function truncateLongString($str, $length) { 
+  return substr($str, 0, $length);
+}
+
 
 

@@ -32,7 +32,8 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
 
   ["guest-name" => $name, "guest-comment" => $comment] = $_POST;
 
-  writeToGuestBook(trim($name), trim($comment) );
+  // writeToGuestBook(trim($name), trim($comment) );
+    writeToGuestBook($name, $comment);
 
 }
 

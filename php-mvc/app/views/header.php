@@ -15,7 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PHP MVC guerstbook</title>
 	<!-- <link rel="stylesheet" type="text/css" href="../app/styles/style.css"> -->
-	
+
 	<style>
 		* {
   /*				color: red;*/
@@ -42,6 +42,9 @@
       font-weight: bolder;
     }
 
+    ul li {
+    	overflow: scroll;
+    }
 	</style>
 </head>
 <body>		
