@@ -1,10 +1,10 @@
 <?php 
   include "../app/functions.php";
 
-  // if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
-  //   header("Location: index.php");
-  //   exit;
-  // }
+  if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
+    header("Location: index.php");
+    // exit;
+  }
 
 ?>
 
@@ -15,6 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PHP MVC guerstbook</title>
 	<!-- <link rel="stylesheet" type="text/css" href="../app/styles/style.css"> -->
+	
 	<style>
 		* {
   /*				color: red;*/
