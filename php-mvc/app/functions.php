@@ -42,9 +42,8 @@ function writeToGuestBook($userName, $userComment, ) {
   $guestBook = file_get_contents("../app/models/guestbook.json"); // should this be its own function?
 
   $guestBookArray = json_decode($guestBook, true) ?? [];
-  // $guestBookArray[] = ["id" => generateGuestId(), "user_name" => $userName, "user_comment" => $userComment];
 
-  array_unshift($guestBookArray, ["id" => generateGuestId(), "user_name" => $userName, "user_comment" => $userComment]);
+  array_unshift( $guestBookArray, ["id" => generateGuestId(), "user_name" => sanitizeUserNameAndComment($userName), "user_comment" => sanitizeUserNameAndComment($userComment)] );
   $dataStr = json_encode($guestBookArray);
   
   file_put_contents("../app/models/guestbook.json", $dataStr);
@@ -101,4 +100,6 @@ function validUserName($str) {
   }
 }
 
-
+function sanitizeUserNameAndComment($userName) {
+  return preg_replace("/[^a-zA-Z_0-9.]\s?/", "", $userName);
+}

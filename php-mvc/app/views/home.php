@@ -2,8 +2,6 @@
 
 <p>to leave a comment, go to the <a href="?page=guestbook">guestbook</a></p>
 
-
-
 <?php 
 if ( count( getGuestbookData() ) > 0 ) {
 	templateGuestBookData();
