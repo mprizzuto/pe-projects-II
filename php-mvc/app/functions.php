@@ -103,3 +103,5 @@ function validUserName($str) {
 function sanitizeUserNameAndComment($userName) {
   return preg_replace("/[^a-zA-Z_0-9.]\s?/", "", $userName);
 }
+
+

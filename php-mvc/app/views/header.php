@@ -1,9 +1,11 @@
 <?php 
   include "../app/functions.php";
 
-  if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
-    header("Location: index.php");
-  }
+  // if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
+  //   header("Location: index.php");
+  //   exit;
+  // }
+
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +56,12 @@
       </nav>
 
 			<h1>PHP guestbook</h1>
+			<?php 
 
+			if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
+				echo "POSTED";
+			}
+			?>
       <!-- <p>to leave a comment, go to the guestbook  <a href="?page=guestbook">guestbook</a></p> -->
 		</inner-column>
 	</header>
