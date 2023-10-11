@@ -59,7 +59,8 @@ function templateGuestBookData() {
      $userComment = $value["user_comment"] ?? null;
      $dateMDY = getDateMDY();
 
-     // maybe just use a regEx to check for no presence of letters here?
+     // maybe just use a regEx to check for no presence of letters here? 
+     //and maybe the HTML should be in a function?
      if ( $userName === "" || $userComment === "") {
        echo <<< GUESTCARD
          <li>
