@@ -33,12 +33,7 @@
       </nav>
 
 			<h1>PHP guestbook</h1>
-			<?php 
-
-			if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
-				echo "POSTED";
-			}
-			?>
+			
       <!-- <p>to leave a comment, go to the guestbook  <a href="?page=guestbook">guestbook</a></p> -->
 		</inner-column>
 	</header>

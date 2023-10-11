@@ -28,12 +28,10 @@
 <?php 
 
 if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
-  //   echo "FORM POStED \n\n";
 
   ["guest-name" => $name, "guest-comment" => $comment] = $_POST;
 
-  // writeToGuestBook(trim($name), trim($comment) );
-    writeToGuestBook($name, $comment);
+  writeToGuestBook($name, $comment);
 
 }
 

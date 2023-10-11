@@ -55,28 +55,53 @@ function templateGuestBookData() {
   echo "<ul>";
   foreach (getGuestbookData() ?? [] as $key => $value) {
      // formatInput($value["userName"]);
-     $userName= $value["user_name"] ?? null;
-     $userComment= $value["user_comment"] ?? null;
+     $userName = $value["user_name"] ?? null;
+     $userComment = $value["user_comment"] ?? null;
      $dateMDY = getDateMDY();
-     //TODO: SANITIZE data below
-     echo <<< GUESTCARD
-     <li>
-      <guest-card> 
-        <ul class="user-info">
-          <li>
-            <span class='user-name'>{$userName}</span> {$dateMDY}
-          </li>
-        
-          <li class="client-time"> am/pm</li>
-        </ul>
 
-        <p>$userComment</p>
+     // maybe just use a regEx to check for no presence of letters here?
+     if ( $userName === "" || $userComment === "") {
+       echo <<< GUESTCARD
+         <li>
+          <guest-card> 
+            <ul class="user-info">
+              <li>
+                <span class='user-name'>empty</span> {$dateMDY}
+              </li>
+            
+              <li class="client-time"> am/pm</li>
+            </ul>
 
-        <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
+            <p>empty</p>
 
-      </guest-card>
-    </li>
-  GUESTCARD;
+            <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
+
+          </guest-card>
+        </li>
+      GUESTCARD;
+     }
+     else {
+        //TODO: SANITIZE data below
+         echo <<< GUESTCARD
+         <li>
+          <guest-card> 
+            <ul class="user-info">
+              <li>
+                <span class='user-name'>{$userName}</span> {$dateMDY}
+              </li>
+            
+              <li class="client-time"> am/pm</li>
+            </ul>
+
+            <p>$userComment</p>
+
+            <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
+
+          </guest-card>
+        </li>
+      GUESTCARD;
+     }
+     
   }
   echo "</ul>"; 
 }
