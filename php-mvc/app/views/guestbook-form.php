@@ -33,6 +33,8 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
 
   writeToGuestBook($name, $comment);
 
+	array_push($_SESSION["user_name"], [ $_POST["guest-name"] ]);
+
 }
 
 ?>

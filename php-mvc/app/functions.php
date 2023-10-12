@@ -42,8 +42,13 @@ function writeToGuestBook($userName, $userComment, ) {
   $guestBook = file_get_contents("../app/models/guestbook.json"); // should this be its own function?
 
   $guestBookArray = json_decode($guestBook, true) ?? [];
-  // TODO: truncate comment or userName + append "..."   if it is over X amount
-  array_unshift( $guestBookArray, ["id" => generateGuestId(), "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ) ] );
+
+  session_start();
+
+  // $_SESSION["name"] = [ "user_info" => [$_POST["guest-name"] ?? null, session_create_id("guestUser")] ];
+
+  array_unshift( $guestBookArray, ["id" => generateGuestId(), "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), "session_id" => session_create_id() ] );
+
 
   $dataStr = json_encode($guestBookArray);
   
