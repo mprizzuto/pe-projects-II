@@ -6,4 +6,5 @@
 if (isFileEmpty("./views/contact.php")) {
 	echo "404 INCLUDED";
 }
+formatInput($_SESSION);
 ?>
