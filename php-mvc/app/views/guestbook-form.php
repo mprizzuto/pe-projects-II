@@ -31,9 +31,9 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
 
   ["guest-name" => $name, "guest-comment" => $comment] = $_POST;
 
-  writeToGuestBook($name, $comment);
+	writeToGuestBook($name, $comment);
 
-	array_push($_SESSION["user_name"], [ $_POST["guest-name"] ]);
+	array_push($_SESSION["user_name"], [truncateLongString($_POST["guest-name"], 15), session_id()]);
 
 }
 
