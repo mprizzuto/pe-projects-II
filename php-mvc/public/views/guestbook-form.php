@@ -2,11 +2,11 @@
 	<inner-column>
 		<h2>sign the guestbook</h2>
 
-   <p>username rules</p>
+  	<p>username rules</p>
 
 	 <ul class="username-rules">
-        <li>userName can only contain letters or numbers. no spaces allowed</li>
-      </ul>
+   	<li>userName can only contain letters or numbers. no spaces allowed</li>
+   </ul>
 
 		<form id="guestbook-form" method="POST">
 			<fieldset>
@@ -33,7 +33,7 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
 
 	writeToGuestBook($name, $comment);
 
-	array_push($_SESSION["user_name"], ["guest_name" => truncateLongString($_POST["guest-name"], 15), "session_id" => session_id()]);
+	array_push($_SESSION["user_data"], ["guest_name" => truncateLongString($_POST["guest-name"], 15), "session_id" => session_id()]);
 	
 }
 

@@ -1,8 +1,8 @@
 <?php
 session_start();
 // $_SESSION["user_name"] = [];
-if ( !isset($_SESSION["user_name"] ) ) {
-	$_SESSION["user_name"] = [];
+if ( !isset($_SESSION["user_data"] ) ) {
+	$_SESSION["user_data"] = [];
 }
 // echo strlen(trim(" f "));
 ?>
@@ -43,21 +43,7 @@ if ( !isset($_SESSION["user_name"] ) ) {
 			<h1>PHP guestbook</h1>
 
 			<?php 
-			// if ( count( getGuestbookData() ?? [] === 0 ) ) {
-			// 	// unset($_SESSION["user_name"]);
-			// 	unset($_SESSION["user_name"]);
-			// 	formatInput($_SESSION);
-			// }
-			// else {
-			// 	formatInput($_SESSION);
-			// }
-
-			if ( count( getGuestbookData() ) === 0  ) {
-				session_destroy();
-			}
-
-			
-
+			formatInput($_SESSION);
 			?>
       <!-- <p>to leave a comment, go to the guestbook  <a href="?page=guestbook">guestbook</a></p> -->
 		</inner-column>

@@ -3,8 +3,6 @@
 <?php include "./views/footer.php"; ?>
 
 <?php 
-if (isFileEmpty("./views/contact.php")) {
-	echo "404 INCLUDED";
-}
-formatInput($_SESSION);
+
+// formatInput($_SESSION);
 ?>

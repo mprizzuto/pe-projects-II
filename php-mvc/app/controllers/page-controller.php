@@ -2,7 +2,6 @@
 switch ( getCurrentPage() ) {
 	case "":
   case "home":
-  // echo "IT WOKS";
 		include "./views/home.php";
 		break;
 	

@@ -21,6 +21,7 @@ if ( count( getGuestbookData() ) > 0 ) {
 	templateGuestBookData();
 }
 else {
-  echo "no entries currently";
+  unset($_SESSION["user_data"]);
 }
+
 ?>
