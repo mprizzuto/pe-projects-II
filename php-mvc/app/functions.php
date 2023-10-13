@@ -140,5 +140,16 @@ function truncateLongString($str, $length) {
   return substr($str, 0, $length);
 }
 
+function countUsers() {
+  return count( getGuestbookData() );
+}
 
+function isFileEmpty($file) {
+  $currentFile  = file_get_contents($file);
+
+  if ( strlen(trim($currentFile)) === 0 ) {
+    // if this is true the 404.php should be included... on the page of the function call
+    return true;
+  }
+}
 
