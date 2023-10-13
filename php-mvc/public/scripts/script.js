@@ -65,7 +65,5 @@ name?.addEventListener("input", (event) => {
 });
 
 comment?.addEventListener("input", (event) => {
-	console.log(event.target.value);
+	// console.log(event.target.value);
 });
-console.log(comment);
-
