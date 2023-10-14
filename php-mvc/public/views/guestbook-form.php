@@ -11,7 +11,7 @@
 		<form id="guestbook-form" method="POST">
 			<fieldset>
 				<label for="guest-name">name</label>
-				<input id="guest-name" type="text" name="guest-name" required>
+				<input id="guest-name" type="text" name="guest-name" value="<?php echo getCurrentPage() === "edit" ? "getValueById" : "" ?>" required>
 				<span class="user-message"></span>
 			</fieldset>
 			

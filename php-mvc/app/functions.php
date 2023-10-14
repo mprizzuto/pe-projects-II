@@ -65,6 +65,7 @@ function templateGuestBookData() {
      $userName = $value["user_name"] ?? null;
      $userComment = $value["user_comment"] ?? null;
      $postTime = $value["post_time"] ?? null;
+     $postid = $value["id"] ?? null;
 
      // maybe just use a regEx to check for no presence of letters here? 
      //and maybe the HTML should be in a function?
@@ -90,7 +91,7 @@ function templateGuestBookData() {
      }
      else {
       $canEdit = canUserEdit();
-      $linksTemplate = $canEdit === true ? "<a href='#'>edit</a>  <a href='#'>delete</a>" : "";
+      $linksTemplate = $canEdit === true ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='#'>delete</a>" : "";
         //TODO: SANITIZE data below
          echo <<< GUESTCARD
          <li>
