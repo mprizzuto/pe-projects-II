@@ -43,17 +43,19 @@ function writeToGuestBook($userName, $userComment, ) {
 
   $guestBookArray = json_decode($guestBook, true) ?? [];
 
-  session_start();
-
-  // $_SESSION["name"] = [ "user_info" => [$_POST["guest-name"] ?? null, session_create_id("guestUser")] ];
-
-  array_unshift( $guestBookArray, ["id" => generateGuestId(), "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), "session_id" => session_create_id() ] );
-
+  // session_start();
+// "post_time" => $getDateMDY()
+  array_unshift( $guestBookArray, [
+    "id" => generateGuestId(), 
+    "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), 
+    "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), 
+    "session_id" => session_create_id(),
+    "post_time" => getDateMDY()
+  ]);
 
   $dataStr = json_encode($guestBookArray);
   
   file_put_contents("../app/models/guestbook.json", $dataStr);
-  
 }
 
 function templateGuestBookData() {
@@ -62,17 +64,17 @@ function templateGuestBookData() {
      // formatInput($value["userName"]);
      $userName = $value["user_name"] ?? null;
      $userComment = $value["user_comment"] ?? null;
-     $dateMDY = getDateMDY();
+     $postTime = $value["post_time"] ?? null;
 
      // maybe just use a regEx to check for no presence of letters here? 
      //and maybe the HTML should be in a function?
-     if ( $userName === "" || $userComment === "") {
+     if ( $userName === "" || $userComment === "" ) {
        echo <<< GUESTCARD
          <li>
           <guest-card> 
             <ul class="user-info">
               <li>
-                <span class='user-name'>empty</span> {$dateMDY}
+                <span class='user-name'>empty</span> {$postTime}
               </li>
             
               <li class="client-time"> am/pm</li>
@@ -87,20 +89,22 @@ function templateGuestBookData() {
       GUESTCARD;
      }
      else {
+      $canEdit = canUserEdit();
+      $linksTemplate = $canEdit === true ? "<a href='#'>edit</a>  <a href='#'>delete</a>" : "";
         //TODO: SANITIZE data below
          echo <<< GUESTCARD
          <li>
           <guest-card> 
             <ul class="user-info">
               <li>
-                <span class='user-name'>{$userName}</span> {$dateMDY}
+                <span class='user-name'>{$userName}</span> {$postTime}
               </li>
             
               <li class="client-time"> am/pm</li>
             </ul>
 
             <p>$userComment</p>
-
+            <p>$linksTemplate</p>
             <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
 
           </guest-card>
@@ -151,5 +155,13 @@ function isFileEmpty($file) {
     // if this is true the 404.php should be included... on the page of the function call
     return true;
   }
+}
+
+function canUserEdit() {
+  if ( ( time() - $_SESSION["start"] ) > (60 * 30) ) {
+    // unset($_SESSION['example']);
+    return false;
+  }
+  return true;
 }
 

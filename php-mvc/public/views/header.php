@@ -1,17 +1,24 @@
 <?php
 session_start();
-// $_SESSION["user_name"] = [];
 if ( !isset($_SESSION["user_data"] ) ) {
 	$_SESSION["user_data"] = [];
+	// $currentTime = time();
+	// $_SESSION["start"] = time();
+
 }
-// echo strlen(trim(" f "));
+// $currentTime = time();
+
+$TIME_TO_EXPIRE = 18000;
+
+// echo $TIME_TO_EXPIRE;
+// echo $currentTime;
 ?>
 
 <?php 
   include "../app/functions.php";
 
   if ( $_SERVER["REQUEST_METHOD"] === "POST") {
-  	
+  	$_SESSION["start"] = time();
     header("Location: index.php");
     // exit;
   }
@@ -36,6 +43,7 @@ if ( !isset($_SESSION["user_data"] ) ) {
         ini_set('display_errors', 1);
 
         generateLinks(  navLinksArray() );
+        // unset($_SESSION["user_data"]);
 
         ?>
       </nav>
