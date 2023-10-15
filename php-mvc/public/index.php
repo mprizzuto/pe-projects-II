@@ -3,6 +3,7 @@
 <?php include "./views/footer.php"; ?>
 
 <?php 
-
-// formatInput($_SESSION);
+// if ( time() - $_SESSION["start"] ?? null > 1800  ) {
+// 	session_destroy();
+// }
 ?>

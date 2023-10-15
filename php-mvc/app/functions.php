@@ -50,8 +50,8 @@ function writeToGuestBook($userName, $userComment, ) {
     "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), 
     "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), 
     "session_id" => session_create_id(),
-    "post_time" => getDateMDY()
-  ]);
+    "post_time" => time()
+  ] );
 
   $dataStr = json_encode($guestBookArray);
   
@@ -66,6 +66,8 @@ function templateGuestBookData() {
      $userComment = $value["user_comment"] ?? null;
      $postTime = $value["post_time"] ?? null;
      $postid = $value["id"] ?? null;
+     $postTimeFormatted = getDateMDY($value["post_time"]);
+     // getDateMDY($postTime);
 
      // maybe just use a regEx to check for no presence of letters here? 
      //and maybe the HTML should be in a function?
@@ -75,7 +77,7 @@ function templateGuestBookData() {
           <guest-card> 
             <ul class="user-info">
               <li>
-                <span class='user-name'>empty</span> {$postTime}
+                <span class='user-name'>empty</span> {$postTimeFormatted}
               </li>
             
               <li class="client-time"> am/pm</li>
@@ -92,13 +94,14 @@ function templateGuestBookData() {
      else {
       $canEdit = canUserEdit();
       $linksTemplate = $canEdit === true ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='#'>delete</a>" : "";
+
         //TODO: SANITIZE data below
          echo <<< GUESTCARD
          <li>
           <guest-card> 
             <ul class="user-info">
               <li>
-                <span class='user-name'>{$userName}</span> {$postTime}
+                <span class='user-name'>{$userName}</span> {$postTimeFormatted}
               </li>
             
               <li class="client-time"> am/pm</li>
@@ -117,10 +120,10 @@ function templateGuestBookData() {
   echo "</ul>"; 
 }
 
-function getDateMDY() {
+function getDateMDY($time) {
   date_default_timezone_set("US/Eastern");
 
-  return date("F j, Y g:i A");
+  return date("F j, Y g:i A", $time);
 }
 
 function generateGuestId() {
@@ -159,17 +162,16 @@ function isFileEmpty($file) {
 }
 
 function canUserEdit() {
-  $startTime = $_SERVER["start"] ?? null;
-  $minutesToAdd = 30 * 60; // Convert 30 minutes to seconds
-
-  $futureTimestamp = $startTime + $minutesToAdd;
-
-  // $timeDifference = $endTime;
-  // TODO: change time()
-  if ( $startTime ===  $futureTimestamp) {
+  $startTime = $_SESSION["start"] ?? null;
+  if ( time() - $startTime > 1800 ) {
     // unset($_SESSION['example']);
+    // compare time in session to time post ws made in DB. if it exceeds 30 minutes disable editing
     return false;
   }
-  return true;
+  // can this else block be removed?
+  else {
+     return true;
+  }
+ 
 }
 
