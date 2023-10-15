@@ -22,6 +22,7 @@ if ( count( getGuestbookData() ) > 0 ) {
 }
 else {
   unset($_SESSION["user_data"]);
+  unset($_SESSION["start"]);
 }
 
 ?>

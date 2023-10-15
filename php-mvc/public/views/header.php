@@ -17,7 +17,7 @@ $TIME_TO_EXPIRE = 18000;
 <?php 
   include "../app/functions.php";
 
-  if ( $_SERVER["REQUEST_METHOD"] === "POST") {
+  if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
   	date_default_timezone_set('America/New_York');
   	$_SESSION["start"] = time();
     header("Location: index.php");

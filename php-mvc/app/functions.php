@@ -21,9 +21,9 @@ function generateLinks($linksArr) {
   foreach ($linksArr as $key) {
     foreach ($key as $subKey => $subValue) {
       echo " ";
-      echo <<< HEREDOC
+      echo <<< NAVLINKS
       <a href="$subValue">$subKey</a>
-      HEREDOC;
+      NAVLINKS;
     }
   }
 } 
@@ -160,15 +160,16 @@ function isFileEmpty($file) {
 
 function canUserEdit() {
   $startTime = $_SERVER["start"] ?? null;
-  $TIME_END = 1800;
-  $endTime = $startTime + $TIME_END;
+  $minutesToAdd = 30 * 60; // Convert 30 minutes to seconds
 
-  $timeDifference = $endTime;
+  $futureTimestamp = $startTime + $minutesToAdd;
+
+  // $timeDifference = $endTime;
   // TODO: change time()
-  // if ( $TIME_END ) {
-  //   // unset($_SESSION['example']);
-  //   return false;
-  // }
-  // return true;
+  if ( $startTime ===  $futureTimestamp) {
+    // unset($_SESSION['example']);
+    return false;
+  }
+  return true;
 }
 
