@@ -15,11 +15,11 @@ switch ( getCurrentPage() ) {
 
   case "contact":
     include "./views/contact.php";
-    break; 
-        
-  case "edit":
-    include "./views/guestbook-edit.php";
     break;
+
+    // case "edit":
+    // include "./views/guestbook-edit.php";
+    // break;
           
 	default:
 		include "./views/404.php";

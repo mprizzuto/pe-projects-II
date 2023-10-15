@@ -159,10 +159,16 @@ function isFileEmpty($file) {
 }
 
 function canUserEdit() {
-  if ( ( time() - $_SESSION["start"] ) > (60 * 30) ) {
-    // unset($_SESSION['example']);
-    return false;
-  }
-  return true;
+  $startTime = $_SERVER["start"] ?? null;
+  $TIME_END = 1800;
+  $endTime = $startTime + $TIME_END;
+
+  $timeDifference = $endTime;
+  // TODO: change time()
+  // if ( $TIME_END ) {
+  //   // unset($_SESSION['example']);
+  //   return false;
+  // }
+  // return true;
 }
 

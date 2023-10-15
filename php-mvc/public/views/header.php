@@ -18,6 +18,7 @@ $TIME_TO_EXPIRE = 18000;
   include "../app/functions.php";
 
   if ( $_SERVER["REQUEST_METHOD"] === "POST") {
+  	date_default_timezone_set('America/New_York');
   	$_SESSION["start"] = time();
     header("Location: index.php");
     // exit;
@@ -43,8 +44,9 @@ $TIME_TO_EXPIRE = 18000;
         ini_set('display_errors', 1);
 
         generateLinks(  navLinksArray() );
-        // unset($_SESSION["user_data"]);
 
+        // unset($_SESSION["user_data"]);
+        // unset($_SESSION["start"]);
         ?>
       </nav>
 
