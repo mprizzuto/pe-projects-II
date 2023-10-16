@@ -109,6 +109,7 @@ function templateGuestBookData() {
 
             <p>$userComment</p>
             <p>$linksTemplate</p>
+            {$value["post_time"]}
             <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
 
           </guest-card>
@@ -163,7 +164,10 @@ function isFileEmpty($file) {
 
 function canUserEdit() {
   $startTime = $_SESSION["start"] ?? null;
-  if ( time() - $startTime > 1800 ) {
+  // time() - $startTime > 1800 
+  // if the current time - the session start time 
+  // is greater than 30 minutes return false.
+  if ( time() - $startTime > 1800) {
     // unset($_SESSION['example']);
     // compare time in session to time post ws made in DB. if it exceeds 30 minutes disable editing
     return false;

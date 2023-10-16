@@ -6,4 +6,5 @@
 // if ( time() - $_SESSION["start"] ?? null > 1800  ) {
 // 	session_destroy();
 // }
+// echo ( time() - $_SESSION["start"] > 1800 ? "true" : "false");
 ?>
