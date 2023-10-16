@@ -67,7 +67,8 @@ function templateGuestBookData() {
      $postTime = $value["post_time"] ?? null;
      $postid = $value["id"] ?? null;
      $postTimeFormatted = getDateMDY($value["post_time"]);
-     // getDateMDY($postTime);
+     $timeElapsed = (time() - $postTime >= 180) ? false: true;
+     $linksTemplate = $timeElapsed === true ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='#'>delete</a>" : "";
 
      // maybe just use a regEx to check for no presence of letters here? 
      //and maybe the HTML should be in a function?
@@ -84,6 +85,7 @@ function templateGuestBookData() {
             </ul>
 
             <p>empty</p>
+            <p>$linksTemplate</p>
 
             <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
 
@@ -92,11 +94,7 @@ function templateGuestBookData() {
       GUESTCARD;
      }
      else {
-      $canEdit = canUserEdit();
-      $linksTemplate = $canEdit === true ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='#'>delete</a>" : "";
-
-        //TODO: SANITIZE data below
-         echo <<< GUESTCARD
+       echo <<< GUESTCARD
          <li>
           <guest-card> 
             <ul class="user-info">
@@ -109,12 +107,11 @@ function templateGuestBookData() {
 
             <p>$userComment</p>
             <p>$linksTemplate</p>
-            {$value["post_time"]}
             <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
 
           </guest-card>
         </li>
-      GUESTCARD;
+    GUESTCARD;
      }
      
   }
@@ -162,20 +159,10 @@ function isFileEmpty($file) {
   }
 }
 
-function canUserEdit() {
-  $startTime = $_SESSION["start"] ?? null;
-  // time() - $startTime > 1800 
-  // if the current time - the session start time 
-  // is greater than 30 minutes return false.
-  if ( time() - $startTime > 1800) {
-    // unset($_SESSION['example']);
-    // compare time in session to time post ws made in DB. if it exceeds 30 minutes disable editing
-    return false;
-  }
-  // can this else block be removed?
-  else {
-     return true;
-  }
- 
-}
+// function canUserEdit() {
+//   if ( (time() - $postTime > 180) ) {
+//     return false;
+//   }
+//   return true;
+// }
 

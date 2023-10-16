@@ -44,9 +44,6 @@ $TIME_TO_EXPIRE = 18000;
         ini_set('display_errors', 1);
 
         generateLinks(  navLinksArray() );
-
-        // unset($_SESSION["user_data"]);
-        // unset($_SESSION["start"]);
         ?>
       </nav>
 
@@ -54,6 +51,7 @@ $TIME_TO_EXPIRE = 18000;
 
 			<?php 
 			formatInput($_SESSION);
+			
 			?>
       <!-- <p>to leave a comment, go to the guestbook  <a href="?page=guestbook">guestbook</a></p> -->
 		</inner-column>
