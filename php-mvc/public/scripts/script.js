@@ -9,7 +9,7 @@ function getClientTime() {
 
   let amOrPm = hours >= 12 ? "pm" : "am";
 
-  console.log(`${hours}:${minutes} ${amOrPm}`);
+  // console.log(`${hours}:${minutes} ${amOrPm}`);
   return `${hours}:${minutes} ${amOrPm}`;
 }
 
@@ -76,7 +76,7 @@ comment?.addEventListener("input", (event) => {
 
     event.target.style.border = "3px solid red";
     // userMessage.textContent = "no emoty spaces allowed";
-    event.currentTarget.parentElement.querySelector(".user-message").textContent = "no empty spaces allowed";
+    event.currentTarget.parentElement.querySelector(".user-message").textContent = "invalid: whitespace only";
     console.log();
     submitButton.disabled = true;
     event.preventDefault();

@@ -17,6 +17,7 @@ function navLinksArray() {
 }
 
 
+
 function generateLinks($linksArr) {
   foreach ($linksArr as $key) {
     foreach ($key as $subKey => $subValue) {
@@ -26,17 +27,23 @@ function generateLinks($linksArr) {
       NAVLINKS;
     }
   }
-} 
+}
+
+
 
 function getCurrentPage() {
   return $_GET["page"] ?? null;
 }
+
+
 
 function getGuestbookData() {
   $guestBook = file_get_contents("../app/models/guestbook.json");
 
   return json_decode($guestBook, true) ?? [];
 }
+
+
 
 function writeToGuestBook($userName, $userComment) {
   $guestBook = file_get_contents("../app/models/guestbook.json"); // should this be its own function?
@@ -47,7 +54,7 @@ function writeToGuestBook($userName, $userComment) {
     "id" => generateGuestId(), 
     "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), 
     "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), 
-    "session_id" => session_create_id(),
+    "session_id" => session_id(),
     "post_time" => time()
   ] );
 
@@ -55,6 +62,8 @@ function writeToGuestBook($userName, $userComment) {
   
   file_put_contents("../app/models/guestbook.json", $dataStr);
 }
+
+
 
 function templateGuestBookData() {
   echo "<ul>";
@@ -65,8 +74,11 @@ function templateGuestBookData() {
      $postTime = $value["post_time"] ?? null;
      $postid = $value["id"] ?? null;
      $postTimeFormatted = getDateMDY($value["post_time"]);
-     $timeElapsed = (time() - $postTime >= 180) ? false: true; // changes to 3 instead of 30 minutes for testing purposes
-     $linksTemplate = $timeElapsed === true ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='?page=delete&id=$postid'>delete</a>" : ""; // TODO: validate user. add check to make sure session id and cookie match
+      // $timeElapsed = (time() - $postTime >= 180) ? false: true; //old way
+     $timeElapsed = (time() - $postTime >= 180) ? true: false; // changed to 3 instead of 30 minutes for testing purposes. i think the logic can be improved
+     $doesSessionDataMatch = $value["session_id"] === $_COOKIE["PHPSESSID"];
+     // $linksTemplate = $timeElapsed !== true && $doesSessionDataMatch ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='?page=delete&id=$postid'>delete</a>" : ""; // TODO: validate user. add check to make sure session id and cookie match
+     $linksTemplate = $timeElapsed === false && $doesSessionDataMatch ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='?page=delete&id=$postid'>delete</a>" : ""; 
 
      // maybe just use a regEx to check for no presence of letters here? 
      //and maybe the HTML should be in a function?
@@ -89,7 +101,7 @@ function templateGuestBookData() {
 
           </guest-card>
         </li>
-      GUESTCARD;
+       GUESTCARD;
      }
      else {
        echo <<< GUESTCARD
@@ -116,15 +128,21 @@ function templateGuestBookData() {
   echo "</ul>"; 
 }
 
+
+
 function getDateMDY($time) {
   date_default_timezone_set("US/Eastern");
 
   return date("F j, Y g:i A", $time);
 }
 
+
+
 function generateGuestId() {
   return uniqid();
 }
+
+
 
 function validUserName($str) {
   if ( preg_match("/[^a-zA-Z_0-9.]/", $str) ) {
@@ -135,18 +153,26 @@ function validUserName($str) {
   }
 }
 
+
+
 function sanitizeUserNameAndComment($userName) {
   return preg_replace("/[^a-zA-Z_0-9.]\s?/", "", $userName);
 }
+
+
 
 // replace specific form field names with more generic "string" ?
 function truncateLongString($str, $length) { 
   return substr($str, 0, $length);
 }
 
+
+
 function countUsers() {
   return count( getGuestbookData() );
 }
+
+
 
 function isFileEmpty($file) {
   $currentFile  = file_get_contents($file);
@@ -157,10 +183,6 @@ function isFileEmpty($file) {
   }
 }
 
-// function canUserEdit() {
-//   if ( (time() - $postTime > 180) ) {
-//     return false;
-//   }
-//   return true;
-// }
+
+
 

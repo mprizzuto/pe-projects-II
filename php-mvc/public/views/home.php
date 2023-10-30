@@ -20,9 +20,9 @@
 if ( count( getGuestbookData() ) > 0 ) {
 	templateGuestBookData();
 }
-else {
+else if ( count( getGuestbookData() ) === 0 && 
+  isset($_SESSION["user_data"]) ) {
   session_destroy();
-  // formatInput($_SESSION);
 }
 
 ?>

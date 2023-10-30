@@ -17,6 +17,10 @@ switch ( getCurrentPage() ) {
     include "./views/contact.php";
     break;
 
+  case "delete":
+    include "./views/delete.php";
+    break;  
+
     // case "edit":
     // include "./views/guestbook-edit.php";
     // break;
