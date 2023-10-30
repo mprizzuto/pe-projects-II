@@ -1,8 +1,0 @@
-[
-	{
-		"home": "/",
-		"goals": "?page=goals",
-		"guestbook": "?page=guestbook",
-		"contact": "?page=contact"
-	}
-]
