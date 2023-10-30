@@ -21,9 +21,8 @@ if ( count( getGuestbookData() ) > 0 ) {
 	templateGuestBookData();
 }
 else {
-  // unset($_SESSION["user_data"]);
-  // unset($_SESSION["start"]);
   session_destroy();
+  // formatInput($_SESSION);
 }
 
 ?>

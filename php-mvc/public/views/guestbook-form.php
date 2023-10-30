@@ -18,6 +18,7 @@
 			<fieldset>
 				<label for="guest-comment">comment</label>
 				<textarea id="guest-comment" name="guest-comment" rows="5" cols="34" required></textarea>
+				<span class="user-message"></span>
 			</fieldset>
 
 			<button type="submit" value="submit">submit</button>

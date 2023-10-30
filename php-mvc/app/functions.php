@@ -38,13 +38,11 @@ function getGuestbookData() {
   return json_decode($guestBook, true) ?? [];
 }
 
-function writeToGuestBook($userName, $userComment, ) {
+function writeToGuestBook($userName, $userComment) {
   $guestBook = file_get_contents("../app/models/guestbook.json"); // should this be its own function?
 
   $guestBookArray = json_decode($guestBook, true) ?? [];
 
-  // session_start();
-// "post_time" => $getDateMDY()
   array_unshift( $guestBookArray, [
     "id" => generateGuestId(), 
     "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), 
@@ -67,8 +65,8 @@ function templateGuestBookData() {
      $postTime = $value["post_time"] ?? null;
      $postid = $value["id"] ?? null;
      $postTimeFormatted = getDateMDY($value["post_time"]);
-     $timeElapsed = (time() - $postTime >= 180) ? false: true;
-     $linksTemplate = $timeElapsed === true ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='#'>delete</a>" : "";
+     $timeElapsed = (time() - $postTime >= 180) ? false: true; // changes to 3 instead of 30 minutes for testing purposes
+     $linksTemplate = $timeElapsed === true ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='?page=delete&id=$postid'>delete</a>" : ""; // TODO: validate user. add check to make sure session id and cookie match
 
      // maybe just use a regEx to check for no presence of letters here? 
      //and maybe the HTML should be in a function?
@@ -95,7 +93,7 @@ function templateGuestBookData() {
      }
      else {
        echo <<< GUESTCARD
-         <li>
+        <li>
           <guest-card> 
             <ul class="user-info">
               <li>
@@ -111,7 +109,7 @@ function templateGuestBookData() {
 
           </guest-card>
         </li>
-    GUESTCARD;
+       GUESTCARD;
      }
      
   }
