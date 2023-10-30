@@ -1,0 +1,8 @@
+[
+	{
+		"home": "index.php",
+		"goals": "?page=goals",
+		"guestbook": "?page=guestbook",
+		"contact": "?page=contact"
+	}
+]
