@@ -58,7 +58,7 @@ function writeToGuestBook($userName, $userComment) {
     "post_time" => time()
   ] );
 
-  $dataStr = json_encode($guestBookArray);
+  $dataStr = json_encode($guestBookArray, JSON_PRETTY_PRINT);
   
   file_put_contents("./app/models/guestbook.json", $dataStr);
 }
@@ -184,5 +184,34 @@ function isFileEmpty($file) {
 }
 
 
+function isPostIdValid(string $id) {
+
+}
 
 
+function deletePost() {
+  $postsDbFile =  "./app/models/guestbook.json";
+  $postDbString = file_get_contents($postsDbFile);
+  $postDbJSON = json_decode($postDbString, true);
+  $idAsGetParam = $_GET["id"] ?? null;
+
+  foreach ($postDbJSON as $arrIndex => $arrValue) {
+    
+    if ( $arrValue["id"] === $idAsGetParam ) {
+      
+      unset($postDbJSON[$arrIndex]);
+      $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
+
+      file_put_contents($postsDbFile, $postDbString);
+      return true;
+    }
+    // else if ( $arrValue["id"] !== $idAsGetParam ) {
+    //   return 
+    // }
+
+    else {
+      // formatInput($postDbJSON);
+      return false;
+    }
+  }
+}
