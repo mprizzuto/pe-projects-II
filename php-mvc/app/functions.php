@@ -50,14 +50,20 @@ function writeToGuestBook($userName, $userComment) {
 
   $guestBookArray = json_decode($guestBook, true) ?? [];
 
-  array_unshift( $guestBookArray, [
-    "id" => generateGuestId(), 
+  // array_unshift( $guestBookArray, [
+  //   "id" => generateGuestId(), 
+  //   "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), 
+  //   "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), 
+  //   "session_id" => session_id(),
+  //   "post_time" => time()
+  // ] );
+
+   array_unshift( $guestBookArray, [generateGuestId() => [
     "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), 
     "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), 
     "session_id" => session_id(),
     "post_time" => time()
-  ] );
-
+   ] ]);
   $dataStr = json_encode($guestBookArray, JSON_PRETTY_PRINT);
   
   file_put_contents("./app/models/guestbook.json", $dataStr);
@@ -68,61 +74,65 @@ function writeToGuestBook($userName, $userComment) {
 function templateGuestBookData() {
   echo "<ul>";
   foreach (getGuestbookData() ?? [] as $key => $value) {
-     // formatInput($value["userName"]);
-     $userName = $value["user_name"] ?? null;
-     $userComment = $value["user_comment"] ?? null;
-     $postTime = $value["post_time"] ?? null;
-     $postid = $value["id"] ?? null;
-     $postTimeFormatted = getDateMDY($value["post_time"]);
-      // $timeElapsed = (time() - $postTime >= 180) ? false: true; //old way
-     $timeElapsed = (time() - $postTime >= 180) ? true: false; // changed to 3 instead of 30 minutes for testing purposes. i think the logic can be improved
-     $doesSessionDataMatch = $value["session_id"] === $_COOKIE["PHPSESSID"] ?? null;
-     // $linksTemplate = $timeElapsed !== true && $doesSessionDataMatch ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='?page=delete&id=$postid'>delete</a>" : ""; // TODO: validate user. add check to make sure session id and cookie match
-     $linksTemplate = $timeElapsed === false && $doesSessionDataMatch ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='?page=delete&id=$postid'>delete</a>" : ""; 
+    // formatInput($value["userName"]);
+     
+    foreach ($value as $subKey => $subValue) {
+      // formatInput($subKey["userName"]);
+      // formatInput($subValue);
+      $userName = $subValue["user_name"] ?? null;
+      $userComment = $subValue["user_comment"] ?? null;
+      $postTime = $subValue["post_time"] ?? null;
+      $postid = $subKey ?? null;
+      $postTimeFormatted = getDateMDY($subValue["post_time"]);
+        // $timeElapsed = (time() - $postTime >= 180) ? false: true; //old way
+      $timeElapsed = (time() - $postTime >= 180) ? true: false;
+      
+      $doesSessionDataMatch = $subValue["session_id"] === ($_COOKIE["PHPSESSID"] ?? null);
+      
+      $linksTemplate = $timeElapsed === false && $doesSessionDataMatch ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='?page=delete&id=$postid'>delete</a>" : ""; 
+      // echo $subKey;
+      if ( $userName === "" || $userComment === "" ) {
+           echo <<< GUESTCARD
+             <li>
+              <guest-card> 
+                <ul class="user-info">
+                  <li>
+                    <span class='user-name'>empty</span> {$postTimeFormatted}
+                  </li>
+                
+                  <li class="client-time"> am/pm</li>
+                </ul>
 
-     // maybe just use a regEx to check for no presence of letters here? 
-     //and maybe the HTML should be in a function?
-     if ( $userName === "" || $userComment === "" ) {
-       echo <<< GUESTCARD
-         <li>
-          <guest-card> 
-            <ul class="user-info">
-              <li>
-                <span class='user-name'>empty</span> {$postTimeFormatted}
-              </li>
-            
-              <li class="client-time"> am/pm</li>
-            </ul>
+                <p>empty</p>
+                <p>$linksTemplate</p>
 
-            <p>empty</p>
-            <p>$linksTemplate</p>
+                <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
 
-            <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
+              </guest-card>
+            </li>
+           GUESTCARD;
+         }
+         else {
+           echo <<< GUESTCARD
+            <li>
+              <guest-card> 
+                <ul class="user-info">
+                  <li>
+                    <span class='user-name'>{$userName}</span> {$postTimeFormatted}
+                  </li>
+                
+                  <li class="client-time"> am/pm</li>
+                </ul>
 
-          </guest-card>
-        </li>
-       GUESTCARD;
-     }
-     else {
-       echo <<< GUESTCARD
-        <li>
-          <guest-card> 
-            <ul class="user-info">
-              <li>
-                <span class='user-name'>{$userName}</span> {$postTimeFormatted}
-              </li>
-            
-              <li class="client-time"> am/pm</li>
-            </ul>
+                <p>$userComment</p>
+                <p>$linksTemplate</p>
+                <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
 
-            <p>$userComment</p>
-            <p>$linksTemplate</p>
-            <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
-
-          </guest-card>
-        </li>
-       GUESTCARD;
-     }
+              </guest-card>
+            </li>
+           GUESTCARD;
+         }
+      }
      
   }
   echo "</ul>"; 
@@ -196,22 +206,17 @@ function deletePost() {
   $idAsGetParam = $_GET["id"] ?? null;
 
   foreach ($postDbJSON as $arrIndex => $arrValue) {
-    
-    if ( $arrValue["id"] === $idAsGetParam ) {
-      
-      unset($postDbJSON[$arrIndex]);
-      $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
+    foreach ($arrValue as $subKey => $subValue) {
+      if ( $subKey === $idAsGetParam ) { //TODO: add check for elapsed time. output error if editing time exceeds time allowed
+        unset($postDbJSON[$arrIndex]);
+        $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
+        file_put_contents($postsDbFile, $postDbString);
 
-      file_put_contents($postsDbFile, $postDbString);
-      return true;
-    }
-    // else if ( $arrValue["id"] !== $idAsGetParam ) {
-    //   return 
-    // }
-
-    else {
-      // formatInput($postDbJSON);
-      return false;
-    }
+        return true;
+      }
+      else {
+        return false;
+      }
+    } 
   }
 }
