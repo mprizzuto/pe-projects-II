@@ -11,13 +11,15 @@
 		<form id="guestbook-form" method="POST">
 			<fieldset>
 				<label for="guest-name">name</label>
-				<input id="guest-name" type="text" name="guest-name" value="<?php echo getCurrentPage() === "edit" ? "getValueById" : "" ?>" required>
+				<input id="guest-name" type="text" name="guest-name" value="<?php echo getCurrentPage() === "edit" ? getPostById()[0] : "" ?>" required>
 				<span class="user-message"></span>
 			</fieldset>
 			
 			<fieldset>
 				<label for="guest-comment">comment</label>
-				<textarea id="guest-comment" name="guest-comment" rows="5" cols="34" required></textarea>
+				<textarea id="guest-comment" name="guest-comment" rows="5" cols="34" required>
+					<?php echo getCurrentPage() === "edit" ? getPostById()[1] : "" ?>
+				</textarea>
 				<span class="user-message"></span>
 			</fieldset>
 

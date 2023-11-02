@@ -22,9 +22,9 @@ switch ( getCurrentPage() ) {
     include "./public/views/delete.php";
     break;  
 
-    // case "edit":
-    // include "./views/guestbook-edit.php";
-    // break;
+    case "edit":
+    include "./public/views/guestbook-edit.php";
+    break;
           
 	default:
 		include "./public/views/404.php";

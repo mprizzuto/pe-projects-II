@@ -35,6 +35,9 @@ function getCurrentPage() {
   return $_GET["page"] ?? null;
 }
 
+function getCurrentId() {
+  return $_GET["id"] ?? null;
+}
 
 
 function getGuestbookData() {
@@ -74,11 +77,8 @@ function writeToGuestBook($userName, $userComment) {
 function templateGuestBookData() {
   echo "<ul>";
   foreach (getGuestbookData() ?? [] as $key => $value) {
-    // formatInput($value["userName"]);
      
     foreach ($value as $subKey => $subValue) {
-      // formatInput($subKey["userName"]);
-      // formatInput($subValue);
       $userName = $subValue["user_name"] ?? null;
       $userComment = $subValue["user_comment"] ?? null;
       $postTime = $subValue["post_time"] ?? null;
@@ -90,7 +90,7 @@ function templateGuestBookData() {
       $doesSessionDataMatch = $subValue["session_id"] === ($_COOKIE["PHPSESSID"] ?? null);
       
       $linksTemplate = $timeElapsed === false && $doesSessionDataMatch ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='?page=delete&id=$postid'>delete</a>" : ""; 
-      // echo $subKey;
+
       if ( $userName === "" || $userComment === "" ) {
            echo <<< GUESTCARD
              <li>
@@ -194,8 +194,21 @@ function isFileEmpty($file) {
 }
 
 
-function isPostIdValid(string $id) {
-
+function getPostById() {
+  $guestBookData = getGuestbookData();
+  foreach ($guestBookData as $key => $value) {
+    foreach ($value as $subKey => $subValue) {
+      // echo $subKey;
+      if ($subKey === getCurrentId()) {
+        // echo $subKey;
+        // formatInput($subValue["user_name"]);
+        $name = $subValue["user_name"];
+        $comment = $subValue["user_comment"];
+        
+        return [$name, $comment];
+      }
+    }
+  }
 }
 
 
