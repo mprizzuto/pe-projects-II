@@ -66,7 +66,7 @@ function writeToGuestBook($userName, $userComment) {
     "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), 
     "session_id" => session_id(),
     "post_time" => time()
-   ] ]);
+   ] ] );
   $dataStr = json_encode($guestBookArray, JSON_PRETTY_PRINT);
   
   file_put_contents("./app/models/guestbook.json", $dataStr);
@@ -204,7 +204,7 @@ function getPostById() {
         // formatInput($subValue["user_name"]);
         $name = $subValue["user_name"];
         $comment = $subValue["user_comment"];
-        
+
         return [$name, $comment];
       }
     }
@@ -217,19 +217,62 @@ function deletePost() {
   $postDbString = file_get_contents($postsDbFile);
   $postDbJSON = json_decode($postDbString, true);
   $idAsGetParam = $_GET["id"] ?? null;
-
+  $isPostDeleted = null;
+  // formatInput($postDbJSON);
   foreach ($postDbJSON as $arrIndex => $arrValue) {
     foreach ($arrValue as $subKey => $subValue) {
+      // formatInput($subKey);
       if ( $subKey === $idAsGetParam ) { //TODO: add check for elapsed time. output error if editing time exceeds time allowed
+        // formatInput($subKey);
+        // formatInput($idAsGetParam);
+        // formatInput($postDbJSON[$arrIndex]);
+        // formatInput($subKey);
         unset($postDbJSON[$arrIndex]);
-        $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
-        file_put_contents($postsDbFile, $postDbString);
+        // $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
+        // formatInput($postDbJSON);
+        // file_put_contents($postsDbFile, $postDbString);
+        // file_put_contents($postsDbFile, $postDbString); //wrong data structure
+        $isPostDeleted += true;
 
-        return true;
+
       }
       else {
-        return false;
+        // echo $subKey;
+        // formatInput($postDbJSON[$arrIndex]);
+        // echo false;
+        $isPostDeleted += false;
       }
-    } 
+    }
+     
+  }
+  $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
+  file_put_contents($postsDbFile, $postDbString);
+  // formatInput($postDbJSON);
+  return $isPostDeleted;
+
+}
+
+function editPost() {
+  $guestBookData = getGuestbookData();
+  $guestBookPath = "./app/models/guestbook.json";
+
+  foreach ($guestBookData as $key => $value) {
+    foreach ($value as $subKey => &$subValue) {
+      // echo $subKey;
+      if ($subKey === getCurrentId()) {
+        // echo $subKey;
+        // formatInput($subValue["user_name"]);
+         $subValue["user_name"] = $_POST["guest-name"] ?? null;
+         $subValue["user_comment"] = $_POST["guest-comment"] ?? null;
+
+         $dataStr = json_encode($guestBookData, JSON_PRETTY_PRINT);
+  
+        file_put_contents($guestBookPath, $dataStr);
+      }
+    }
   }
 }
+
+
+
+

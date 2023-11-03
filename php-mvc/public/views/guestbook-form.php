@@ -30,7 +30,7 @@
 
 <?php 
 
-if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
+if ( $_SERVER["REQUEST_METHOD"] === "POST" && getCurrentPage() === "guestbook") {
 
   ["guest-name" => $name, "guest-comment" => $comment] = $_POST;
 
