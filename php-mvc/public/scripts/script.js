@@ -83,6 +83,7 @@ comment?.addEventListener("input", (event) => {
 
   }
   else {
+  	event.target.style.border = "";
     event.currentTarget.parentElement.querySelector(".user-message").textContent = "";
     submitButton.disabled = false;
   }

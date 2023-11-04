@@ -3,11 +3,6 @@
 			</section>
 		</main>
 
-		<?php
-
-		
-		?>
-
 		<footer>
 			<inner-column>
 				<h2>footer</h2>
