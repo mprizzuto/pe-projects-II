@@ -221,36 +221,25 @@ function deletePost() {
   // formatInput($postDbJSON);
   foreach ($postDbJSON as $arrIndex => $arrValue) {
     foreach ($arrValue as $subKey => $subValue) {
-      // formatInput($subKey);
       if ( $subKey === $idAsGetParam ) { //TODO: add check for elapsed time. output error if editing time exceeds time allowed
-        // formatInput($subKey);
-        // formatInput($idAsGetParam);
-        // formatInput($postDbJSON[$arrIndex]);
-        // formatInput($subKey);
         unset($postDbJSON[$arrIndex]);
-        // $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
-        // formatInput($postDbJSON);
-        // file_put_contents($postsDbFile, $postDbString);
-        // file_put_contents($postsDbFile, $postDbString); //wrong data structure
+        $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
+        file_put_contents($postsDbFile, $postDbString);
+
         $isPostDeleted += true;
-
-
       }
       else {
-        // echo $subKey;
-        // formatInput($postDbJSON[$arrIndex]);
-        // echo false;
         $isPostDeleted += false;
       }
     }
      
   }
-  $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
-  file_put_contents($postsDbFile, $postDbString);
-  // formatInput($postDbJSON);
+  // $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
+  // file_put_contents($postsDbFile, $postDbString);
   return $isPostDeleted;
 
 }
+
 
 function editPost() {
   $guestBookData = getGuestbookData();
