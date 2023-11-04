@@ -41,10 +41,6 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
 
 			<h1>PHP guestbook</h1>
 
-			<?php 
-			 // formatInput($_SESSION);
-			
-			?>
       <!-- <p>to leave a comment, go to the guestbook  <a href="?page=guestbook">guestbook</a></p> -->
 		</inner-column>
 	</header>

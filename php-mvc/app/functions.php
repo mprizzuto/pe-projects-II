@@ -234,10 +234,7 @@ function deletePost() {
     }
      
   }
-  // $postDbString = json_encode($postDbJSON, JSON_PRETTY_PRINT);
-  // file_put_contents($postsDbFile, $postDbString);
   return $isPostDeleted;
-
 }
 
 
@@ -245,18 +242,20 @@ function editPost() {
   $guestBookData = getGuestbookData();
   $guestBookPath = "./app/models/guestbook.json";
 
-  foreach ($guestBookData as $key => $value) {
+  foreach ($guestBookData as $key => &$value) {
     foreach ($value as $subKey => &$subValue) {
       // echo $subKey;
       if ($subKey === getCurrentId()) {
-        // echo $subKey;
-        // formatInput($subValue["user_name"]);
-         $subValue["user_name"] = $_POST["guest-name"] ?? null;
-         $subValue["user_comment"] = $_POST["guest-comment"] ?? null;
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+          // echo $subKey;
+          // formatInput($subValue["user_name"]);
+          $subValue["user_name"] = $_POST["guest-name"] ?? null;
+          $subValue["user_comment"] = $_POST["guest-comment"] ?? null;
 
-         $dataStr = json_encode($guestBookData, JSON_PRETTY_PRINT);
-  
-        file_put_contents($guestBookPath, $dataStr);
+          $dataStr = json_encode($guestBookData, JSON_PRETTY_PRINT);
+
+          file_put_contents($guestBookPath, $dataStr);
+        }
       }
     }
   }
