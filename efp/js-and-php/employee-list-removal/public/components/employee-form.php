@@ -17,14 +17,10 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
 
   $errorString = implode(",", $errors);
 
-  
-  // formatInput($errors);
-  // formatInput($errorString);
-
-  if ( $errorString !== "" ) {
-     $userMessage = "<p> <strong>errors found </strong>" . ($errorString ?? null) . "</p>";
-    // formatInput($errorString);
+  if ( $errorString !== "") {
+    $userMessage = "<p> <strong>errors found </strong>" . ($errorString ?? null) . "</p>";
   }
+
 }
 ?>
 
@@ -40,4 +36,19 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
 </form>
 
 <p><?=$userMessage ?? null?></p>
+
+<?php  
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  if ( removeEmployeeFromDB($employeeName) ) {
+    echo "name deleted";
+  }
+  else {
+    echo "Name not found. check for spelling and extra whitespace";
+  }
+}
+?>
+
+
+
+
 
