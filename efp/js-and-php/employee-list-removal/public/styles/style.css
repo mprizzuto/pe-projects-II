@@ -1,0 +1,34 @@
+/*components*/
+inner-column {
+	display: block;
+/*	border: 3px solid red;*/
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+/*type*/
+:is(h1,h2) {
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+/*  text-decoration: underline;*/
+  border-bottom: 2px solid blue;
+}
+
+/*form*/
+:is(form, form button) {
+  margin-top: 10px;
+}
