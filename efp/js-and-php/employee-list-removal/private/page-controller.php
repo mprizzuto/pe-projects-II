@@ -11,5 +11,4 @@ switch (getPage()) {
 	
 	default:
 		include "../public/views/404.php";
-		break;
 }
