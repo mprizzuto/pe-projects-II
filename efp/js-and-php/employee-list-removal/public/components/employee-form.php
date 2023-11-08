@@ -24,16 +24,24 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
 }
 ?>
 
-<form method="POST">
-  <?php //$errorMessage = null; ?>
-	<div class="fields">
-		<label for="employee-name">employee name</label>
+<section class="efp-employee-delete">
+  <inner-column>
+    <h2>delete an employee</h2>
 
-		<input id="employee-name" type="text" name="employee-name" required><?=$errorMessage ?? null?>
-	</div>
+    <p>enter the name of an employee to remove</p>
 
-  <button type="submit">check employee</button>
-</form>
+    <form id="efp-employee-form" method="POST">
+      <?php //$errorMessage = null; ?>
+      <div class="fields">
+        <label for="employee-name">employee name</label>
+
+        <input id="employee-name" type="text" name="employee-name" required><?=$errorMessage ?? null?><span id="error-message"></span>
+      </div>
+
+      <button type="submit">check employee</button>
+    </form>
+  </inner-column>
+</section>
 
 <p><?=$userMessage ?? null?></p>
 
@@ -42,8 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if ( removeEmployeeFromDB($employeeName) ) {
     echo "name deleted";
   }
-  else {
-    echo "Name not found. check for spelling and extra whitespace";
+  if ( !removeEmployeeFromDB($employeeName) && 
+    strlen($errorString) === 0 ) {
+    echo "<p id='validation-error'>Name not found. check for spelling and extra whitespace</p>";
   }
 }
 ?>
