@@ -25,7 +25,7 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" ) {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>PHP MVC guerstbook</title>
-	<link rel="stylesheet" type="text/css" href="./public/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="./styles/style.css">
 
 </head>
 <body>		
