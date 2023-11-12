@@ -68,27 +68,6 @@ name?.addEventListener("input", (event) => {
 	}
 });
 
-comment?.addEventListener("input", (event) => {
-  // console.log(event.target.value);
-
-  if (event.target.value.trim().length === 0
-    && event.target.value.length > 0) {
-
-    event.target.style.border = "3px solid red";
-    // userMessage.textContent = "no emoty spaces allowed";
-    event.currentTarget.parentElement.querySelector(".user-message").textContent = "invalid: whitespace only";
-    console.log();
-    submitButton.disabled = true;
-    event.preventDefault();
-
-  }
-  else {
-  	event.target.style.border = "";
-    event.currentTarget.parentElement.querySelector(".user-message").textContent = "";
-    submitButton.disabled = false;
-  }
-});
-
 
 
 

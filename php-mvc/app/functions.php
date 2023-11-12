@@ -62,7 +62,7 @@ function writeToGuestBook($userName, $userComment) {
   // ] );
 
    array_unshift( $guestBookArray, [generateGuestId() => [
-    "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), 
+    "user_name" => sanitizeUserNameAndComment( truncateLongString($userName, 10) ), 
     "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), 
     "session_id" => session_id(),
     "post_time" => time()
@@ -79,8 +79,8 @@ function templateGuestBookData() {
   foreach (getGuestbookData() ?? [] as $key => $value) {
      
     foreach ($value as $subKey => $subValue) {
-      $userName = htmlspecialchars($subValue["user_name"] ?? null);
-      $userComment = htmlspecialchars($subValue["user_comment"] ?? null);
+      $userName = htmlspecialchars($subValue["user_name"] ?? null, ENT_QUOTES, "UTF-8");
+      $userComment = htmlspecialchars($subValue["user_comment"] ?? null, ENT_QUOTES, "UTF-8");
       $postTime = $subValue["post_time"] ?? null;
       $postid = $subKey ?? null;
       $postTimeFormatted = getDateMDY($subValue["post_time"]);
@@ -92,50 +92,49 @@ function templateGuestBookData() {
       $linksTemplate = $timeElapsed === false && $doesSessionDataMatch ? "<a href='?page=edit&id=$postid'>edit</a>  <a href='?page=delete&id=$postid'>delete</a>" : ""; 
 
       if ( $userName === "" || $userComment === "" ) {
-           echo <<< GUESTCARD
-             <li>
-              <guest-card> 
-                <ul class="user-info">
-                  <li>
-                    <span class='user-name'>empty</span> {$postTimeFormatted}
-                  </li>
-                
-                  <li class="client-time"> am/pm</li>
-                </ul>
+         echo <<< GUESTCARD
+           <li>
+            <guest-card> 
+              <ul class="user-info">
+                <li>
+                  <span class='user-name'>empty</span> {$postTimeFormatted}
+                </li>
+              
+                <li class="client-time"> am/pm</li>
+              </ul>
 
-                <p>empty</p>
-                <p>$linksTemplate</p>
+              <p>empty</p>
+              <p>$linksTemplate</p>
 
-                <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
+              <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
 
-              </guest-card>
-            </li>
-           GUESTCARD;
-        }
-         else {
-           echo <<< GUESTCARD
-            <li>
-              <guest-card> 
-                <ul class="user-info">
-                  <li>
-                    <span class='user-name'>{$userName}</span> {$postTimeFormatted}
-                  </li>
-                
-                  <li class="client-time"> am/pm</li>
-                </ul>
-
-                <p>$userComment</p>
-                <p>$linksTemplate</p>
-                <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
-
-              </guest-card>
-            </li>
-           GUESTCARD;
-         }
+            </guest-card>
+          </li>
+         GUESTCARD;
       }
-     
+      else {
+       echo <<< GUESTCARD
+        <li>
+          <guest-card> 
+            <ul class="user-info">
+              <li>
+                <span class='user-name'>{$userName}</span> {$postTimeFormatted}
+              </li>
+            
+              <li class="client-time"> am/pm</li>
+            </ul>
+
+            <p>$userComment</p>
+            <p>$linksTemplate</p>
+            <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
+
+          </guest-card>
+        </li>
+       GUESTCARD;
+      }
+    } 
   }
-  echo "</ul>"; 
+  echo "</ul>";
 }
 
 
