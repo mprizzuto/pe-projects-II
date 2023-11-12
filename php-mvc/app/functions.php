@@ -79,8 +79,8 @@ function templateGuestBookData() {
   foreach (getGuestbookData() ?? [] as $key => $value) {
      
     foreach ($value as $subKey => $subValue) {
-      $userName = $subValue["user_name"] ?? null;
-      $userComment = $subValue["user_comment"] ?? null;
+      $userName = htmlspecialchars($subValue["user_name"] ?? null);
+      $userComment = htmlspecialchars($subValue["user_comment"] ?? null);
       $postTime = $subValue["post_time"] ?? null;
       $postid = $subKey ?? null;
       $postTimeFormatted = getDateMDY($subValue["post_time"]);
@@ -111,7 +111,7 @@ function templateGuestBookData() {
               </guest-card>
             </li>
            GUESTCARD;
-         }
+        }
          else {
            echo <<< GUESTCARD
             <li>
