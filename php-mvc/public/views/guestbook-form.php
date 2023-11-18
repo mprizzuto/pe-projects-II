@@ -30,7 +30,7 @@
 
 <?php 
 
-if ( $_SERVER["REQUEST_METHOD"] === "POST" && getCurrentPage() === "guestbook") {
+if ( $_SERVER["REQUEST_METHOD"] === "POST" && getCurrentPage() === "guestbook" ) {
   ["guest-name" => $name, "guest-comment" => $comment] = $_POST;
 
 	writeToGuestBook($name, $comment);
@@ -38,8 +38,15 @@ if ( $_SERVER["REQUEST_METHOD"] === "POST" && getCurrentPage() === "guestbook") 
 	array_push( $_SESSION["user_data"], ["guest_name" => sanitizeUserNameAndComment(truncateLongString($_POST["guest-name"], 10)), "session_id" => session_id()] );
 }
 
-if (  getCurrentPage() === "edit" ) {
+
+if (  getCurrentPage() === "edit" && canUserEdit()) {
   editPost();
 }
+
+if (canUserEdit() === false) {
+	echo "POST EXPIRED";
+}
+
+// formatInput(canUserEdit());
 
 ?>

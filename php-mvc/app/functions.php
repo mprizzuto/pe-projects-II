@@ -261,5 +261,26 @@ function editPost() {
 }
 
 
+function canUserEdit() {
+  $isEditable = null;
+
+  foreach (getGuestbookData() as $key) {
+    foreach ($key as $subKey => $subValue) {
+      if ( getCurrentId() === $subKey ) {
+        if ( time() - $subValue["post_time"] >= 180 ) {
+          $isEditable = false;
+        }
+
+        if ( time() - $subValue["post_time"] <= 180 ) {
+          // return true;
+          $isEditable = true;
+        }
+      }
+    }
+  }
+  return $isEditable;
+}
+
+
 
 
