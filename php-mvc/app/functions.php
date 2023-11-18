@@ -53,17 +53,12 @@ function writeToGuestBook($userName, $userComment) {
 
   $guestBookArray = json_decode($guestBook, true) ?? [];
 
-  // array_unshift( $guestBookArray, [
-  //   "id" => generateGuestId(), 
-  //   "user_name" => sanitizeUserNameAndComment(truncateLongString($userName, 10)), 
-  //   "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), 
-  //   "session_id" => session_id(),
-  //   "post_time" => time()
-  // ] );
+  // $sanitizeComment = preg_replace("/[^a-zA-Z_0-9.]/", "", $userComment);
 
    array_unshift( $guestBookArray, [generateGuestId() => [
     "user_name" => sanitizeUserNameAndComment( truncateLongString($userName, 10) ), 
     "user_comment" => sanitizeUserNameAndComment( truncateLongString($userComment, 30) ), 
+    // "user_comment" => truncateLongString($sanitizeComment, 30), 
     "session_id" => session_id(),
     "post_time" => time()
    ] ] );
@@ -84,7 +79,6 @@ function templateGuestBookData() {
       $postTime = $subValue["post_time"] ?? null;
       $postid = $subKey ?? null;
       $postTimeFormatted = getDateMDY($subValue["post_time"]);
-        // $timeElapsed = (time() - $postTime >= 180) ? false: true; //old way
       $timeElapsed = (time() - $postTime >= 180) ? true: false;
       
       $doesSessionDataMatch = $subValue["session_id"] === ($_COOKIE["PHPSESSID"] ?? null);
@@ -105,8 +99,6 @@ function templateGuestBookData() {
 
               <p>empty</p>
               <p>$linksTemplate</p>
-
-              <!-- TODO: only show delete edit links if post is <30 minutes old and user id and session id match?-->
 
             </guest-card>
           </li>
@@ -165,7 +157,7 @@ function validUserName($str) {
 
 
 function sanitizeUserNameAndComment($userName) {
-  return preg_replace("/[^a-zA-Z_0-9.]\s?/", "", $userName);
+  return preg_replace("/[^a-zA-Z_0-9.]\s?/", " ", $userName);
 }
 
 
@@ -194,6 +186,7 @@ function isFileEmpty($file) {
 
 
 function getPostById() {
+  // TODO: if post isnt found, output "POST NOT FOUND"
   $guestBookData = getGuestbookData();
   foreach ($guestBookData as $key => $value) {
     foreach ($value as $subKey => $subValue) {
